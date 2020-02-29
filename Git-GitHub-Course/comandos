@@ -1,0 +1,41 @@
+Comando para crear un repositorio localmente.
+git init
+
+Comando para agregar el usuario al repositorio.
+git config ##muestra información de su funcionamiento
+git config --list ##muestra la configuración por defecto de Git
+git config --list --show-origin ##muestra donde están las configuraciones guardadas.
+git config --global user.name 'Víctor Echeverría'
+git config --global user.email 'viktoralfa19@hotmail.com'
+
+Comandos para ver el estado del repositorio.
+git status ##Muestar que archivos estan trakeados (add) o solo modificados.
+
+Comando para retirar del staging archivos, (stagin es el area de preparación en memoria de los archivos 
+que van a ser commit(guardado en la base de datos de git))
+git rm --cached nombre_archivo
+
+Comando para agregar al staging los archivos con cambios previo al commit
+git add . or [nombre_archivo]
+
+Comando para realizar un commit de lo que esta en el staging
+git commit [-m "Mensaje del commit"]
+
+Comando para combinar dos Ramas
+git merge
+
+
+
+Ramas importantes en Git Flow
+1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
+2. Developmemt - La rame en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
+   multiples desarrolladores hayan realizado y es esta versión la que envíamos a pruebas al cliente o al
+   equipo de QA.
+3. HotFixing - Es una rama que se deriva de la rama master para realizar un cambio en caliente del código 
+   en producción. Se crea cuando aparece un bug en producción que se debe mitigar lo antes posible.
+4. Future - Es una rama que se puede derivar principalmente de la rama development, que por lo general las 
+   creamos para asignar tareas a diversas a desarrolladores diversoso y poder de esta manera pisar código 
+   entre compañeros.
+
+
+
