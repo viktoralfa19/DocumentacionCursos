@@ -11,6 +11,19 @@ git config --global user.email 'viktoralfa19@hotmail.com'
 Comandos para ver el estado del repositorio.
 git status ##Muestar que archivos estan trakeados (add) o solo modificados.
 
+Comando para ver los cambios del repositorio o de archivos especificos.
+git show ## Todo el repositorio
+git show [nombre_archivo]
+
+Comando para ver los commits realizados del repositorio o de archivos especificos.
+git log ## Todo el repositorio
+git log [nombre_archivo]
+
+Comando para visualizar la diferencia de las versiones de diferentes commits.
+git diff uuid_commit_uno uuid_commit_dos 
+## Importante el orden de los uuid, del más antiguo al más reciente y además no es necesario copiar
+todo el uuid basta con los 7 primeros carácteres.
+
 Comando para retirar del staging archivos, (stagin es el area de preparación en memoria de los archivos 
 que van a ser commit(guardado en la base de datos de git))
 git rm --cached nombre_archivo
