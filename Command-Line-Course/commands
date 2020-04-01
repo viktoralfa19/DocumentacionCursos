@@ -1,0 +1,69 @@
+Los comandos que se han utilizado hasta el momento son los siguientes:
+
+**Listar contenidos:
+ls -lh
+ls -a
+ls -ls
+
+**Print worker directory
+pwd
+
+**Crear directorios:
+mkdir nombre-directorio
+
+**Borrar directorios:
+rmdir nombre-directorio
+
+**Crear archivos:
+touch nombre-archivo
+
+**Borrar archivos:
+rm nombre-archivo
+
+**copiar archivos o directorios
+cp /path-origen /path-destino
+
+**mover completamente directorios o archivos:
+mv /path-origen /path-destino
+
+**moverse entre archivos:
+cd /path-a-moverse
+
+**Busqueda y tratamiento de texto:
+grep "key-word" nombre-archivo ** con -i nos permite incluir mayusculas como minusculas.
+
+sed 's/palabra-cambiar/palabra-nueva'
+
+awk ** se usa para buscar dentro de archivos delimitados como csv.
+
+**Enviar procesos a background con '&'
+mv /path1 /path2 &
+
+**Monitorear procesos:
+ps ax
+
+top
+
+**Permisos usuarios
+matriz 
+
+          Lectura Escritura Ejecucion
+usuario
+grupo
+otros
+
+chmod **cambia indidualmente permisos a los archivos sea para duenios, grupos y otros
+chgrp **cambia de un grupo a otro un archivo o directorio
+chown **cambia el duenio del archivo 
+
+combinacion binaria:
+ejemplo permiso de lectura, no escritura y no ejecucion
+100
+ejemplo de permisos de lectura,escritura y ejecucion
+111
+
+ejemplo de cambiar permisos a un archivo
+
+chmod 641 command **permite al duenio leer y escribir, a alguien del grupo solo leer y a otros solo ejecutar.
+
+chmod 664 command **permite al duenio y a un usuario del grupo al que pertenece leer y escribir, y a otros solamente leer.

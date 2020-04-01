@@ -41,13 +41,13 @@ git merge
 
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
-2. Developmemt - La rame en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
+2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
    multiples desarrolladores hayan realizado y es esta versión la que envíamos a pruebas al cliente o al
    equipo de QA.
 3. HotFixing - Es una rama que se deriva de la rama master para realizar un cambio en caliente del código 
    en producción. Se crea cuando aparece un bug en producción que se debe mitigar lo antes posible.
 4. Future - Es una rama que se puede derivar principalmente de la rama development, que por lo general las 
-   creamos para asignar tareas a diversas a desarrolladores diversoso y poder de esta manera pisar código 
+   creamos para asignar tareas a diversas a desarrolladores diversos y poder de esta manera pisar código 
    entre compañeros.
 
 
