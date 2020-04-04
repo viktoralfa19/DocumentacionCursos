@@ -37,7 +37,9 @@ git commit [-m "Mensaje del commit"]
 Comando para combinar dos Ramas
 git merge
 
-
+Muestra la historia del repositorio o de un archivo especificos
+git log
+git log [nombre_archivo]
 
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
