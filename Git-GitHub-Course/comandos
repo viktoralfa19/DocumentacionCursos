@@ -87,7 +87,13 @@ git merge
 Se puede realizar ambas acciones al mismo tiempo con un solo comando.
 git pull origin [nombre_rama]
 
+Crear una nueva rama desde la rama en la que te encuentras localizado.
+git branch [nombre_nueva_rama]
 
+Ver las ramas 
+git branch
+
+Con git show puedes ver que el head esta pegado a las rama principal y a sus ramas recientemente creadas
 
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
