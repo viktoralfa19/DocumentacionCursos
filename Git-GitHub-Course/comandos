@@ -40,6 +40,8 @@ git merge
 Muestra la historia del repositorio o de un archivo especificos
 git log
 git log [nombre_archivo]
+git log --stat # Permite visualizar los cambios específicos en los archivos a partir del commit.
+
 
 Permitir volver a una versión anterior, perdiendo todos los cambios hasta el commit al que se quiere volver,
 existen dos opciones para reset, la opción --soft que no borra los archivos agregados a staging o --hard que realiza una
@@ -48,8 +50,9 @@ reversa agresiva y total borrando todo rastro de los commits realizados despues 
 git reset [id_commit] --soft # Mantiene las cambios agregados a staging
 git reset [id_commit] --hard # Borra todos los archivos incluido staging hasta el commit al que se vuelve.
 
-
-
+Para volver a cargar uno, varios o todos los archivos a una versión anterior dentro del directorio principal
+git checkout [id_commit] # Carga fisicamente la versión del commit ingresado.
+ 
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
 2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
