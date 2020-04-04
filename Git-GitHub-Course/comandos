@@ -45,10 +45,12 @@ git log --stat # Permite visualizar los cambios específicos en los archivos a p
 
 Permitir volver a una versión anterior, perdiendo todos los cambios hasta el commit al que se quiere volver,
 existen dos opciones para reset, la opción --soft que no borra los archivos agregados a staging o --hard que realiza una
-reversa agresiva y total borrando todo rastro de los commits realizados despues del commit al que volvimos.
+reversa agresiva y total borrando todo rastro de los commits realizados despues del commit al que volvimos, es decir,
+no hay marcha atrás y lo que se borró se perdió para siempre.
 
 git reset [id_commit] --soft # Mantiene las cambios agregados a staging
 git reset [id_commit] --hard # Borra todos los archivos incluido staging hasta el commit al que se vuelve.
+git reset HEAD # Permite borrar o vaciar todos o los archivos que se desee de staging para no ser enviados en el próximo commit.
 
 Para volver a cargar uno, varios o todos los archivos a una versión anterior dentro del directorio principal
 git checkout [id_commit] [nombre_archivo/s] # Carga fisicamente la versión del commit ingresado.
@@ -60,7 +62,14 @@ solamente vuelvo atrás el o los archivos que necesito y realizo un nuevo git ad
 git checkout [id_commit] [nombre_archivo/s] 
 git add [nombre_archivo/s]
 git commit -m "Comentario"
- 
+
+Se puede borrar un archivo sin necesidad de borrarlo del historial de versiones de Git.
+git rm --cached [nombre_archivo_o_directorio] # Se eliminan del area de staging.
+git rm --force [nombre_archivo_o_directorio] # Se eliminan del disco duro.
+
+
+FLUJOS CON DIRECTORIOS REMOTOS.
+
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
 2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
