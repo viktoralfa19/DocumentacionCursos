@@ -51,7 +51,15 @@ git reset [id_commit] --soft # Mantiene las cambios agregados a staging
 git reset [id_commit] --hard # Borra todos los archivos incluido staging hasta el commit al que se vuelve.
 
 Para volver a cargar uno, varios o todos los archivos a una versión anterior dentro del directorio principal
-git checkout [id_commit] # Carga fisicamente la versión del commit ingresado.
+git checkout [id_commit] [nombre_archivo/s] # Carga fisicamente la versión del commit ingresado.
+git checkout rama_local [nombre_archivo/s] #Permite volver a la versión original sin realizar afectaciones.
+
+Si deseo reemplazar toda la versión o solo un archivo o archivos de una versión actual a una versión anterior
+solamente vuelvo atrás el o los archivos que necesito y realizo un nuevo git add y commit.
+
+git checkout [id_commit] [nombre_archivo/s] 
+git add [nombre_archivo/s]
+git commit -m "Comentario"
  
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
