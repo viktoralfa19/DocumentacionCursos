@@ -41,6 +41,9 @@ Muestra la historia del repositorio o de un archivo especificos
 git log
 git log [nombre_archivo]
 
+Permitir volver a una versión anterior 
+git reset [id_commit]
+
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
 2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
