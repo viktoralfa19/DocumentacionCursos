@@ -63,6 +63,8 @@ git checkout [id_commit] [nombre_archivo/s]
 git add [nombre_archivo/s]
 git commit -m "Comentario"
 
+git commit -am "Comentario" #Permite realizar directamente el add sin escribirlo. Solo sirve para archivos que previamente se han realizado un add.
+
 Se puede borrar un archivo sin necesidad de borrarlo del historial de versiones de Git.
 git rm --cached [nombre_archivo_o_directorio] # Se eliminan del area de staging.
 git rm --force [nombre_archivo_o_directorio] # Se eliminan del disco duro.
@@ -84,6 +86,8 @@ git merge
 
 Se puede realizar ambas acciones al mismo tiempo con un solo comando.
 git pull origin [nombre_rama]
+
+
 
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
