@@ -69,6 +69,21 @@ git rm --force [nombre_archivo_o_directorio] # Se eliminan del disco duro.
 
 
 FLUJOS CON DIRECTORIOS REMOTOS.
+Repositorio remoto se encuentra en la Nube o un servidor propio remoto.
+Clonar un repositorio remoto.
+git clone [url_repositorio_remoto] # Te permite tener una copia completa del repositorio remoto en local. Hace una copa del master y crea la base de datos de todos los cambios del proyecto.
+
+Envíar los cambios al repositorio remoto.
+git push origin [nombre_rama] #El head del master local lo envía al servidor remoto.
+
+Consultar y actualizar la historia de cambios desde el repositorio remoto al local.
+git fetch
+
+Despues de realizar la consulta para copiar dentro de los archivos locales los cambios hay que fusionar los mismo.
+git merge 
+
+Se puede realizar ambas acciones al mismo tiempo con un solo comando.
+git pull origin [nombre_rama]
 
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
