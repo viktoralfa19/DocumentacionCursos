@@ -87,6 +87,8 @@ git merge
 Se puede realizar ambas acciones al mismo tiempo con un solo comando.
 git pull origin [nombre_rama]
 
+Cambiar entre ramas 
+git checkout [nombre_a_cambiar]
 
 
 Ramas importantes en Git Flow
