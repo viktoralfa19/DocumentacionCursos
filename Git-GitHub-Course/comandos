@@ -60,6 +60,10 @@ solamente vuelvo atrás el o los archivos que necesito y realizo un nuevo git ad
 git checkout [id_commit] [nombre_archivo/s] 
 git add [nombre_archivo/s]
 git commit -m "Comentario"
+
+
+
+ESTE CONTENIDO NO TIENE SENTIDO SE DEBE BORRAR.
  
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
