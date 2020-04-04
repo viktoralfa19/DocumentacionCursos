@@ -41,8 +41,14 @@ Muestra la historia del repositorio o de un archivo especificos
 git log
 git log [nombre_archivo]
 
-Permitir volver a una versión anterior 
-git reset [id_commit]
+Permitir volver a una versión anterior, perdiendo todos los cambios hasta el commit al que se quiere volver,
+existen dos opciones para reset, la opción --soft que no borra los archivos agregados a staging o --hard que realiza una
+reversa agresiva y total borrando todo rastro de los commits realizados despues del commit al que volvimos.
+
+git reset [id_commit] --soft # Mantiene las cambios agregados a staging
+git reset [id_commit] --hard # Borra todos los archivos incluido staging hasta el commit al que se vuelve.
+
+
 
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
