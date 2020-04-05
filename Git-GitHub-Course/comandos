@@ -84,12 +84,14 @@ git fetch
 Despues de realizar la consulta para copiar dentro de los archivos locales los cambios hay que fusionar los mismo.
 git merge 
 
+El merge se lo debe realizar estando en la rama que va alojar los nuevos cambios, es decir si los cambios de una rama 
+deseo enviarlos a la rama Develop o la rama master, el comando merge lo debo invocar desde la rama Develop o la rama master.
+
 Se puede realizar ambas acciones al mismo tiempo con un solo comando.
 git pull origin [nombre_rama]
 
 Cambiar entre ramas 
 git checkout [nombre_a_cambiar]
-
 
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
