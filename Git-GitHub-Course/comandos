@@ -140,6 +140,31 @@ Tambien debe pedir las credenciales del repositorio remoto.
 Finalmente se puede enviar los cambios al repositorio remoto.
 git push origin master
 
+Se puede agregar el usuario y la clave del repositorio remoto en Linux de esta manera:
+git config --global credential.helper store
+
+Esto creará un archivo denominando .git-credentials en el home del usuario. Lo malo es que las credenciales no estarán
+encriptadas. Puede hacerlo también almacenandolo en cache y dandole un tiempo de vida a las credenciales.
+
+Utilizar SSH en GitHub
+Primero creamos la llave publica y privada que voy a utilizar.
+ssh-geygen -t rsa -b 4096 -C "viktoralfa19@hotmail.com"
+
+Lo dejamos en el directorio por defecto. y Le colocamos una frase de password.
+
+Ahora debemos decirle al servicio ssh que se ha agregado una nueva llave privada para que la pueda identificar.
+Confirmamos que el servicio ssh-agent esté corriendo.
+eval $(ssh-agent -s)
+
+Si esta corriendo entonces agregamos la llave privada para que lo reconozca ssh.
+ssh-add ~/.ssh/id_rsa
+
+Ahora debo borrar mi configuración credential.helper 
+git config --global --unset credential.helper
+
+Y debo borrar el archivo ~/.git-credentials
+
+Se debe posteriormente agregar la llave publica en GitHub para tener la conección ssh completa.
 
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
