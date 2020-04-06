@@ -121,7 +121,21 @@ Opción verbose
 
 git remote -v # Nos indica las urls para realizar fetch y push
 
+Enviar el repositorio local al repositorio remoto.
+git push origin master
 
+Al principio no te permite realizar esta opción diciendote que existen cambios no identificados en el repositorio remoto asi 
+que descargue los cambios y fusione los archivos del repositorio remoto en el repositorio local.
+
+git pull origin master # Realiza un fetch y un merge al mismo tiempo.
+
+Puede aparecer otro error diciendo que no pued realizar la fusión ya que las historias de cambiso entre ambos repositorios no están
+relacionadas, por lo que se debe forzar la fusión al menos la primera vez.
+
+git push origin master --allow-unrelated-histories
+
+Despues de esto pedirá el respectivo comentario del commit de fusión y finalizará el proceso.
+Tambien debe pedir las credenciales del repositorio remoto.
 
 
 Ramas importantes en Git Flow
