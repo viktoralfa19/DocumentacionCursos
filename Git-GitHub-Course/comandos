@@ -166,6 +166,37 @@ Y debo borrar el archivo ~/.git-credentials
 
 Se debe posteriormente agregar la llave publica en GitHub para tener la conección ssh completa.
 
+Ver de una manera mucho más grafica y resumida la información del historial de un repositorio.
+git log --graph --decorate --online
+
+Versionamiento con TAGS
+
+Para crar un tag lo hacemos con 
+git tag -a v0.0 -m "Versión Inicial del Repositorio" [id_commit_local] # Agrega un tag al commit especificado.
+
+para enviar los tags al repositorio remoto
+git push origin --tags
+
+para ver los tags actuales y como estan relaciondos con los commits
+git tag
+git show-ref --tags
+
+para eliminar un tag que no deseo que siga registrado
+git tag -d  [nombre_tag_a_borrar]
+
+envio de nuevo los tags pero en github no se borran los tags ya que para github es el standar de como reconocer versiones de release
+por ello se debe borrar de otro modo en github desde la consola.
+
+git push origin :refs/tags/erro
+
+De esta manera se borrará en GitHub (repositorio remoto) un tag erroneo.
+
+Manejo de Ramas:
+Presentar información de las ramas
+git show-branch
+git show-branch --all
+
+
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
 2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
