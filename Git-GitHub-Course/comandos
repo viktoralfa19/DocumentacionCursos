@@ -132,10 +132,13 @@ git pull origin master # Realiza un fetch y un merge al mismo tiempo.
 Puede aparecer otro error diciendo que no pued realizar la fusión ya que las historias de cambiso entre ambos repositorios no están
 relacionadas, por lo que se debe forzar la fusión al menos la primera vez.
 
-git push origin master --allow-unrelated-histories
+git pull origin master --allow-unrelated-histories
 
 Despues de esto pedirá el respectivo comentario del commit de fusión y finalizará el proceso.
 Tambien debe pedir las credenciales del repositorio remoto.
+
+Finalmente se puede enviar los cambios al repositorio remoto.
+git push origin master
 
 
 Ramas importantes en Git Flow
