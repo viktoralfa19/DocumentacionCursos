@@ -101,6 +101,29 @@ Con git show puedes ver que el head esta pegado a las rama principal y a sus ram
 Cambiar entre ramas 
 git checkout [nombre_a_cambiar]
 
+Conflictos
+Los conflictos aparecen al momento de realizar un merge o fusión. En visual studio code existe la opción de quedarse
+con los cambios recientes o los cambios que deseas fusionar.
+Por defecto siempre git con el tag HEAD te muestra la porción de código del repositorio en el que te encuentras ubicado 
+y que entro en conflicto. Mientras que separado por dobles líneas y con el nombre de la rama origen te mestra el código 
+de la rama que deseas fusionar a la rama en que te encuentras ubicado.
+
+Agregar un repositorio remoto al proyecto actual.
+Si deseas agregar la url del repositorio remoto dentro del repositorio local de Git, debes usar:
+
+git remote add [nombre_repositorio_remoto] [url] # Por lo general el nombre del repositorio remoto siempre es "origin"
+git remote add origin [url]
+
+Para cambiar la url del repositorio remoto si existen actualizaciones o equivocaciones es:
+git remote set-url origin [url]
+
+Opción verbose
+
+git remote -v # Nos indica las urls para realizar fetch y push
+
+
+
+
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
 2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
