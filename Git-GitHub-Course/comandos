@@ -196,6 +196,12 @@ Presentar información de las ramas
 git show-branch
 git show-branch --all
 
+Envío de ramas locales al repositorio remoto
+git push origin [nombre_rama_a_enviar]
+
+Crear ramas
+git branch [nombre_nueva_rama]
+git checkout -b [nombre_nueva_rama] # Crea la nueva rama y te cambias automáticamente a esa rama
 
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
