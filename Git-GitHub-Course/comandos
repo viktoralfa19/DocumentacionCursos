@@ -151,6 +151,7 @@ Primero creamos la llave publica y privada que voy a utilizar.
 ssh-keygen -t rsa -b 4096 -C "viktoralfa19@hotmail.com"
 
 Lo dejamos en el directorio por defecto. y Le colocamos una frase de password.
+La clave es: Gestion.2020
 
 Ahora debemos decirle al servicio ssh que se ha agregado una nueva llave privada para que la pueda identificar.
 Confirmamos que el servicio ssh-agent esté corriendo.
