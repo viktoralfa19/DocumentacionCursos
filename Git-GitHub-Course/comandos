@@ -321,6 +321,25 @@ Del mismo modo para envíar los cambios a la rama master desde la rama de stagin
 Por lo general un DevOps, o administrador del entorno de desarrollo es quien se encarga del code review y de completar el merge 
 a partir del Pull request o a su ves rechazarlo.
 
+El pull request no es propio de Git, sino más bien son buenas prácticas de DevOps que han tomado los repositorios remotos como
+Github, Gilab o Bitbucket para facilitar el desarrollo de código a grupos de trabajo, ya sean estos grupos de trabajo empresariales,
+o solo aportes personales a Codigo Open Source.
+
+Cuando se manejan grupos de colaboradores de codigo Open Source la manera de manejar estos pull request se lo realiza de una 
+manera ligeramente diferente.
+
+Primero el proyecto debe ser público y las personas que van a colaborar en realidad no estan presentes en la configuración del
+repositorio como colaboradores.
+
+Para poder colaborar con proyectos open source, se debe realizar un Fork del proyecto.
+Un Fork es básicamente realizar una copia del estado actual del proyecto y clonarlo. Y se clona como un proyecto propio.
+Es una bifurcación, o sepración del proyecto original clonando el estado actual. 
+Del mismo modo Fork es una característica propia de Github.
+
+Una vez que se hayan hecho las contribuciones necesarias al proyecto open source, entonces podemos realizar un pull request 
+a la rama que origino el fork.
+
+
 
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
