@@ -303,6 +303,25 @@ git checkout -b [nombre_nueva_rama] # Crea la nueva rama y te cambias automátic
 Clonar un repositorio desde un repositorio remoto
 git clone [url_repositorio_remoto] # Siempre y cuando el repositorio es publico no hay problemas.
 
+
+Flujo de trabajo profesional con Pull requests
+En un entorno profesional normalmente se bloquea la rama master, y para enviar código a dicha rama pasa por un code review
+y luego de su aprobación se unen códigos con los llamados merge request.
+
+Para realizar pruebas enviamos el código a servidores que normalmente los llamamos staging develop (servidores de pruebas)
+luego de que se realizan las pruebas pertinentes tanto de código como de la aplicación estos pasan a el servidor de producción
+con el ya antes mencionado merge request.
+
+Manejo del Pull request
+Por lo general la rama master no se topa ni se modifica directamente, antes se debe realizar un code review y realizar pruebas,
+en un entorno parecido a producción. La rama que estará disponible para ser desplegada en el servidor de pruebas es la rama 
+stagin develop.
+El pull request es un estado intermedio antes de realizar el merge entre las ramas de desarrollo y la rama staging develop.
+Del mismo modo para envíar los cambios a la rama master desde la rama de stagin develop se debe realizar un pull request.
+Por lo general un DevOps, o administrador del entorno de desarrollo es quien se encarga del code review y de completar el merge 
+a partir del Pull request o a su ves rechazarlo.
+
+
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
 2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
