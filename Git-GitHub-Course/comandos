@@ -480,6 +480,21 @@ Usa siempre --help para saber más de los comando, por ejemplo en la documentaci
 archivos ignorados.
 
 
+Git cherry-pick: Traer commits viejos al head de un branch
+Existe un mundo alternativo en el cual vamos avanzando en una rama pero necesitamos en master uno de esos avances de la rama,
+para eso utilizamos el comando git cherry-pick IDCommit.
+
+cherry-pick es una mala práctica porque significa que estamos reconstruyendo la historia, usa cherry-pick con sabiduría. Si no
+sabes lo que estás haciendo ten mucho cuidado.
+
+Al igual que rebase este comando es una mala práctica porque de nuevo estas reconstruyendo el historial de rama a la que deseas
+agregar solo ciertas modificaciones de otra, sin que se agregue a la historia la creación de la rama donde se hizo los cambios.
+
+Para usarlo debes posicionarte en la rama a donde quieres traer los cambios de la anterior rama, conocienod el id del commit de 
+la anterior rama.
+git cherry-pick [id_commit_rama_cambiada]
+
+
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
 2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
