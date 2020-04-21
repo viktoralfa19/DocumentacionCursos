@@ -414,6 +414,9 @@ Posteriormente borramos la rama experimento y no ha pasado nada.
 Incluso antes de borrar hacemos un cambio en master y luego borramos experimento y es como que experimento nunca existió,
 No se sabe quien la creo, quien hizo cambio etc.
 
+Para borrar ramas es el comando
+git branch -D [nombre_rama_a_borrar]
+
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
 2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
