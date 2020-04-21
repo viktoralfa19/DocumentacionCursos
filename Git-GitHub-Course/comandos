@@ -383,9 +383,25 @@ repositorio se vaya a GitHub y se vea online.
 
 Git Rebase: Reorganizando el trabajo realizado
 
-El comando rebase es una mul mala práctica cuando se envía a repositorios remotos, ya que reescribe la historia del repositorio.
+El comando rebase es una muy mala práctica cuando se envía a repositorios remotos, ya que reescribe la historia del repositorio.
 La historia de los repositorios remotos debe permanecer intacta.
 Esta práctica solo se la debería realizar en local, es decir en repositorios locales.
+
+En este momento se está realizando un rebase desde la rama experimentos a la rama master.
+Siempre que se quiere realizar un rebase se debe hacer primero rebase de la rama que se utiliza para arreglar errores ya
+posteriormente se realiza el rebase desde la rama que quedará finalmente con las correciones realizadas.
+La diferencia con merge será que la rama experimentos nunca quedará registrada dentro del historial de master.
+
+Primero: Estado en la rama experimentos, con los arreglos silenciosos.
+git rebase master
+
+Posteriomente para ver los resultados hacemos cambios en master y los commiteamos.
+y luego ejecutamos 
+
+git rebase experimentos.
+
+Lo que sucedio es que se igualan la rama master y la rama experimentos en el último commit de master, y si borramos 
+la rama experimentos no pasará nada, y esta nunca registra cambios en la rama en el historial.
 
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
