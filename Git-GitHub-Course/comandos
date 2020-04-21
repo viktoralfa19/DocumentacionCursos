@@ -431,6 +431,30 @@ entre ramas.
 Tipicamente se utiliza cuando quieres realizar cambios y probarlos sin necesidad de crear toda una rama para hacerlo o rebase,
 sino que simplemente se está probando algo, para luego volver a la versión correcta.
 
+Comandos de git stash
+Al realizar cambios que no deseas trackear solo probar o te equivoaste en algo, puedes ejecutar
+git stash
+Despues de esto los cambios que realizaste estan guardados temporalmente, regresando a la versión del último commit que tenías.
+Incluso puede navegar entre ramas, para obtener información del pasado.
+
+Para ver los cambios guardados temporalmente
+git stash list
+
+WIP: work in progress
+
+Tener cuidado de volver a cargar los cambios que se almacenaron temporalmente dentro de la rama en la que deseas realizar esos
+cambios guardados, porque si lo haces en otra rama, puede generar muchos conflictos.
+
+Volver a cargar los cambios, reabriendo el stash
+git stash pop
+
+Se puede guardar cambios y cargarlos posteriomente en una rama nueva.
+git stash branch [nombre_nueva_rama]
+
+Cuando no quieres pisar ni guardar ningún cambio realizado y volver al último commit realizado.
+git stash drop
+
+
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
 2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
