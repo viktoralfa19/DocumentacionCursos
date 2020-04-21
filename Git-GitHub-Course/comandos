@@ -455,6 +455,31 @@ Cuando no quieres pisar ni guardar ningún cambio realizado y volver al último 
 git stash drop
 
 
+Git Clean: Limpiar tu proyecto de archivos no deseados
+A veces creamos archivos cuando estamos realizando nuestro proyecto que realmente no forman parte de nuestro directorio de
+trabajo, que no se debería agregar y lo sabemos.
+
+Para saber qué archivos vamos a borrar tecleamos git clean --dry-run
+Para borrar todos los archivos listados (que no son carpetas) tecleamos git clean -f
+
+Git clean borra las cosas que puede indexar, pero solamente trabaja con archivos, no con directorios.
+Por ejemplo si tu tienes multiples archivos que no quieres guardarlos porque ya no los necesitas ejecutas este comando 
+y listo se borran sin trakearlos, esceptuando los archivos que estan dentro de nuevos directorios. 
+Incluso todo lo que esta configurado dentro de .gitignore no lo topa, ya que git ignora de todas las posibles acciones en
+git a esos archivos ignorados.
+
+git clean no se puede usar solo, se le debe especificar que archivos borrar primero, y para buscar que no más va a borrar use
+git clean --dry-run   ó
+git clean -n
+# es una especie de limpieza con corrida en seco.
+
+y para borrar todos los archivos
+git clean -f
+
+Usa siempre --help para saber más de los comando, por ejemplo en la documentación me dice que usando -x puedo incluir los
+archivos ignorados.
+
+
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
 2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
