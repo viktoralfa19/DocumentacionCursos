@@ -360,6 +360,15 @@ git pull upstream master
 #Lo que se esta realizando aqui es que actaulizamos nuestros archivos y la base de datos de cambios, desde upstream hasta 
 nuestra rama master local.
 
+Ignorar archivos en el repositorio con .gitignore
+No todos los archivos que agregas a un proyecto deberían ir a un repositorio, por ejemplo cuando tienes un archivo donde
+están tus contraseñas que comúnmente tienen la extensión .env o cuando te estás conectando a una base de datos; son archivos
+que nadie debe ver.
+
+Se debe crear un archivo denominado .gitignore en la raíz del repositorio,
+para que mediante la configuración que se realice en este archivo, se pueda descartar archivos y directorios que no se deseen 
+trakear y subirlos al repositorio remoto.
+
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
 2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
