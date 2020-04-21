@@ -377,6 +377,16 @@ la manera en que se ve un archivo de texto.
 Lo interesante de Markdown es que funciona en muchas páginas, por ejemplo la edición en Wikipedia; es un lenguaje intermedio
 que no es HTML, no es texto plano, es una manera de crear excelentes texto formateados.
 
+Tu sitio web público con GitHub Pages
+GitHub tiene un servicio de hosting gratis llamado GitHub Pages, tu puedes tener un repositorio donde el contenido del
+repositorio se vaya a GitHub y se vea online.
+
+Git Rebase: Reorganizando el trabajo realizado
+
+El comando rebase es una mul mala práctica cuando se envía a repositorios remotos, ya que reescribe la historia del repositorio.
+La historia de los repositorios remotos debe permanecer intacta.
+Esta práctica solo se la debería realizar en local, es decir en repositorios locales.
+
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
 2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
