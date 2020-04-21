@@ -417,6 +417,20 @@ No se sabe quien la creo, quien hizo cambio etc.
 Para borrar ramas es el comando
 git branch -D [nombre_rama_a_borrar]
 
+
+Git Stash: Guardar cambios en memoria y recuperarlos después
+Cuando necesitamos regresar en el tiempo porque borramos alguna línea de código pero no queremos pasarnos a otra rama
+porque nos daría un error ya que debemos pasar ese “mal cambio” que hicimos a stage, podemos usar git stash para regresar
+el cambio anterior que hicimos.
+
+git stash es típico cuando estamos cambios que no merecen una rama o no merecen un rebase si no simplemente estamos probando
+algo y luego quieres volver rápidamente a tu versión anterior la cual es la correcta.
+
+Git stash permite tener temporalmente cambios, poder moverte entre ramas y luego recuperar esos cambios después de navegar 
+entre ramas.
+Tipicamente se utiliza cuando quieres realizar cambios y probarlos sin necesidad de crear toda una rama para hacerlo o rebase,
+sino que simplemente se está probando algo, para luego volver a la versión correcta.
+
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
 2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
