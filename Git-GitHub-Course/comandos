@@ -369,6 +369,14 @@ Se debe crear un archivo denominado .gitignore en la raíz del repositorio,
 para que mediante la configuración que se realice en este archivo, se pueda descartar archivos y directorios que no se deseen 
 trakear y subirlos al repositorio remoto.
 
+
+Readme.md es una excelente práctica
+README.md es una excelente práctica en tus proyectos, md significa Markdown es un especie de código que te permite cambiar
+la manera en que se ve un archivo de texto.
+
+Lo interesante de Markdown es que funciona en muchas páginas, por ejemplo la edición en Wikipedia; es un lenguaje intermedio
+que no es HTML, no es texto plano, es una manera de crear excelentes texto formateados.
+
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
 2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
