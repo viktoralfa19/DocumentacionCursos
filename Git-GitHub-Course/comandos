@@ -264,7 +264,7 @@ Podrás conseguir más información de git y GitHub en el Curso profesional de G
 
 
 Ver de una manera mucho más grafica y resumida la información del historial de un repositorio.
-git log --graph --decorate --online
+git log --graph --decorate --oneline
 
 Versionamiento con TAGS
 
