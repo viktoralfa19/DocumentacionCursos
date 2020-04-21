@@ -337,9 +337,28 @@ Es una bifurcación, o sepración del proyecto original clonando el estado actua
 Del mismo modo Fork es una característica propia de Github.
 
 Una vez que se hayan hecho las contribuciones necesarias al proyecto open source, entonces podemos realizar un pull request 
-a la rama que origino el fork.
+a la rama que originó el fork.
 
+La situación se vuelve interesante cuando el repositorio de codigo abierto al que realizas aportaciones tiene más cambios que el
+tuyo. Es decir esta más adelante en commits. Entonces lo que se debe hacer es:
+1.- Primero debemos crearnos otra variable en la configuración actual del repositorio local, que haga referencia al repositorio
+publico de codigo abierto al que se esta contribuyendo.
 
+Ejemplo:
+git remote add upstream https://github.com/viktoralfa19/DocumentacionCursos.git 
+
+# Pero lo debemos hacer con https y con ssh ya 
+que no tenemos configurada un llave pública en ese respositorio.
+
+Verificamos que tenemos un nuevo origen de información.
+git remote -v
+
+Ahora si podemos realizar un pull desde nuesto nuevo origen de datos de codigo.
+
+Ejemplo:
+git pull upstream master
+#Lo que se esta realizando aqui es que actaulizamos nuestros archivos y la base de datos de cambios, desde upstream hasta 
+nuestra rama master local.
 
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
