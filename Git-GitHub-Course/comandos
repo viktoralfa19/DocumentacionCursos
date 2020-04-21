@@ -395,10 +395,17 @@ La diferencia con merge será que la rama experimentos nunca quedará registrada
 Primero: Estado en la rama experimentos, con los arreglos silenciosos.
 git rebase master
 
-Posteriomente para ver los resultados hacemos cambios en master y los commiteamos.
+Posteriomente para ver los resultados hacemos cambios en master y los commiteamos. Regresamos a experimentos.
 y luego ejecutamos 
 
-git rebase experimentos.
+git rebase master
+
+Lo que se hizo fue volver la rama master atras de la rama experimentos para hacer parecer que los cambios recientes en master
+si hicieron antes de los cambios en la rama experimentos, lo que no fue así ya que se hicieron primero los cambios en 
+experimentos y posteriormente en master.
+
+Ahora volvemos a master y ejecutamos
+git rebase experimentos
 
 Lo que sucedio es que se igualan la rama master y la rama experimentos en el último commit de master, y si borramos 
 la rama experimentos no pasará nada, y esta nunca registra cambios en la rama en el historial.
