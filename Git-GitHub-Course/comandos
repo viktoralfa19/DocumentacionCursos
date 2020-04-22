@@ -520,6 +520,8 @@ git reset HEAD@{3} #HEAD@{3} Es la posición a la cual queremos regresar resetea
 git reset --hard HEAD@{3} ó
 git reset --hard [idComiit] # Asi regresas definitivamente al estado del commit o del HEAD.
 
+Si tal vez, se hizo cambio o eliminaste archivos que estan ignorados, lamentablemente no los vas a poder recuperar.
+Del msimo modo por no dejar rastros en el historial visible del repositorio, es una mala práctica utilizarlo.
 
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
