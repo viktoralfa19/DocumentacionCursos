@@ -494,6 +494,32 @@ Para usarlo debes posicionarte en la rama a donde quieres traer los cambios de l
 la anterior rama.
 git cherry-pick [id_commit_rama_cambiada]
 
+Reconstruir commits en Git con amend
+A veces hacemos un commit, pero resulta que no queríamos mandarlo porque faltaba algo más. Utilizamos git commit --amend,
+amend en inglés es remendar y lo que hará es que los cambios que hicimos nos lo agregará al commit anterior.
+Ejemplo:
+git commit --amend
+
+
+Git Reset y Reflog: Úsese en caso de emergencia
+¿Qué pasa cuando todo se rompe y no sabemos qué está pasando? Con git reset HashDelHEAD nos devolveremos al estado en
+que el proyecto funcionaba.
+
+git reset --soft HashDelHEAD te mantiene lo que tengas en staging ahí.
+git reset --hard HashDelHEAD resetea absolutamente todo incluyendo lo que tengas en staging.
+git reset es una mala práctica, no deberías usarlo en ningún momento; debe ser nuestro último recurso.
+
+Con git reflog puedes ver absolutamente todo el historial de Git, incluido los cambios de cabecera y los commits, todos los 
+apuntadores del HEAD que han ido desapareciendo en el tiempo.
+Cuando algo ya no esta bien por algún error realizado puedes encontrar el rastro del último HEAD que tenía la versión sin los
+errores que actualmente posees y te regresas a esa posición en el tiempo.
+Ejempo:
+git reflog #Identificas el head al cual quieres regresar y copias el HEAD con el numeral que le sigue.
+git reset HEAD@{3} #HEAD@{3} Es la posición a la cual queremos regresar reseteando todos los cambios, si no se especifica la
+                    opción por defecto toma --soft y lo que hace es mantenerte los cambios en satging del head al cual apuntas.
+git reset --hard HEAD@{3} ó
+git reset --hard [idComiit] # Asi regresas definitivamente al estado del commit o del HEAD.
+
 
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
