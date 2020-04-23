@@ -538,6 +538,36 @@ Si queremos buscar cuántas veces utilizamos un atributo de HTML lo hacemos con 
 Si deseas buscar dentro del log, dentro del historial del repositorio una palabra especifica los haces asi:
 git log -S "palabra a buscar"
 
+Comandos especiales dentro de Git. Recursos Colaborativos.
+
+git shortlog # Por usuario presenta los comentarios de los commit
+
+git shortlog -sn # Solo presenta los nombres de usuarios que han hecho commits y cuantas veces lo han hecho.
+
+git shortlog -sn --all # Incluye todos los comandos, incluso los borrados.
+
+git shortlog -sn --all --no-merges # Se quitan los commits de un merge.
+
+Creando comandos propios para tu repositorio local.
+Se deben almacenar especie de shortcuts a los comandos especiales o de más uso en git ya sea dentro de la configuración 
+global de git o dentro de la configuración local del repositorio.
+
+Por ejemplo:
+git config --global alias.stats "shortlog -sn --all --no-merges"
+
+Despues:
+git stats
+
+git blame -c [ruta_nombre_archivo] #Puedes ver línea por línea quien ha escrito o cambiado cada línea en el archivo.
+
+git blame -c Git-GitHub-Course/css/main.css -L35,49 # Permite visualizar la traza de usuarios desde una cierta linea de codigo  hasta otra
+
+git comando --help # Permite visualizar la definición del comando, propiedades, opciones y ejemplos incluso.
+
+git branch -r # Ves las ramas remotas
+
+git branch -a # Ves todas las ramas remotas y locales
+
 Ramas importantes en Git Flow
 1. Master - La rama principal, no se toca sino hasta que se coloca en producción un desarrollo.
 2. Developmemt - La rama en la que se realiza el desarrollo, es donde van a parar todos los cambios que 
