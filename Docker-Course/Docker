@@ -1,26 +1,26 @@
-Docker.
-¿Qué es un contenedor?
-Pieza fundamental de Docker.
-Un contenedor es una entidad lógica que agrupa procesos que corren de forma nativa sobre el sistema operativo.
-Pero solo lo hacen de forma nativa en Linux ya que comparte el Kernel de Linux con el SO.
-Mientas que en Windows y Mac tiene que realizar una especie de virtualización para correr los contenedores.
-Por eso en producción se usa linux
-Estos procesos son aislados. No pueden tener acceso a recursos más alla de lo que dentro del contenedor se haya
+###### Docker.
+###### ¿Qué es un contenedor?
+###### Pieza fundamental de Docker.
+###### Un contenedor es una entidad lógica que agrupa procesos que corren de forma nativa sobre el sistema operativo.
+###### Pero solo lo hacen de forma nativa en Linux ya que comparte el Kernel de Linux con el SO.
+###### Mientas que en Windows y Mac tiene que realizar una especie de virtualización para correr los contenedores.
+###### Por eso en producción se usa linux
+###### Estos procesos son aislados. No pueden tener acceso a recursos más alla de lo que dentro del contenedor se haya
 configurado es decir limitados a la memoria, procesadores, disco etc que se les haya asignado en el contenedor.
 
-Inicializar Docker
+###### Inicializar Docker
 systemctl start docker
 
-Correr o crear un contenedor
-docker run nombre_de_la_imagen
+###### Correr o crear un contenedor
+docker run [nombre_de_la_imagen]
 
-Explorar el estado de Docker
-Comandos:
+###### Explorar el estado de Docker
+###### Comandos:
 
 docker ps
 docker ps -a
-docker inspect contenedor_id
-docker inspect nombre_de_la_imagen
+docker inspect [contenedor_id]
+docker inspect [nombre_de_la_imagen]
 
 Filtrar dentro del Json de respuesta del inspect
 docker inspect -f '{{Go_template_filter}}' contenedor_id
