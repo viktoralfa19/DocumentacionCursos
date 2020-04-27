@@ -9,45 +9,47 @@
 configurado es decir limitados a la memoria, procesadores, disco etc que se les haya asignado en el contenedor.
 
 ###### Inicializar Docker
-systemctl start docker
+$ systemctl start docker
 
 ###### Correr o crear un contenedor
-docker run <nombre_de_la_imagen> ## Si no existe el contenedor lo busca en la nube y lo descarga
+$ docker run <nombre_de_la_imagen> ## Si no existe el contenedor lo busca en la nube y lo descarga
+$ docker run --name <nombre_contenedor> <nombre_de_la_imagen>## Se asigna un nombre al contenedor
 
 ###### Explorar el estado de Docker
 ###### Comandos:
 
-docker ps
-docker ps -a ## Si el estado de las imágenes esta en Exited es porque ya termino su ejecución.
-docker inspect <contenedor_id> ## Permite visualizar la metadata del contendor
-docker inspect <nombre_de_la_imagen>
+$ docker ps
+$ docker ps -a ## Si el estado de las imágenes esta en Exited es porque ya termino su ejecución.
+$ docker inspect <contenedor_id> ## Permite visualizar la metadata del contendor
+$ docker inspect <nombre_de_la_imagen>
 
 ###### Filtrar dentro del Json de respuesta del inspect
-docker inspect -f '{{Go_template_filter}}' <contenedor_id>
-docker inspect -f '{{json .Config.Env}}' <contenedor_id>
+$ docker inspect -f '{{Go_template_filter}}' <contenedor_id>
+$ docker inspect -f '{{json .Config.Env}}' <contenedor_id>
 
 ###### Renombrando un contenedor
-docker rename <nombre_actual> <nombre_nuevo>
+$ docker rename <nombre_actual> <nombre_nuevo>
 
 ###### Nombrar al momento de crear
-docker run --name <nombre_del_contenedor> <nombre_de_la_imagen> ## El nombre del contenedor debe ser único
+$ docker run --name <nombre_del_contenedor> <nombre_de_la_imagen> ## El nombre del contenedor debe ser único
 
 ###### Los nombres no se pueden repetir.
 
 ###### Ver el output de los contenedores, es decir la salida de los contenedores cuando se ejecutaron.
-docker logs <nombre_o_id>
+$ docker logs <nombre_o_id>
 
 ###### Eliminar un contenedor, se lo debe realizar por mantenimiento escogiendo cuales ya no me sirven.
-docker rm <nombre_o_id>
+$ docker rm <nombre_o_id>
 
 ###### Eliminar todos los contenedores
-docker rm $(docker ps -aq)
+$ docker rm $(docker ps -aq)
 
 ###### Inspecciona los contenedores, pero solo te devuelve el contenedor_id
-docker ps -aq
+$ docker ps -aq
 
 ###### El modo interactivo
 ###### vamos a correr Ubunto dentro de otro Linux.
+###### El modo interactivo permite que la imagen de docker interactue con el usuario en la terminal donde se ejecuta el mismo.
 
 Ej: docker run ubuntu
 
@@ -57,7 +59,7 @@ el proceso que se corrio en ese contendor. En el caso de la imagen de ubuntu, el
 y cuando tenga un input y un output atacheado o agregado.
 
 ###### Lo volvemos a correr de forma interactiva, pero se crea de nuevo un nuevo contendor
-docker run -it ubuntu 
+$ docker run -it ubuntu 
 
 ###### Dentro de las columnas de la salida ps -a permite identificar una columna denominada STATUS, la cual permite identificar
 en que estado termino la ejecución del contendor, por ejemplo para este significa que terminó y el codigo de la salida Exited(0)
@@ -67,3 +69,53 @@ en que estado termino la ejecución del contendor, por ejemplo para este signifi
 a diferencia de una máquina virtual que hubiera tomado el tiempo de encendido y preparación, lo mismo al pagarla.
 
 ###### Ciclo de vida un contendor
+Para que una imagen no se detenga como por ejemplo la imagen de ubuntu, se debería darle al contenedor una instrucción o comando
+para que no se apague.
+
+###### por ejemplo podemos correr una imagen con el siguiente comando para que siempre este esperando lanzar un output.
+$ docker run ubuntu tail -f /dev/null
+$ docker run --name ubuntu ubuntu tail -f /dev/null ## Le indicas el nombre de la imagen
+
+###### Ahora quiero ingresar a este contenedor que esat corriendo. por ejemplo a ajecutar un bash.
+$ docker exec -it <nombre_contenedor> <comando> 
+
+###### Es el nombre del contenedor que esta corriendo y le pido ejecutar bash dentro del comando.
+###### Docker siempre le asigna el PID uno (1) al proceso que corre con el contenedor, es decir al que lo sostiene activo.
+
+###### Salir del contenedor
+$ exit 
+
+###### Se puede detener el contenedor, ya sea eliminando totalmente el contenedor o directamente mandandole a matar el proceso 
+principal con el nombre del contenedor.
+$ docker kill [nombre_contenedor]
+
+###### O se puede forzar el borrado del contenedor.
+$ docker rm -f <nombre_contenedor>
+
+###### Siempre que corra un contenedor, va a correr un comando y mientras ese comando este alive, el contenedor también lo estará
+###### Si un contenedor se apaga es porque hubo un error en el proceso root e hizo un exit, o simplement termino lo que debía hacer
+
+###### Exponiendo contenedores al exterior
+###### Se va a correr una imagen de un servidor web enginx,con el comando detach (desataches), que permite indicarle al contenedor que sin 
+importar que se ejecute en modo interactivo o si tiene un output lo mantenga ejecutando.
+###### Ejemplos:
+$ docker run -d --name server nginx
+
+###### Al final de la ejecución, aparece una cadena que es un SHA que es el ID único del contenedor.
+###### Como nueva información del proceso ejecutando con comando de docker se observa que esta ejecutandose en un puerto,
+en este caso es el 80, que por lo general es el puerto que utiliza un servidor web. Significa que el contenedor está 
+exponiendo el puerto 80 para que se puedan comunicar con él, pero se debe tener en cuenta que a nivel de networking o de red
+también estan aislados.
+
+###### Cada contenedor tiene su propio stack de networking, sus propios puertos y no son los mismos que los de la máquina host. 
+###### Por tanto que un contenedor tenga un puerto abierto no implica que ese puerto esta abierto en el host.
+###### Entonces se debe hacer que explicitamente decirle al host que desde tal puerto xxxx en la máquina host vaya hacia el puerto xxxx 
+del contenedor.
+###### Pero para esto se lo debe correr con una opción para indicarle esto último.
+$ docker run -d --name server -p 8080:80 nginx
+
+###### Se ha agregado la bandera -p de publish, que le indica al host que el puerto 80 del host este atado al puerto 8080 del 
+contenedor.
+###### Se debe tener cuidado cuando se relacionan los puertos locales ya que actualmente por ejemplo el puerto 8080 esta ocupado
+asi que si otro contenedor quiere ocupar el puerto 808 no lo va a poder hacer.
+ ###### De esta manera es que docker permite exponer servicios que escuchan en puertos hacia el mundo exterior.
