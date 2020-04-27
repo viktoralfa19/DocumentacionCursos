@@ -1,0 +1,69 @@
+###### Docker.
+###### ¿Qué es un contenedor?
+###### Pieza fundamental de Docker.
+###### Un contenedor es una entidad lógica que agrupa procesos que corren de forma nativa sobre el sistema operativo.
+###### Pero solo lo hacen de forma nativa en Linux ya que comparte el Kernel de Linux con el SO.
+###### Mientas que en Windows y Mac tiene que realizar una especie de virtualización para correr los contenedores.
+###### Por eso en producción se usa linux
+###### Estos procesos son aislados. No pueden tener acceso a recursos más alla de lo que dentro del contenedor se haya
+configurado es decir limitados a la memoria, procesadores, disco etc que se les haya asignado en el contenedor.
+
+###### Inicializar Docker
+systemctl start docker
+
+###### Correr o crear un contenedor
+docker run <nombre_de_la_imagen> ## Si no existe el contenedor lo busca en la nube y lo descarga
+
+###### Explorar el estado de Docker
+###### Comandos:
+
+docker ps
+docker ps -a ## Si el estado de las imágenes esta en Exited es porque ya termino su ejecución.
+docker inspect <contenedor_id> ## Permite visualizar la metadata del contendor
+docker inspect <nombre_de_la_imagen>
+
+###### Filtrar dentro del Json de respuesta del inspect
+docker inspect -f '{{Go_template_filter}}' <contenedor_id>
+docker inspect -f '{{json .Config.Env}}' <contenedor_id>
+
+###### Renombrando un contenedor
+docker rename <nombre_actual> <nombre_nuevo>
+
+###### Nombrar al momento de crear
+docker run --name <nombre_del_contenedor> <nombre_de_la_imagen> ## El nombre del contenedor debe ser único
+
+###### Los nombres no se pueden repetir.
+
+###### Ver el output de los contenedores, es decir la salida de los contenedores cuando se ejecutaron.
+docker logs <nombre_o_id>
+
+###### Eliminar un contenedor, se lo debe realizar por mantenimiento escogiendo cuales ya no me sirven.
+docker rm <nombre_o_id>
+
+###### Eliminar todos los contenedores
+docker rm $(docker ps -aq)
+
+###### Inspecciona los contenedores, pero solo te devuelve el contenedor_id
+docker ps -aq
+
+###### El modo interactivo
+###### vamos a correr Ubunto dentro de otro Linux.
+
+Ej: docker run ubuntu
+
+###### Descarga la imagen de ubunto desde la nube sino esta en local.
+###### Dentro de las columnas de la salida ps -a permite identificar una columna denominada COMMAND, la cual permite identificar
+el proceso que se corrio en ese contendor. En el caso de la imagen de ubuntu, el ejecutarse pretende ser interactivo siempre
+y cuando tenga un input y un output atacheado o agregado.
+
+###### Lo volvemos a correr de forma interactiva, pero se crea de nuevo un nuevo contendor
+docker run -it ubuntu 
+
+###### Dentro de las columnas de la salida ps -a permite identificar una columna denominada STATUS, la cual permite identificar
+en que estado termino la ejecución del contendor, por ejemplo para este significa que terminó y el codigo de la salida Exited(0)
+, el cero significa que no hubo error, ya que si fuera distinto de cero significa que hubo un error.
+
+###### En estas ejecuciones se puede ver la diferencia con la virtualización ya que se ejecuto tan rapido como dejo de hacerlo,
+a diferencia de una máquina virtual que hubiera tomado el tiempo de encendido y preparación, lo mismo al pagarla.
+
+###### Ciclo de vida un contendor
