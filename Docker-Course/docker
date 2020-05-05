@@ -8,6 +8,10 @@
 ###### Estos procesos son aislados. No pueden tener acceso a recursos más alla de lo que dentro del contenedor se haya
 configurado es decir limitados a la memoria, procesadores, disco etc que se les haya asignado en el contenedor.
 
+###### Antes ejecutar comandos docker necesitamos darle permiso al usuario local para ejecutarlos sin que sea necesario colocar sudo
+siempre.
+$ sudo usermod -aG docker vecheverria
+
 ###### Inicializar Docker
 $ systemctl start docker
 
@@ -20,12 +24,13 @@ $ docker run --name <nombre_contenedor> <nombre_de_la_imagen>## Se asigna un nom
 
 $ docker ps
 $ docker ps -a ## Si el estado de las imágenes esta en Exited es porque ya termino su ejecución.
-$ docker inspect <contenedor_id> ## Permite visualizar la metadata del contendor
+$ docker inspect <contenedor_id> ## Permite visualizar la metadata del contenedor
 $ docker inspect <nombre_de_la_imagen>
 
 ###### Filtrar dentro del Json de respuesta del inspect
 $ docker inspect -f '{{Go_template_filter}}' <contenedor_id>
 $ docker inspect -f '{{json .Config.Env}}' <contenedor_id>
+$ docker inspect -f '{{json .Config.Env}}' <nombre_contenedor>
 
 ###### Renombrando un contenedor
 $ docker rename <nombre_actual> <nombre_nuevo>
@@ -55,20 +60,20 @@ Ej: docker run ubuntu
 
 ###### Descarga la imagen de ubunto desde la nube sino esta en local.
 ###### Dentro de las columnas de la salida ps -a permite identificar una columna denominada COMMAND, la cual permite identificar
-el proceso que se corrio en ese contendor. En el caso de la imagen de ubuntu, el ejecutarse pretende ser interactivo siempre
+el proceso que se corrio en ese contenedor. En el caso de la imagen de ubuntu, el ejecutarse pretende ser interactivo siempre
 y cuando tenga un input y un output atacheado o agregado.
 
-###### Lo volvemos a correr de forma interactiva, pero se crea de nuevo un nuevo contendor
+###### Lo volvemos a correr de forma interactiva, pero se crea de nuevo un nuevo contenedor
 $ docker run -it ubuntu 
 
 ###### Dentro de las columnas de la salida ps -a permite identificar una columna denominada STATUS, la cual permite identificar
-en que estado termino la ejecución del contendor, por ejemplo para este significa que terminó y el codigo de la salida Exited(0)
-, el cero significa que no hubo error, ya que si fuera distinto de cero significa que hubo un error.
+en que estado termino la ejecución del contenedor, por ejemplo para este significa que terminó y el codigo de la salida Exited(0),
+el cero significa que no hubo error, ya que si fuera distinto de cero significa que hubo un error.
 
 ###### En estas ejecuciones se puede ver la diferencia con la virtualización ya que se ejecuto tan rapido como dejo de hacerlo,
 a diferencia de una máquina virtual que hubiera tomado el tiempo de encendido y preparación, lo mismo al pagarla.
 
-###### Ciclo de vida un contendor
+###### Ciclo de vida un contenedor
 Para que una imagen no se detenga como por ejemplo la imagen de ubuntu, se debería darle al contenedor una instrucción o comando
 para que no se apague.
 
@@ -97,7 +102,7 @@ $ docker rm -f <nombre_contenedor>
 
 ###### Exponiendo contenedores al exterior
 ###### Se va a correr una imagen de un servidor web enginx,con el comando detach (desataches), que permite indicarle al contenedor que sin 
-importar que se ejecute en modo interactivo o si tiene un output lo mantenga ejecutando.
+importar que se ejecute en modo interactivo o si tiene un output lo mantenga ejecutando y no nos muestre su output.
 ###### Ejemplos:
 $ docker run -d --name server nginx
 
@@ -114,8 +119,551 @@ del contenedor.
 ###### Pero para esto se lo debe correr con una opción para indicarle esto último.
 $ docker run -d --name server -p 8080:80 nginx
 
-###### Se ha agregado la bandera -p de publish, que le indica al host que el puerto 80 del host este atado al puerto 8080 del 
+###### Se ha agregado la bandera -p de publish, que le indica al host que el puerto 8080 del host este atado al puerto 80 del 
 contenedor.
 ###### Se debe tener cuidado cuando se relacionan los puertos locales ya que actualmente por ejemplo el puerto 8080 esta ocupado
-asi que si otro contenedor quiere ocupar el puerto 808 no lo va a poder hacer.
- ###### De esta manera es que docker permite exponer servicios que escuchan en puertos hacia el mundo exterior.
+asi que si otro contenedor quiere ocupar el puerto 8080 no lo va a poder hacer.
+###### De esta manera es que docker permite exponer servicios que escuchan en puertos hacia el mundo exterior.
+
+
+###### Datos en Docker.
+###### Ahora supongamos que un contenedor necesita hacer un uso intensivo de datos, como una base de datos por ejemplo.
+###### Lo que haremos es traernos un contenedor de base de datos Mongodb.
+$ docker run -d --name database mongo
+
+###### Con esto el sistema nos descarga la imagen del contenedor de MongoDb si no lo tenemos en local.
+###### Luego ingresamos a la shell bash del contenedor database
+$ docker exec -it database bash
+
+###### Una vez dentro creamos un Directorio llamado Test, un archivo users e insertamos un usuario con nombre y apellido 
+$ mongo
+> use Practice
+> db.users.insert({"name":"Víctor","lastName":"Echeverría"})
+> db.users.find()   ## Buscamos el usuario que ingresamos, y todo correcto.
+
+###### Posteriormente salgo de la base de datos y del contenedor, y eliminamos el contenedor actual de base de datos y nos creamos
+otro.
+$ docker rm -f database
+$ docker run -d --name database mongo
+
+###### Luego de nuevo ingreso y verifico el usuario que ingrese anteriormente exista
+$ docker exec -it database bash
+$ mongo
+> use Practice
+> db.users.find()
+> exit
+$ exit
+
+###### Evidentemente con esto se comprueba que los datos no persisten fuera del contenedor, estan en un diretorio de archivos
+aislados del host, por lo que ahora vamos a hacer que puedan persistir fuera del contenedor en el host.
+
+###### Lo volvemos a eliminar
+$ docker rm -f database
+
+###### Creamos una ruta donde podamos alojar los datos de la base de datos. Luego creamos de nuevo el contenedor al cual le vamos
+asignar permisos sobre esta ruta para persistir sobre estos directorios que van a estar montados fuera del directorio base del 
+contenedor. Para esto usamos la bander -v la cual permite darle un volumen externo al contenedor.
+###### Para esto debemos indicarle tal cual como se lo hacia con el puerto, escribimos la ruta local del host, luego dos puntos
+y posteriormente escribimos la ruta del directorio del contenedor. Podemos sincronizar con el mismo directorio donde mongo guarda 
+los archivos de datas, siendo /data/db 
+
+$ mkdir ~/Development/Mongo/
+$ mkdir ~/Development/Mongo/MongoData
+$ docker run -d -v ~/Development/Mongo/MongoData:/data/db --name database mongo
+
+###### El primer tipo de relacion de direcorio es el bind mount, aunque si existen otros. Esta configuración la podemos ver con
+inspect y se encuentra dentro de los tags Config.Volumes y Mounts
+$ docker inspect database
+
+$ docker inspect database ó
+$ docker inspect -f '{{json .Mounts}}' database
+
+###### Incluso ahora ya podemos ir viendo que archivos por defecto escribio el contenedor de mongo ya en nuestro directorio local
+dentro del host. Con esto los datos van a persistir dentro del host.
+###### Volvamoa realizar el ejemplo para evidenciarlo.
+
+###### La parte peligrosa de realizar estas acciones para bindear un directorio del host, es que un servicio o usuario por error 
+puede tocar este directorio compartido, es decir crear, modificar o eliminar archivos si tuviera los suficientes permisos. Por lo
+que no es recomendable, es últi pero poco recomendable. EN realidad docker tiene otra forma de hacer a través de docker volumen.
+
+###### Datos con Docker: Volumenes
+###### A pesar de que no es lo más divertido que tiene Docker, esta herramienta nos permite recuperar datos que podíamos dar por 
+perdido.
+###### Existen tres maneras de hacer permanencia de datos:
+
+###### Bind mount
+###### Volume
+###### tmpfs mount
+
+###### Bind mount lo acabamos de realizar en el ejemplo anterior, asignando parte del file system del sistema al contenedor.
+###### Los Volumenes es la versión mejorada del bind mount, ya que se asigna un area del file system que esta gestionada por 
+docker. Esta área debería estar totalmente aislada de los demas procesos del host.
+###### Los volumenes de docker se almacenan por defecto en /var/lib/docker/volumes, en linux.
+###### Para visualizar en la terminal los volumenes actuales ejecutamos
+$ docker volume ls
+
+###### Se pueden visualizar los volumenes que se fueron creando con los contenedores que se fueron utilizando
+###### Como por ahora no hemos estado guardando nada aún de ningun contenedor podemos ir eliminando estos volumnes.
+$ docker volume prune
+
+###### Se debe tener cuidado con el almacenamiento de los volumenes ya que se toma puede crecer sin darse cuenta.
+###### Lo que vamos a hacer ahora sería crearnos un volumen nuevo para los datos.
+$ docker volume create dbdata
+
+###### Haciendo ls me muestra el volumen creado.
+###### Ahora vamos a crear nuestro contenedor de mongo DB asigandole el volumen creado hace poco.
+$ docker run -d --name dbmongo --mount src=dbdata,dst=/data/db mongo
+
+###### Ahora se hará el mismo ejemplo de la clase anterior creando un nuevo archivos, ingresando datos, eliminando y volviendo
+a crearlo.
+
+$ docker exec -it dbmongo bash
+$ mongo
+> use Practice
+> db.users.insert({"name":"Víctor","lastName":"Echeverría"})
+> db.users.insert({"name":"Belen","lastName":"Abarca"})
+> db.users.find()   ## Buscamos los usuarios que ingresamos, y todo correcto.
+
+###### Borramos el contenedor y probamos de nuevo montando el volumen al nuevo contenedor.
+
+$ docker rm -f dbmongo
+$ docker run -d --name dataBaseMongo --mount src=dbdata,dst=/data/db mongo
+$ docker exec -it dataBaseMongo bash
+$ mongo
+> use Practice
+> db.users.insert({"name":"Líam","lastName":"Echeverría"})
+> db.users.find()   ## Buscamos el usuario que ingresamos nuevo más los usuarios anteriores y todo correcto.
+
+###### Docker sugiere que se utilice esta opción en ves de la anterior.
+###### Docker además permite a un volumen especificarle un driver, no es necesario escribir en disco, sino conectar el 
+volumen con un storage remoto por ejemplo, por ejemplo un S3 de amazon o storage account de azure o incluso uno propio.
+###### La ventaja principal de volumnes con respecto a bind mount es ir más alla de los límites que nos otorga el file system
+de la máquina.
+
+###### Conceptos fundamentales de Docker: imágenes
+###### Las imágenes son un componente fundamental de Docker y sin ellas los contenedores no tendrían sentido.
+###### Estas imágenes son fundamentalmente plantillas o templates de contenedores.
+###### Algo que debemos tener en cuenta es que las imágenes no van a cambiar, es decir, una vez este realizada no la podremos
+cambiar.
+###### A partir de las imágenes generamos los contenedores que vamos a usar, al muy importante es que pueden distribuirse de 
+manera muy simple y esta es la forma en la que distribuimos nuestras aplicaciones cuando las construimos con docker (dokerizamos).
+
+###### Para obtener las imágenes solamente y no el contenedor completo. Vamos traernos la imagen de una base de datos llamada 
+Redis, usada en aplicaciones de tiempo real.
+$ docker pull Redis
+
+###### Se descarga no solo una cosa sino varias cosas y es porque una imagen no es un solo archivo sino es un conjunto o 
+estructura de capas o layers y una imagen esta construida siempre con una capa base y capas montadas encima.
+###### Cada capa es inmutable porque por ejemplo comparado con Git, dejando la capa base cada otra de las capas es una pequeña
+diferencia de la anterior y es por eso que es muy liviano.
+###### Para visualizar todas la imagenes que tenemos ejecutamos
+$ docker image ls
+
+###### En términos legales el nombre de la imagen es el repositorio.
+###### Como no se especifica en cada ejecución de run o pull la version de la imágen entonces nos descarga que es por defecto.
+latest.
+###### Las imágenes que nos estamos descargando vienen de un repositorio de imágenes: https://hub.docker.com, que es el llamado
+docker hub. En este repositorio podemos visualizar todas las imagenes públicas que se pueden desacargar, versiones disponibles 
+etc.
+
+###### Por ejemplo si nos queremos descargar una versión especifica.
+$ docker pull ubuntu:18.04
+
+###### Si existen imágenes con el mismo image id, esto significa que en disco solo existe una sola.
+
+
+###### Construyendo nuestras propias imágenes
+###### Vamos a crear nuestras propias imágenes, necesitamos un archivo llamado DockerFile que es la ““receta”” que utiliza
+Docker para crear imágenes.
+
+###### **Es importante que el DockerFile siempre empiece con un ““FROM”” sino, no va a funcionar.**
+
+###### El flujo para construir en Docker siempre es así:
+###### Dockerfile – **build ** –> Imágen – run --> Contenedor
+
+###### Lo que primero necesitamos es un archivo denominado DockerFile. Esta es la receta que usa docker para crear imagenes.
+$ touch Dockerfile
+$ code Dockerfile  ## Y lo empezamos a construir
+
+###### Todo dockerfile debe empezar con la palabra FROM, que indica es la imágen base que se va usar para nuestra imágen, sin el 
+from no funciona.
+###### Una vez terminada la edición para crear la imagen ejecutamos
+$ docker build -t ubuntu:helloworld .
+
+###### La t nos permite usar un tag para la imagen, es como el nombre de la imagen que se va a usar.
+###### Los :helloworld indican la versión del nombre que agregamos en esta caso se le ha puesto ubuntu.
+###### Por último se le pasa un path, que es el contexto de build, y esto es que cuando se hace un build, docker toma este parámetro
+que es una ruta dentro del disco y se lo pasa a dockerdeamon para que lo utilice mientras realiza el build y no puede utilizar nada
+de lo que hay externamente a la ruta. Es una custion de segurirdad para que que docker no afecte nada del sistema externo.
+Le hemos otorgado la ruta actual con el "." 
+
+###### El flujo de construcción de docker es a partir del Dockerfile hacemos un build y creamos la imágen y ejecutando run, se crea 
+el contenedor con esa imágen.
+
+###### Docker --build--> imagen --run--> contenedor
+###### Durante el build docker construye un layer nuevo con run touch ..., esta layer es la diferencia con la imagen representada 
+en el from. Del mismo modo si localmente no tenemos las imágenes que se encuentran en el from en ese momento del build nos descarga
+lo necesario.
+###### Ahora ceamos nuestro contenedor a partir de la imágen.
+$ docker run -it --name ubuntu_helloworld ubuntu:helloworld
+
+###### Dentro del contenedor debe existir un archivo denominado hello-world, en la ruta que se programo en el dockerfile.
+
+###### Para subir la imagen al repo en la nube debo pushear al repositorio propio local, si realizo un push directo sin ninguna
+opción me va querer subir mi imagen al lybrary de ubuntu, por ejemplo para esta imágen que esta basada en ubuntu, para lo cual 
+no tengo permisos. Por eso debo loguearme y subir a mi repo local. Para esto primero retggeamos nuestra imagen diciendole donde 
+quisiera almacenarlo.
+$ docker tag ubuntu:hellowworld victoralfa19/ubuntu:helloworld
+
+###### Lo que hicimos con esto es simplemente generar un nuevo tag que se une con las mismas layers que existian de la imagen que
+construimos y la imagen propia de ubuntu que nos bajamos.
+$ docker push victoralfa19/ubuntu:helloworld
+
+###### Si aún asi no permite realizar el push diciendo que existe un acceso al repositorio denegado, entonces nos debemos loguear.
+$ docker login
+
+###### Y esta vez si debe permitir realizar el push.
+The push refers to repository [docker.io/victoralfa19/ubuntu]
+3c5db089463c: Pushed 
+8891751e0a17: Mounted from library/ubuntu 
+2a19bd70fcd4: Mounted from library/ubuntu 
+9e53fd489559: Mounted from library/ubuntu 
+7789f1a3d4e9: Mounted from library/ubuntu 
+helloworld: digest: sha256:9b179377c03922c92a2e67c083d1370771d71f1ca68b39aa1c736a85c9651827 size: 1359
+
+###### Como se muestra la salida, se indica que solo el layer nuevo que se genero con el touch ... se subió, lo demas lo tomo de
+del repositorio publico de ubuntu.
+
+###### Existen tambien repositorios privados, pues si no quieres que ciertos contenedores dejen de ser públicos.
+
+
+
+###### Vamos a probar descargar un contenedor de windows IIS para probarlo.
+$ docker run -d -p 8005:80 --name ve-develop-iis mcr.microsoft.com/windows/servercore/iis
+###### No es compatible con la plataforma Linux
+
+
+###### Comprendiendo el sistema de capas
+###### Todas la imágenes públicas tienen disponible su dockerfile en dockerhub. Desde ahi podemos redirigirnos a Github donde 
+se guardan sus dockerfiles.
+
+###### Ya en la consola podemos realizar lo siguiente.
+$ docker history victoralfa19/ubuntu:helloworld
+$ docker history --no-trunc victoralfa19/ubuntu:helloworld ## Sin truncar la salida de los comandos del dockerfile
+
+###### Se muestra el detalle de las capas y tamaños, empezando desde abajo con la capa base.
+###### Además podemos mostrar con una herramienta llamada dive.
+$ curl -OL https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.rpm ## La descargamos
+$ sudo rpm -i dive_0.9.2_linux_amd64.rpm ## La instalamos.
+$ dive victoralfa19/ubuntu:helloworld ##Observamos como esta construido el dockerfile
+
+###### Ahora si alguien modifica los comandos que se hacen en un layer como por ejemplo, borrar el archivo que nosotros 
+generamos en la capa nueva, no importa docker genera un layer nuevo, porque son inmutables. Este principio es importante de
+entenderlo al momento de desarrollar aplicaciones con docker.
+
+
+
+###### Usando docker para desarrollar aplicaciones
+###### En esta clase vamos a aplicar lo aprendido, y empezar a desarrollar con docker utlizando como base un proyecto desarrollado
+en node cuyo enlace lo puedes encontrar en los archivos del curso.
+
+
+###### Se va a trabajar con un mini proyecto en node.js, para empezar a practicar desarrollo con docker.
+Se hace un análisis de Dockerfile que se encuentra en el proyeto.
+###### FROM node:8                ## La imagen base va a ser node version 8, no importa el sistema operativo por detras.
+
+COPY [".", "/usr/src/"]    ## Aqui partiendo del contexto de build ".", va a copiar del contexto de buil lo que se le pida a un 
+                              destino en la imagen que estamos creando con punto se le dice que copie todo.
+                              Se suele usar este path para colocar datos de aplicacion en la aplicación del usuario.
+
+WORKDIR /usr/src           ## Se le dice a la imagen que se coloque dentro de este directorio por dentro se van a ejecutar comandos.      
+
+RUN npm install            ## Ejecutamos los comandos de instalación de paquetes, por ello debíamos estar dentro del path donde
+                              se copió todo.
+
+EXPOSE 3000                ## Con este comando se expone el puerto 3000.
+
+CMD ["node", "index.js"]   ## Aquí se define cual es comando por defecto que se va a ejecutar en el contenedor creado a partir de 
+                              esa imagen si no se especifica nada distinto.
+
+###### Ahora lo que hacemos es construir nuestra imagen.
+$ docker build -t cursoapp .
+
+###### Revisamos que se construyo la imágen, ahora vamos a ejecutar el contenedor.
+$ docker image ls
+$ docker run --rm -p 3100:3000 cursoapp  ## –rm indica que el contenedor se debe eliminar cuando se deje de ejecutar
+
+###### Posteriormente me muestra en estado escucha mi aplicación, asi que se esta ejecutando, ahora mi host esta atacheado al output
+del contenedor.
+
+
+
+###### Entendiendo el cache de layers para estructurar correctamente tus imágenes.
+###### Notemos la salida al volver a ejecutar el comando del reto del curso de nuevo
+$ docker build -t cursoapp:10 .
+
+###### Nos aparece en las ejecuciones using cache
+Sending build context to Docker daemon  113.7kB
+Step 1/6 : FROM node:10
+ ---> a02c9f46f94a
+Step 2/6 : COPY [".", "/usr/src/"]
+ ---> Using cache
+ ---> a363d15c8b9c
+Step 3/6 : WORKDIR /usr/src
+ ---> Using cache
+ ---> 418d68520179
+Step 4/6 : RUN npm install
+ ---> Using cache
+ ---> e70dc222d066
+Step 5/6 : EXPOSE 3000
+ ---> Using cache
+ ---> 33cd7af3c490
+Step 6/6 : CMD ["node", "index.js"]
+ ---> Using cache
+ ---> 6c1564264e96
+Successfully built 6c1564264e96
+Successfully tagged cursoapp:10
+
+
+###### Esta carácteristica es my inetresante dentro de docker y es que como cada layer es inmutable y docker sabe cual es el
+comando que generó cada layer, como tengo en memoria las capas y los comandos ejecutados docker los toma de ahi y no los vuelve 
+a ejecutar. Ahora que pasa si quiero cambiar el mensaje de la aplicación cuando esta mal la conexión, si se vuelve a ejecutar el
+comando esta vez me genera de nuevo todos comandos por cada layer, lo único que no hace es volverse a bajar node 10. Esto sucede
+cualquier cambio que sea identificado en las capas superiores dentro del dockerfile me altera a las demás que dependen de esta.
+$ docker build -t cursoapp:10 .
+
+###### Para aprovechar que en memoria ya estan construidas algunas layers, debemos jugar con la configuración del archivo 
+dockerfile para que las tareas que tomán más tiempo y más recursos no se deban realizar de nuevo sino se tomen desde cache.
+Como por ejemplo cambiar los comando de copy, ya que no debemos copiar todo desde el principio por ejemplo, lo que podemos hacer
+es primero copiar los archivos necesarios para la instalación de los paquetes de dependencias y una vez hecho esto ahi si copiar
+los archivos que faltan, en este punto archivos ya copiados docker se da cuenta que ya estan copiados y solo vuelve a copiar los
+que restan con eso las layer que se encargan de descargar los paquetes necesarios ya no se vuelven a ejecutar.
+
+
+###### No siempre tienes que volver a construir la imagen, ya que por ejemplo algo bueno de node es que existen herramientas que 
+detectan cambios en los archivos js y vuelve a reinicar la app automáticamente. Con esto no debo volver a construir la imágen.
+Para ello usamos volumenes persistentes, la opción de bind mount. con lo que bindeamos el path actual donde estan los archivos con
+el /usr/src/
+$ docker build -t cursoapp:10 .
+$ docker run --rm -v /home/vecheverria/Development/Learning/Repositorios/docker/:/usr/src/ -p 3000:3000 --name conect_mongo cursoapp:10
+
+###### Hubo que agregar en el comando esto --> npm audit fix npm + mongodb@3.5.5
+###### Al dejar el archivo docker file como al principio, ahora si valio. Al parecer el npm audit fix se debía ejecutar afuera.
+
+###### Docker networking: colaboración entre contenedores
+###### Podemos conectar 2 contenedores de una manera fácil sencilla y rapida. Vamos a ver que con tan solo unos comandos tendremos la
+colaboración entre contenedores.
+
+###### El reto ahora es que nos podamos conectar a mongo. Para esto existen algunas formas de hacer no como buenas prácticas pero
+se puede hacer.
+###### Pero veremos una forma de hacerlo de la manera como sería la mejor práctica.
+###### Para este caso docker nos permite usar redes virtuales para realizar comunicación entre aplicaciones corriendo en diferentes
+contenedores.Primero identifiquemos que redes tenemos:
+$ docker network ls
+
+###### La red bridge esa una red que esta en desuso actualmente asi que la dejamos a parte, después tenemos la red host que es la 
+forma que tiene docker para representar a la red de mi máquina, esta del mismo modo no se debería usar por temas  de seguridad.
+quedando una red none, con esta red deshabilitamos completamente el networking del contenedor, asi que no usaremos estas, la
+crearemos desde cero.
+
+###### Primero vamos a crear la red.
+$ docker network create --attachable cursonet ## Con esto attachable permito que otros contenedores se conecten a esta red.
+
+###### Posteriormente creamos el contenedor de mongo.
+$ docker run -d --name dbmongo mongo
+
+###### Ahora conectamos el contenedor de mongo a la red.
+$ docker network connect curso_net dbmongo
+
+###### Ahora inspeccionamos la configuración de la red, asi visualizamos, subredes, ips, gateway, contenedores conectados y las ips
+asignadas a estos contenedores etc.
+$ docker network inspect curso_net
+
+###### Ahora creamos nuestro contenedor de la aplicación para conectarnos a mongo. Como en la app en index hacemos uso de una 
+variable de entorno para identificar a la red usaremos una bandera para correr nuestro contenedor y asignarle un valor a esa 
+variable de entorno.
+
+$ docker run --rm -v /home/vecheverria/Development/Learning/Repositorios/docker/:/usr/src/ -p 3000:3000 --name conect_mongo --env MONGO_URL=mongodb://dbmongo:27017/test cursoapp:10
+
+###### Algo interesante de docker también es que si dos o más contenedores están en la misma red virtual entonces el nombre de 
+host dentro de los contenedores es mismo nombre del contenedor.
+
+###### Ahora tenemos que nuestra aplicación conectarla a la red y esta completo.
+$ docker network connect curso_net conect_mongo
+
+###### Ahora probamos la aplicación y debe conectarse a la base de datos.
+
+
+###### Docker-compose: la herramienta todo-en-uno
+###### Docker compose es una herramienta que nos permite describir de forma declarativa la arquitectura de nuestra aplicación,
+utiliza composefile (docker-compose.yml).
+
+###### Primero debemos apagar todos nuestros contenedores o borrarlos, e incluso podemos borrarlos.
+$ docker rm -f $(docker ps -qa)
+$ docker network rm curso_net
+
+###### Docker compose no viene instalado de forma nativa en linux, solamente en mac y en windows.
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+###### Otorgamos permisos necesarios de ejecución de los binarios.
+sudo chmod +x /usr/local/bin/docker-compose
+
+###### Docker compose es una herramienta que permite describir de forma declarativa la arquitectura de nuestra app.
+###### A diferencia de usar dockerfile que utiliza una descripción imperativa, un paso a paso de lo que hay que hacer para construir
+la app, mientras que docker compose utiliza un archivo denominado composefile "docker-compose.yml", que utiliza la extensión y 
+la sintaxis yml, usada en python por ejemplo para describir como se quiere construir la app.    
+
+version: "3.8"          ## Aqui empieza con una versión, indica que debería soportar docker compose para construir nuestra app.
+                           y son las versiones del compose file que hasta la fecha actua es 3.8
+
+services:               ## Aqui ya definimos los servicios (componentes) que va tener nuestra app, no solo la app, sino la base de 
+                           datos, la red etc, la principal diferencia entre un servicio y un contenedor es que un servicio puede 
+                           tener más de un contenedor. Dentro hay dos servicios, la app y la db (base de datos).
+  connect_mongo:
+    image: cursoapp:10  ## Representa la imagen que hemos construido con anterioridad
+    environment:        ## Esto representa a la bandera --env, donde configurare todas las variables de entorno.
+      MONGO_URL: "mongodb://db:27017/test"  ## La cadena de conexión de la base de datos de mongo.
+    depends_on:         ## Aqui vas las dependencias que posee este servicio, por ahora solo base de dato. Le indica además que para 
+                           inicializar el servicio app, primero deben estar incializadas sus dependencias.
+                           Aunque no indica que las dependencias este listas para usar... revisar https://docs.docker.com/compose/startup-order/
+      - dbmongo
+    ports:              ## Esta es la bandera -p para bindear el puerto.
+      - "3000:3000"
+
+  dbmongo:
+    image: mongo        ## Aqui se interpreta solamente que la base de datos va a ser inicializada desde la imagen directa mongo.
+
+
+###### Ahora ejecutamos el yaml con docker compose, nos posicionamos un directorio antes del directorio de la app.
+$ docker-compose -f ./docker/docker-compose.yml up
+
+###### Trabajando con docker-compose - Comandos Importantes
+$ docker-compose -f ./docker/docker-compose.yml up -d  ## No muestra el output, y lo mantiene ejecutado
+$ docker-compose -f ./docker/docker-compose.yml ps ## Muestra los contenedores corriendo
+$ docker-compose -f ./docker/docker-compose.yml logs connect_mongo ## Muestra la salida o el output del contendor de la app.
+$ docker-compose -f ./docker/docker-compose.yml exec connect_mongo bash  ## Se ingresa al server de la app
+$ docker-compose -f ./docker/docker-compose.yml down  ## Apagamos nuestros contenedores. Y limpia todo lo no deseado, los contenedores
+creados y la red creada también en este caso.
+
+
+
+###### Docker-compose como herramienta de desarrollo
+###### 1.- En el archivo docker-compose.yml, cambiamos para no usar una imagen predefinida o construida con anterioridad, sino 
+que vamos a pasar el path principal del contexto de build que en este caso será desde el path de la aplicación donde esta el 
+mismo archivo docker-compose.yml
+Cambiamos image: cursoapp:10   ---->   build: .
+
+###### Asi que dentro de donde se encuentra el mismo docker-compose.yml debe haber un Dockerfile para builder la imágen y lo hacemos
+aunque esta vez nos colocaremos en el mismo path del archivo docker-compose.yml. Antes estabamos un directorio mas arriba por eso
+utilizabamos la direccion del archivo asi: $ docker-compose -f ./docker/docker-compose.yml, ahora lo utilizaremos directo:
+$ docker-compose build
+
+###### No reutilizará el cache ya que la aplicación no tendrá el mismo Tag o no estará en el mismo repositorio, que antes era 
+cursoapp:10, ahora docker le asignará un nombre, que comienza con el directorio donde esta docker-compose seguido del nombre del 
+de la app dentro de docker compose file.
+
+###### Las imagenes que aparecen como <none> son las imágenes anteriores de la cursoapp:10 que se fueron rebuildenado, ya no sirven
+y se puedne borrar.
+###### Luego corremos la imagen como antes.
+$ docker-compose up -d  ## Sin -f porque estamos justo en el directorio del docker-compose, con -d para evitar el output
+
+###### Lo que falta ahora es que nuestro workspace no lo hemos ligado al contenedor, asi que si queremos hacer cambios para que sean
+reconocidos por node, tendríamos que entrar al contenedor y cambiarlo desde ahi, pero es un mala práctica hacer eso, asi que lo 
+mejor es editar mi archivo docker-compose.yml y agregar los volumnes persistentes. Entoces debajo de "ports", podemos agregar la 
+sección referente a volumenes, pero usaremos el modo más facil que bind mount, y no el uso de volumenes.
+####### Se debe tener cuidado al hacer esto ya que existen directorios o archivos que son suceptibles de cambios por ejemplo en node,
+el directorio node_modules donde estan todas las dependencias del proyecto se va ha soreescirbir u se pueden eliminar las
+dependencias, por lo que debemos indicarle al docker-compose.yml que ese directorio no debe ser tocado. A la final queda algo asi.
+ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/
+      - /usr/src/node_modules
+
+
+###### Ahora solo ejecutamos 
+$ docker-compose up -d
+
+###### Docker es tan inteligente que vuelve a reconfigurar todo sin la necesita de bajar los contenedores, 
+volver a buildear o crear los tenedores independientemente. Incluso si la primera vez no has realizado el build de la imágen,
+pero esta configurado en el docker-compose.yml, directamente con este comando "up" te consruye la imagen antes de levantar los 
+contenedores.
+
+###### Para ver los logs de los contenedores con la bandera -f de follow podemo ir siguiendoles mientras aparecen.
+$ docker-compose logs -f connect_mongo
+
+
+###### Algo muy importante es que podemos escalar nuestros contenedores, es decir posemos localmente por ahora simular un
+cluter, y decirle a docker que necesito escalar mi servicio o mi app. Con el siguiente comando puedo hacerlo pero antes necesito,
+realizar un cambio y es que mi app actualmente esta utilizando el puerto 3000 local para realizar la conexión a mongo, asi que 
+necesito indicarle un rango de puertos que puede utilizar para eso, quendo el archivo asi:
+ports:
+      - "3000-3010:3000"
+
+$ docker-compose up -d ## Docker puede identificar contenedores en mal estado y borralos. Se ejecuta de nuevo el comando para 
+                          actualizar el cambio de tener un rango de puertos.
+$ docker-compose scale connect_mongo=4  ## Escalamos a 4 contenedores para nuestra app. Aunque actualmente esta por deprecar scale.
+$ docker-compose  up -d --scale connect_mongo=4  ## Es mejor usarlo de este modo.
+
+
+###### Reto del curso crear un proxi reverse o balanceador de carga para redireccionar al URL que se requiera de nuestra app.
+
+
+
+###### Conceptos para imágenes productivas
+1.- El uso de .dockerignore, te permite desvincular archivos o directorios que no necesitas que se trasladen o que se copien dentro
+del contenedor, cuando me creo la imágen, funciona del mismo modo que un .gitignore.
+
+2.- El docker multi stage builds, o builds de multiples pasos o escenarios, nos permite utilizar Dockerfiles que tienen varias
+fases de build, y que una fase puede utilizar el build de la otra de tal manera que podemos hacer que en una fase previa se puede
+hacer builds y test de cosas que no nos interesari que queden en la imágen definitiva, asi nos aseguramos que hayan corrido cosas
+que necesitabamos que se corran pero cuyo resultado o output fisico a nivel de directorios o archivos no nos interesan en la imagen.
+###### Es decir por ejemplo yo necesito compilar mi aplicación antes de enviar a producción, pero compilada ejecuto pruebas antes y el
+resultado de mi compilación es lo único que necesito en mi imágen productiva asi que lo que hago es utilizar este feature.
+
+###### Ejemplo uno, dentro del Dockerfile de producción:
+FROM golang:1.7.3 AS builder
+WORKDIR /go/src/github.com/alexellis/href-counter/
+RUN go get -d -v golang.org/x/net/html  
+COPY app.go    .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
+
+FROM alpine:latest  
+RUN apk --no-cache add ca-certificates
+WORKDIR /root/
+COPY --from=builder /go/src/github.com/alexellis/href-counter/app .
+CMD ["./app"]  
+
+###### Ejemplo dos, dentro del Dockerfile de producción:
+FROM node:10 as builder
+COPY ["package.json", "package-lock.json", "/usr/src/"]
+WORKDIR /usr/src
+RUN npm install --only=production
+COPY [".", "/usr/src/"]
+RUN npm install --only=development
+RUN npm run test
+
+
+# Productive image
+FROM node:10
+COPY ["package.json", "package-lock.json", "/usr/src/"]
+WORKDIR /usr/src
+RUN npm install --only=production
+COPY --from=builder ["/usr/src/index.js", "/usr/src/"]
+EXPOSE 3000
+CMD ["node", "index.js"]
+
+
+####### Incluso copiar cosas de otras imagenes externas
+COPY --from=nginx:latest /etc/nginx/nginx.conf /nginx.conf
+
+####### Links de referencia:
+https://docs.docker.com/develop/develop-images/multistage-build/
+https://blog.alexellis.io/mutli-stage-docker-builds/
+
+
+
+
+####### Manejando docker desde un contenedor
+####### Vamos en esta clase a ver uno de los secretos mejor guardados de docker. Vamos a ver como manejar un contenedor desde otro
+contenedor. Es una manera muy interesante para aprovechar la potencia de docker y todas las ventajas que ofrece
