@@ -1,0 +1,140 @@
+########## Fundamentos de C#
+########## Creamos un nuevo proyecto de consola.
+$ cd ~/Development/Dotnet/Console/Course
+$ dotnet new console
+$ dotnet new console --output <directorio_app>  ## Creamos la app en el directorio mensionado
+$ dotnet new console --project <directorio_app> ## Creamos la app con el nombre específico
+
+########## Corremos la aplicación creada
+$ dotnet run
+
+########## Cambiamos a la versión net core 3.1 y compilamos de nuevo
+$ code Course.csproj
+# dotnet build
+
+########## Ejecutamos la app de la nueva versión sin compilarla de nuevo desde el ejecutable
+$ dotnet bin/Debug/netcoreapp3.1/Course.dll
+
+########## Se pueden crear ejecutables optimizados (versión release) depende de la plataforma
+########## Ejemplos de plataformas
+########## win7-x64
+########## win10-x64
+########## osx.10.11-x64
+########## ubuntu.16.04-x64
+########## Ejemplo:
+$ dotnet build -c Release -r <version_so>   ## -c Indica si el código es de producción o depuración, y -r Sistema operativo objeto
+
+########## Historia de C#
+########## Creador Anders Hejilsberg y su equipo, crearon Delphy y TypeScript
+########## Lenguaje Multiparadigma, fuertemente tipado es decir que se debe definir los tipos de datos que se van a utilizar,
+imperativo es decir que se basa en sentencias que le dicen que hay que hacer, con instrucciones estableciendo un flujo para ello,
+declarativo donde se puede o no seguir un flujo determinado sino en base a una espcificación esta se puede convertir en instrucciones
+para el lenguaje.
+########## Alineado al paradigma funcional, generica para su eficiencia.
+########## Es orientado a objetos y basado en clases y componentes, para tener aplicaciones poco acopladas.
+########## Es simple, moderno y oerientado a varios propositos.
+########## Robusto ya que posee multiples capacidades, durable  y con productividad para el desarrollador.
+########## Valido para ambientes distribuidos, con multiples servicios.
+########## Portabilidad, aunque actualmente ya lo es, diferentes plataformas y SO.
+########## Soporte para internacionalidad, codificación de varios idiomas o codificación de caracteres.
+########## Servidores y entornos embebidos.
+########## Bajo uso de procesaro y memoria.
+
+########## Versiones de C#
+########## C# se pensó como una mejora al lenguaje C++, este lenguaje tiene su nombre por ser una mejora del lenguaje C,
+entonces llamar (C++)++ a C# hubiera quedado muy mal. Por ello se optó en llamarlo “C Sharp” que “Sharp “ significa inteligente,
+pero el símbolo de Sharp no es fácil de sacar con el teclado por ello se usa el signo #.
+########## C# 1.0
+########## C# era muy parecida a Java
+########## C# 2.0 Orienatado a optimización de código
+########## Tipo Genericos y Parciales, metodos anonimos, Iteradores, Tipos Nullables, separar Getter y Setter, Clases estaticas
+y delegados.
+########## C# 3.0 Orientado a codificar más rapido
+########## Tipos Implicitos, Inicializadores de objetos y colecciones, propiedades autoimplementadas, tipos anonimos, metodos de 
+extension, expresiones de consulta (LINQSS), expresiones lamda, arboles de expresiones, metodos parciales.
+########## C# 4.0 Orientado a mejorar operabilidad
+########## Tipos Dinamicos, binding dinamico, argumentos nombrados y opcionales, genericos y contravarianza, tipos embebidos
+interoperables. (NoPIA).
+########## C# 5.0 Orientado a super treading
+########## Métodos asincronos, atributos llamados informativos
+########## C# 6.0 Azucar sintactico, todo lo que hace, hacerlo más facil.
+########## Cimpile-as-a-service (Rosylin) nuevo compilador, importacion de miembros tipo estaticos dentro del namespace,
+filtro de excepciones, bloques await dentor de cath y finally, inicializadores autopredictivos, miembros de expresiones bodied,
+Null propagator, interpolación de cadenas, operador nameof, inicializador de dicccionarios.
+########## C# 7.0, 7.1-3 Azucar sintactico, todo lo que hace, hacerlo más facil, formas cortas.
+########## Variables de salida, Pattern matching, Tuplas, Deconstrucciones, funciones locales, separadores de digitos, binarios
+literales, ref returns y locales, Generalización de async y retorno de tipos, Expression bodied constructores y finalizadores,
+Expression bodied getter y setter, expresiones throw, Async principal, expresiones default literales, inferencia sobre nombres de 
+elementos de tuplas, refencias semanticas con valores de tipo, modificadores privados de acceso, no pinnign, uso de constarins
+generales.
+
+########## Clases y Objetos
+########## Todo es un  objeto, con atributos y comportamientos.
+########## Atributos y métodos.
+########## Ejmplo: Escuela
+########## Son abstraciones del mundo real o imaginario para ineterpretarlos
+########## Objeto es descrio por atributos, sus acciones se representan con metódos o funciones.
+########## El objeto es la instancia de un objeto.
+########## var escuela = new Escuela(), estamapado en memoria para utilizarlas.
+
+########## Por convención el metodo main es el método que se ejecuta en un app de consola.
+########## Constrcutor de la clase, se puede realizar por igualación de tuplas propio de lenguajes funcionales.
+
+########## Cosas Nuevas:
+########## public Escuela(string nombre, int año) => ( Nombre, AñoCreacion) = (nombre,año); ## Igualacion de tuplas
+########## public Alumno() => UniqueId = Guid.NewGuid().ToString();  ##  Constructor con inicalización de datos.
+########## return $"Nombre: \"{Nombre}\", Tipo: {Tipo} {System.Environment.NewLine} Pais: {Pais}, Ciudad: {Ciudad}"; ## Interpolacion
+de texto.
+########## public override string ToString()  ## Sobreescritura de métodos propios de clases.
+########## Guid.NewGuid().ToString();  ## Generación de Guid
+########## if(escuela?.Cursos==null) return;  ## Atajo para validar nulos
+########## 
+########## Operadores Aritmeticos, Logicos, Binarios como &, |, ^, >>, <<, ~, Operadores de palabras clave como new, typeof,
+sizeof, nameof, cheked, uncheked, default.
+Guia: https://docs.microsoft.com/es-es/dotnet/csharp/language-reference/operators/
+
+########## Arreglos vs Colecciones
+########## Los arreglos ocupan menos memoría y más rapidos, más eficientes si se usan tipos nativos, ideales para apis de bajo nivel
+
+########## Colecciones más faciles de usar y especializadas en tareas, flexibilidad de tamaños, extensibles y personalizables
+########## Colecciones simples , tienen mucha penalización de memoria ya que usan boxing unboxing, que es empaquetar un objeto dentro
+de otro y verlo como un objeto nuevo.
+########## Las colecciones genéricas son las más utilizadas en la actualidad, no hacen boxing unboxing.
+########## Colecciones concurrentes tienen intrinsecamente un diseño para que si un core esta accediendo el otro no, asi controlan
+el acceso concurrente para que no hayan problemas.
+########## new Curso{Nombre = "Trigonometría",Jornada = TiposJornada.Vespertina}  ##  También se adiciona sin parentesis en new.
+########## WriteLine("Curso.Hash "+ cursoMusica.GetHashCode());
+########## listaCursos.Remove(cursoMusica);  ##  Elimina objetos buscando el mismo gethashcode.
+
+########## Un delegado me especifica que parametros de entrada y que parametrso de salida tiene que tener una función para usarla
+y me asegura de que se cumpla, sino se cumple no se ejecuta el algoritmo encapsulado. Sirve para encapsular algoritmos dentro de
+métodos o funciones.
+########## Predicate<Curso> miAlgoritmo = Predicado;
+           escuela.Cursos.RemoveAll(miAlgoritmo);  ## Esta opción es válida
+           escuela.Cursos.RemoveAll(Predicado);  ## Esta opción es válida, gracias a la inferencia de tipos.
+           escuela.Cursos.RemoveAll(x=>x.Nombre == "Música");  ## Esta opción es válida, con expresiones lambda
+
+           escuela.Cursos.RemoveAll(delegate (Curso curso)  ## Otra forma válida de escribir el delegado.
+            {
+                return curso.Nombre == "Música";
+            });
+
+           private static bool Predicado(Curso obj)
+           {
+               return obj.Nombre == "Música";
+           }
+########## Todo esto tiene que esta muy relacionado con expresiones lambda, por ejemplo el método RemoveAll, acepta que dentro 
+se pueda escribir una función lamda, pasar directo la función o pasar el delegado.
+
+########## Una expresión lambda es una función anónima que puedes usar para crear delegados, son bastante útiles pues tu
+código queda de forma más compacta, pero solamente si esta función se utilizará en un solo lugar.
+
+########## Refactorizando código
+########## Se debe dejar en el constructor, solamente lo estrictamente necesario para inicializar lo más rapido posible el objeto,
+no deberían ir sentencias de entrada y salida, como accesos a bases de datos, red, archivos etc.
+
+########## public string UniqueId{get; set;} = Guid.NewGuid().ToString();  ## Puedes usar esta directiva para asignar valores en el
+getter y setter.
+
+########## Buena Práctica un método debería tener solamente al rededor de 50 líneas de código.
+########## 
