@@ -28,7 +28,7 @@ que van a ser commit (guardado en la base de datos de git))
 $ git rm --cached nombre_archivo
 
 ########## Comando para agregar al staging los archivos con cambios previo al commit
-$ git add .  ## ó 
+$ git add .  ## o 
 $ git add <nombre_archivo>
 
 ########## Comando para realizar un commit de lo que está en el staging
@@ -172,7 +172,7 @@ ssh-keygen: Es el comando para crear la llave ssh.
 -b 4096: Es el número de bits de la llave que se va a generar.
 -C “tu@correo”: Es el email de GitHub que vamos a configurar.
 
-########## A continuación, nos aparecerá un mensaje el cual nos indica que se están generando las llaves pública/privada, y en este punto es importante cambiarle el nombre a la llave que vamos a generar, con el fin de evitar sustituir la que ya tenemos configurada.
+########## A continuación, nos aparecerá un mensaje el cual nos indica que se están generando las llaves públicas/privada, y en este punto es importante cambiarle el nombre a la llave que vamos a generar, con el fin de evitar sustituir la que ya tenemos configurada.
 ########## Ahora nos pedirá una contraseña (la cual podemos omitir presionando Enter, al igual que su confirmación):
 ########## Luego nos va a indicar que ya se han creado las llaves, y el resultado será:
 ########## En este punto ya tenemos dos pares de llaves (la cuenta personal / la cuenta laboral).
@@ -247,7 +247,7 @@ $ git show-ref --tags
 ##########  Para eliminar un tag que no deseo que siga registrado
 $ git tag -d  <nombre_tag_a_borrar>
 
-########## Envio de nuevo los tags pero en github no se borran los tags ya que para github es el standar de como reconocer versiones de release
+########## Envio de nuevo los tags, pero en github no se borran los tags ya que para github es el standar de como reconocer versiones de release
 por ello se debe borrar de otro modo en github desde la consola.
 
 $ git push origin :refs/tags/erro
@@ -288,7 +288,7 @@ stagin develop.
 a partir del Pull request o a su vez rechazarlo.
 
 ########## El pull request no es propio de Git, sino más bien son buenas prácticas de DevOps que han tomado los repositorios remotos como
-Github, Gilab o Bitbucket para facilitar el desarrollo de código a grupos de trabajo, ya sean estos grupos de trabajo empresariales,
+Github, Gitlab o Bitbucket para facilitar el desarrollo de código a grupos de trabajo, ya sean estos grupos de trabajo empresariales,
 o solo aportes personales a Código Open Source.
 
 ########## Cuando se manejan grupos de colaboradores de código Open Source la manera de manejar estos pull request se lo realiza de una 
@@ -434,7 +434,7 @@ y listo se borran sin trakearlos, exceptuando los archivos que están dentro de 
 git a esos archivos ignorados.
 
 ########## git clean no se puede usar solo, se le debe especificar que archivos borrar primero, y para buscar que no más va a borrar use
-$ git clean --dry-run   ó
+$ git clean --dry-run   o
 $ git clean -n
 ##########  es una especie de limpieza con corrida en seco.
 ########## y para borrar todos los archivos

@@ -29,8 +29,8 @@ mv /path-origen /path-destino
 **moverse entre archivos:
 cd /path-a-moverse
 
-**Busqueda y tratamiento de texto:
-grep "key-word" nombre-archivo ** con -i nos permite incluir mayusculas como minusculas.
+**Búsqueda y tratamiento de texto:
+grep "key-word" nombre-archivo ** con -i nos permite incluir mayúsculas como minúsculas.
 
 sed 's/palabra-cambiar/palabra-nueva'
 
@@ -47,23 +47,23 @@ top
 **Permisos usuarios
 matriz 
 
-          Lectura Escritura Ejecucion
+          Lectura Escritura Ejecución
 usuario
 grupo
 otros
 
-chmod **cambia indidualmente permisos a los archivos sea para duenios, grupos y otros
+chmod **cambia individualmente permisos a los archivos sea para dueños, grupos y otros
 chgrp **cambia de un grupo a otro un archivo o directorio
-chown **cambia el duenio del archivo 
+chown **cambia el dueño del archivo 
 
-combinacion binaria:
-ejemplo permiso de lectura, no escritura y no ejecucion
+combinación binaria:
+ejemplo permiso de lectura, no escritura y no ejecución
 100
-ejemplo de permisos de lectura,escritura y ejecucion
+ejemplo de permisos de lectura, escritura y ejecución
 111
 
 ejemplo de cambiar permisos a un archivo
 
-chmod 641 command **permite al duenio leer y escribir, a alguien del grupo solo leer y a otros solo ejecutar.
+chmod 641 command **permite al dueño leer y escribir, a alguien del grupo solo leer y a otros solo ejecutar.
 
-chmod 664 command **permite al duenio y a un usuario del grupo al que pertenece leer y escribir, y a otros solamente leer.
+chmod 664 command **permite al dueño y a un usuario del grupo al que pertenece leer y escribir, y a otros solamente leer.
