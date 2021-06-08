@@ -1,0 +1,99 @@
+Arquitectura de Microservicios
+En función del cambio radical de consumo de información, servicios, aplicaciones y en general de servicios
+en la nube o internet, este impulso allevado a tener un nuevo paradigma de diseño de aplicaciones como lo es
+la arquitectura de microservicios.
+
+Se caracteriza por desagrupar los servicios que se encuentran centralizados, obligando asi que cada aplicación
+o servicio de una aplicación sea independiente entre si de las demás.
+Enfocandose en desarrollar una aplicación como una suite de servicios ligeros, cada uno de ellos orientado 
+a solo dar mantenimiento a una funcionalidad o responsabilidad única dentro del sistema global.
+
+Cada microservicio, ejecuta sus propios procesos y se comunica con otros microservicios usualmente mediante
+el protocolo HTTP, cada uno de estos servicios es totalmente independiente de otros.
+Las ventajas que poseen este estilo de arquitectura es la independencia de los servicios y el desacoplamiento
+de las aolicaciones. Cambios y despligues pueden realizarse de manera independiente sin afectar otros micros,
+sino solo al que se esta dando mantenimiento, además de que cada micro puede ser desarrollado en diferentes
+tecnologías y con diferentes patrones de diseño o arquitectura interna cada uno de ellos.
+Del mismo modo por lo general la data de cada micro es independiente, es decir existira una base de datos 
+por cada microservicio y cada una de estas bases de datos pueden ser tecnoogias diferntes por ejemplo
+SQL Server, MYSql o incluso bases de datos NoSql como MongoDB por ejemplo.
+
+La comunicación entre micros no es muy usual, pero puede llevarse a cabo a traves del protocolo HTTP 
+cuando es necesario o utilizando mensajeria.
+
+Microservices y CQRS (Command Query Responsability Segregation)
+El patrón CQRS te permite separar los procesos de lectura de los procesos de escritura.
+En generar podemos usar este patrón cuando las consultas de datos son más frecuentes que la escritura de datos.
+Las consultas no deben tomar mucho tiempo de procesamiento.
+El tiempo de escritura es tolerable.
+Escribir data en base de datos cambia el estado de la Aplicación.
+
+Vamos a generar un microservicio de Autores de libros.
+
+1.- Generamos la Capa Modelo, donde se representarán las tablas de base de datos como entidades.
+2.- Se creará una capa de persistencia que reprsente una instancia de las base de datos.
+3.- Se creará la capa de apliacación donde se encuntre la lógica de negocio, donde se modelará el 
+Modelo de Dominio
+4.- Capa de controldores - API, encargada de la comunicación de la aplciación con aplicaciones externas.
+
+Concejos:
+En la capa de modelo se debe generar a parte del Id propio de la entidad, un campo quer permite identificar
+al modelo de manera única dentro de toda la aplicación o el ambiente de varios microservicios, por lo
+que podemos utilizar un GUID.
+Librerias para crear el modelo a partir de una migración.
+Microsoft.EntityFramework.Core
+Microsoft.EntityFrameworkCore.Tools
+Microsoft.EntityFrameworkCore.Design
+Npgsql.EntityFrameworkCore.PostgreSql
+
+Se debe crear el DbContext de EntityFramework que representa la instancia de base de datos dentro de la aplicación.
+
+Se debe instalar la herramienta de migración: EntityFramework Migration Tool.
+En una consola con permisos de administrador se ejecuta: > dotnet tool install --global dotnet-ef --version 3.1.12 -- depende de las versiones de paquetes que se hayan instalado anteriormente
+En VS en la consola powershell, escribimos los siguiente comandos:
+> dotnet ef migrations add Migration001 --project TiendaServicios.Api.Autor
+
+Actualmente lo realizamos del siguiente modo alternativo:
+Si la base de datos no esta creada aún, por favor seguir los siguientes pasos:
+
+1.- Para crear la base de datos, seleccionamos como proyecto de Inicio la api de autenticación.
+2.- Abrimos la consola de Administración de Paquetes PM> 
+3.- En la parte superior de la sección del Administrador de Paquetes, que se denomina Proyecto determinado escogemos
+    el nombre del microservicio Autenticacion.
+4.- La base de datos debe estar creada con el nombre respectivo que se le haya colocado en el appsettings.jso. Solo la 
+    base de datos vacia sin tablas.
+5.- Escribimos el comando "add-migration _nombre_migracion -v", asegurandonos que en el directorio Migrations del 
+    microservicio Autenticacion no hayan archivos con ese nombre y los borramos a todos los archivos aún mejor.
+6.- Finalmente escribimos el comando "update-database -v".
+
+
+Nota Final.
+
+
+Para crear más campos en la tabla de usuarios o en la tabla de roles, en los respetivos modelos ya se a ApplicationRole y 
+ApplicationUser dentro del microservicio se pueden crear más campos.
+Para mayor información por favor dirigirse al siguiente link: 
+https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio
+
+
+Implementación Arquitectura CQRS
+
+Instalar el paquete: MediatR.Extensions.Microsoft.DependencyInjection: Manejo de inyección de dependencias más facilmente.
+Implementar interfaces para command, con esto se construiran las clases que uniran los controlers con la lógica de EntityFramework
+Todo esto es para segregar las escrituras en base de datos de las lecturas desde base de datos.
+Implemetamos los métodos de consulta de authores.
+
+Validaciones con Fluent en CQRS
+Instalar el paquete FluentValidation.AspNetCore
+
+Utilización de DTOS para transferir datos
+Instalar el paquete AutoMapper.Extensions.Microsoft.DependencyInjection
+
+
+=====================================================================================================================================
+
+Siguiente Microservicio para dar mantenimiento a Libros.
+
+
+
+

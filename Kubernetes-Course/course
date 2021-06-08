@@ -1,0 +1,142 @@
+Kubernetes
+Es una plataforma de orquestación de contenedores, la que actualmente tiene el mayor éxito en el mercado.
+Es un sistema para la construcción, el funcionamiento y la gestión de sistemas distribuidos.
+
+Los contenedores no son un first class citizen del kernel de Linux, un contenedor no es una entidad previamente definida. Es un concepto abstracto conformado por diferentes tecnologías que se potencian las unas a las otras y trabajando en conjunto componen esta tecnología.
+
+Cgroups o Control Groups: Son los que permiten que un contenedor o proceso tenga aislado los recursos como memoria, I/O, Disco y más. Limitan los recursos del SO
+Namespaces: Permiten aislar el proceso para que viva en un sandbox y no pueda haber otros recursos de SO o contenedores.
+– Mount Namespaces: Permite que nuestro proceso tenga una visibilidad reducida de los directorios donde trabaja.
+– Networking Namespaces: Permite que cada contenedor tenga su stack de red.
+– PID.
+Chroot: Cambia el root directory de un proceso.
+
+Docker & Kubernetes
+Docker se encarga principalmente de gestionar los contenedores.
+Kubernetes es una evolución de proyectos de Google Borg & Omega.
+Kubernetes pertenece a la CNCF (Cloud Native Computing Foundation).
+Todos los cloud providers (GCP/AWS/Azure/DO) ofrecen servicios de managed k8s utilizando Docker como su container runtime
+Es la plataforma más extensiva para orquestación de servicios e infraestructura
+
+Kubernetes en la práctica
+K8s permite correr varias réplicas y asegurarse que todas se encuentren funcionando.
+Provee un balanceador de carga interno o externo automáticamente para nuestros servicios.
+Definir diferentes mecanismos para hacer roll-outs de código.
+Políticas de scaling automáticas.
+Jobs batch.
+Correr servicios con datos stateful.
+Todos los contenedores que viven dentro de un mismo Pod comparten el mismo segmento de red.
+
+POD: es la unidad minima de agrupación de procesos o aplicaciones (contenedores) dentro de Kubernetes.
+
+Arquitectura de red de Kubernetes.
+Nodo Master
+
+API Server: A lo que todo se conecta, los agentes, el CLI, el dashboard etc. Cuando se cae un nodo master es lo que se pierde. Se usa el algoritmo de ruft para algoritmo de elección.
+Scheduler: Cuando se deben crear un job, un pod en máquinas específicas, el scheduler se encarga de asignar las tareas y administrar los flujos de trabajos, revisando siempre las restricciones y los recursos disponibles.
+Controller Manager: Es un proceso que está en un ciclo de reconciliación constante buscando llegar al estado deseado con base al modelo declarativo con el que se le dan instrucciones a K8s.
+++Tipos de controller manager: ++
+Replica manager
+Deployment manager
+Service manager
+
+
+
+Etcd: Key value store que permite que el cluster este altamente disponible.
+Componentes muy importantes que viven en los nodos:
+
+Kubelet: Agente de kubernetes, se conecta con el control play y le pregunta que recursos (pods, contenedores) debo correr al scheduler via API Server. Monitorea los pods constantemente para saber si están vivos, los recursos disponibles etc y le comunica constantemente al scheduler via API Server.
+Kube-proxy: Se encarga de balancear el tráfico que corre en nuestros contenedores/servicios. Una vez llega una request se encarga de decidir a que pod y contenedor debe de ir.
+Nodos == Minions
+
+Todos los nodos y masters están conectados a una red física para poder hablarsen entre sí.
+
+Modelos declarativos e imperativos
+Los control managers se encargan de estar en un loop constante de reconciliación y tratar de converger a ese estado deseado, ese es un sistema declarativo. Un sistema imperativo parece un sistema fácil de seguir y está compuesto por una serie de pasos que deben seguirse a rajatabla.
+
+Kubernetes hace énfasis en ser un sistema declarativo
+Declarativo: “Quiero una taza de té”
+Imperativo: “Hervir agua, agregar hojas de té y servir en una taza”
+Declarativo parece sencillo (siempre y cuando uno sepa cómo hacerlo)
+Todo en Kubernetes se crea desde un spec que describe cuál es el estado deseado del sistema
+Kubernetes constantemente converge con esa especificación
+ 
+Visión general del modelo de red
+Todo el cluster es una gran red del mismo segmento
+Todos los nodos deben conectarse entre si, sin NAT (Network Adress Translation)
+Todos los pods deben conectarse entre si, sin NAT
+kube-proxy es el componente para conectarnos a pods y contenedores (userland proxy/iptables)
+Los pods trabajan a capa 3 (transporte) y los servicios a capa 4 (protocolos)
+
+
+Usando kubectl
+Kubectl es la herramienta CLI para interactuar con el cluster de kubernetes, puede usarse para desplegar pods de pruebas, acceder a los contenedores y realizar algunos comandos como get nodes o get services
+
+En .kube es donde se encuentra nuestro archivo config, la configuración de kubernetes.
+
+kubectl get nodes: lista todos los nodos que tiene nuestro cluster
+kubectl --config: puedes pasarle el archivo de configuración en caso de estar usando uno diferente.
+kubectl --server --user: especificas la configuración sin necesidad de darle un archivo.
+kubectl get nodes -a wide: muestra más datos de los nodos
+kubectl describe nodes node1: da mucha información de ese nodo en especifico.
+kubectl explain node: permite ver la definición de todo lo relacionado a ese nodo
+
+kubectl get nodes -o yaml | less
+kubectl describe nodes worker001
+kubectl explain node
+kubectl explain node --recursive
+
+
+Ejemplos de comandos:
+sudo kubectl get pods
+sudo kubectl get pods --all-namespaces
+sudo kubectl get pods -n kube-system
+sudo kubectl get secrets
+sudo kubectl get secrets -n kube-public
+sudo kubectl run pingpong --image alpine ping 1.1.1.1
+sudo kubectl get pods
+sudo kubectl get all
+sudo kubectl logs deploy/pingpong
+sudo kubectl logs deploy/pingpong --tail 20
+sudo kubectl logs deploy/pingpong --tail 20 -f
+sudo kubectl logs -l run=pingpong
+sudo kubectl gets pods
+sudo kubectl describe pods pingpong
+
+kubectl get pods --all-namespaces
+kubectl get pods -n kube-system
+
+Para arreglar el hecho de que los pods de DNS esten en estado de CreatingContainer
+kubectl -n kube-system apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
+
+Tambien se descargo calico cni:
+curl https://docs.projectcalico.org/manifests/calico.yaml -O
+Y se lo aplico:
+kubectl apply -f calico.yaml
+
+Posteriormente eliminar el yaml.
+
+Kubeadmin al crear un cluster lo que hace es guardar los certificados y lo secretos del cluster en un secret dentro del namespace kube-public
+kubectl get secrets -n kube-public
+
+Ejemplos de pods
+solo para efectos de estudio se usará 
+kubectl run pingpong --image alpine ping 1.1.1.1 --- anque esta deprecado
+
+kubectl get all
+kubectl logs deployment/pingpong --tail 20 ## K8s te busca un pod aleatorio cuando se busca logs por un deployment
+kubectl logs pod/pingpong
+
+
+Deployments y Replica secrets
+
+Existe una relacion entre los deployments y los replicasets.
+El DEPLOYMENT es un construct, una estructura, del mas alto nivel que va a permitir escalar nuestros pods, hacer
+rolling upgrades y hacer rollbacks.
+Multiples deployments pueden entrar en juego para generar un canary deployment (ej: dos versiones de una
+aplicacion con la 1 corriendo con 5 pods, promovemos un pod a la version 2, enviamos un poco de trafico revisando las metricas para ver que este todo bien, y mandamos otro pod para ver que todo funcione bien y asi hasta que esten todos. Si algo falla, se hace rollback)
+El deployment permite hacer este workflow pero delega al replicaset la creacion y el scaling de los pods.
+El REPLICASET es un construct del mas low level que se asegura de que haya una cantidad de pods definida
+corriendo en un determinado momento. Es raro que lo modifiquemos directamente, sino a traves del deployment.
+
+

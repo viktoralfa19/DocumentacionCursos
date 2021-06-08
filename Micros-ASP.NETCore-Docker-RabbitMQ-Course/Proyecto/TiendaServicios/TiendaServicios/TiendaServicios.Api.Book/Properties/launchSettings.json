@@ -1,0 +1,42 @@
+﻿{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:6000",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true //, // ESTA VARIABLE DE ENTORNO ESTA COMENTADA PORQUE LOCALMENTE ESTA CREADA MI VARIABLE DE ENTORNO Y SETEADA CON Develpment
+      //"environmentVariables": {
+      //  "ASPNETCORE_ENVIRONMENT": "Development"
+      //}
+    },
+    "TiendaServicios.Development": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:6003;http://localhost:6004" //, // ESTA VARIABLE DE ENTORNO ESTA COMENTADA PORQUE LOCALMENTE ESTA CREADA MI VARIABLE DE ENTORNO Y SETEADA CON Develpment
+      //"environmentVariables": {
+      //  "ASPNETCORE_ENVIRONMENT": "Development"
+      //}
+    },
+    "TiendaServicios.Staging": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Staging"
+      }
+    },
+    "TiendaServicios.Production": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production",
+        "CONNECTION_DATA_BASE": "Server=dbproduction;Database=tienda_servicios_autor;Port=5432;User Id=postgres;Password=#Vecheverria.2020#;"
+      }
+    }
+  }
+}

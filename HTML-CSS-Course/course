@@ -1,0 +1,40 @@
+Internet: Interconnected y Network
+Red de computadoras conectadas en todo el mundo.
+
+Tim Berners-Lee Invento World Wide Web.
+Fundo el consorcio W3C para estandarizar el desarrollo de las tecnologías base Internet
+
+HTTP Hyper Text Transfer Protocol / (Permite la comunicación de datos entre dispositivos)
+URL Uniform Resource Locator: (Dirección de un sitio web)
+HTML Hyper Text Markup Language (Lenguaje para describir la estructura de una sitio web)
+En 1994 apareció CSS Cascade Style Sheets.
+
+HTML: Es un lenguaje de marcado usado para decirle a tu navegador cómo estructurar las páginas web que visitas. No es un lenguaje de programación.
+
+CSS: Es un lenguaje que nos permite crear páginas web con un diseño agradable para los usuarios. Tampoco es un lenguaje de programación.
+
+
+HTML Reference - A free guide to all HTML elements and attributes.
+
+https://htmlreference.io/
+
+
+CSS Reference - A free visual guide to CSS
+
+https://cssreference.io/
+
+
+DOM: Document Object Model. Es una transformación del código HTML escrito por nosotros a objetos entendibles para el navegador.
+
+CSSOM: así como el DOM para el HTML, EL CSSOM es una representación de objetos de nuestros estilos en CSS.
+
+Render Tree: es la unión entre el DOM y el CSSOM para renderizar todo el código de nuestra página web.
+
+Pasos que sigue el navegador para construir las páginas web:
+
+1.- Procesa el HTML para construir el DOM.
+2.- Procesa el CSS para construir el CSSOM.
+3.- El DOM se une con el CSSOM para crear el Render Tree.
+4.- Se aplican los estilos CSS en el Render Tree.
+5.- Se ““pintan”” los nodos en la pantalla para que los usuarios vean el contenido de la página web.
+
