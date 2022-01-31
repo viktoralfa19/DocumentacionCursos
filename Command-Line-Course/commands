@@ -62,8 +62,10 @@ ejemplo permiso de lectura, no escritura y no ejecución
 ejemplo de permisos de lectura, escritura y ejecución
 111
 
-ejemplo de cambiar permisos a un archivo
+**ejemplo de cambiar permisos a un archivo
 
 chmod 641 command **permite al dueño leer y escribir, a alguien del grupo solo leer y a otros solo ejecutar.
 
 chmod 664 command **permite al dueño y a un usuario del grupo al que pertenece leer y escribir, y a otros solamente leer.
+
+
