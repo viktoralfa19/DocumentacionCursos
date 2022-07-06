@@ -68,4 +68,6 @@ chmod 641 command **permite al dueño leer y escribir, a alguien del grupo solo 
 
 chmod 664 command **permite al dueño y a un usuario del grupo al que pertenece leer y escribir, y a otros solamente leer.
 
+Link de interes: https://linuxjourney.com/lesson/stdout-standard-out-redirect
+https://linuxhint.com/differences_between_bash_zsh/
 

@@ -1,0 +1,383 @@
+1. Módulo: Explorar Azure App Service
+
+Componentes clave de Azure App Service
+Administración la autenticación y autorización
+Métodos para controlar el tráfico entrante y saliente a la aplicación web
+Implementar una aplicación en App Service mediante comandos de la CLI de Azure
+
+Cuenta Gratuita:
+1.- Creación de aplicaciones web de Azure App Service
+
+Azure proporciona una gran cantidad de servicios basados en la nube, como el almacenamiento remoto, el hospedaje de bases de datos y la administración centralizada de cuentas. También ofrece nuevas funcionalidades, como inteligencia artificial e Internet de las cosas (IoT).
+
+AZ-900:
+conceptos de la nube
+servicios básicos de Azure
+principales soluciones y herramientas de administración de Azure
+seguridad general y de seguridad de red
+características de identidad, gobernanza, privacidad y cumplimiento
+acuerdos de Nivel de Servicio y la administración de costos de Azure
+
+
+
+¿Qué es la informática en la nube?
+Es la entrega de servicios informáticos a través de Internet, lo que se conoce como la nube.
+
+
+¿Por qué suele ser más barato usar la informática en la nube?
+Reducir los costos operativos.
+Ejecutar la infraestructura de forma más eficaz.
+Escalar a medida que cambien las necesidades empresariales.
+
+
+¿Por qué debería migrar a la nube?
+Los equipos proporcionan nuevas características a los usuarios a velocidades récord.
+Los usuarios esperan una experiencia cada vez más amplia y envolvente con sus dispositivos y con el software.
+En la actualidad, los equipos publican características en lotes más pequeños que se suelen programar en días o semanas.
+
+
+¿Qué es Azure?
+Azure es un conjunto de servicios en la nube en expansión constante que ayudan a la organización a cumplir los desafíos empresariales actuales y futuros.
+
+
+¿Qué ofrece Azure?
+Esté preparado para el futuro
+Cree a su ritmo
+Opere en el entorno híbrido sin problemas
+Confíe en la nube
+
+
+¿Qué puedo hacer con Azure?
+Azure proporciona más de cien servicios que permiten hacer todo tipo de cosas: desde ejecutar las aplicaciones existentes en máquinas virtuales hasta explorar nuevos paradigmas de software, como bots inteligentes y realidad mixta.
+Azure proporciona servicios de inteligencia artificial y aprendizaje automático que pueden comunicarse naturalmente con los usuarios mediante la vista, el oído y la voz.
+
+
+¿Qué es Azure Portal?
+Azure Portal es una consola unificada basada en web que proporciona una alternativa a las herramientas de línea de comandos.
+
+
+¿Qué es Azure Marketplace?
+Facilita la conexión entre los usuarios y los partners de Microsoft, proveedores de software independientes y nuevas empresas que ofrecen sus soluciones y servicios, optimizados para ejecutarse en Azure.
+
+Ahora se verán con más detalle las categorías que se usan con más frecuencia:
+
+Proceso
+Redes
+Almacenamiento
+Móvil
+Bases de datos
+Web
+Internet de las cosas (IoT)
+Macrodatos
+INTELIGENCIA ARTIFICIAL
+DevOps
+
+
+
+Proceso:
+Servicios de proceso en Azure:
+
+Nombre del servicio                                                 Función del servicio
+
+Azure Virtual Machines                                           Máquinas virtuales (VM) Windows o Linux hospedadas en Azure. 
+
+Azure Virtual Machine Scale Sets                                 Escalado de máquinas virtuales Windows o Linux hospedadas en Azure.
+
+Azure Kubernetes Service                                         Administración de clústeres para máquinas virtuales que ejecutan servicios en contenedores.
+
+Azure Service Fabric                                             Plataforma de sistemas distribuidos que se ejecuta en Azure o en el entorno local.
+
+Azure Batch                                                      Servicio administrado para aplicaciones informáticas de alto rendimiento y paralelas.
+
+Azure Container Instances                                        Aplicaciones en contenedores que se ejecutan en Azure sin necesidad de aprovisionar   
+                                                                 servidores ni máquinas virtuales.
+
+Azure Functions                                                  Un servicio de procesos sin servidor y controlado por eventos
+
+
+
+
+Redes:
+Servicios de red de Azure:
+
+Nombre del servicio                                                 Función del servicio
+
+Azure Virtual Network                                    Conecta máquinas virtuales a conexiones de red privada virtual (VPN) entrantes. 
+
+Azure Load Balancer                                      Equilibra las conexiones entrantes y salientes a aplicaciones o puntos de conexión de servicio.
+
+Azure Application Gateway                                Optimiza la entrega de granjas de servidores de aplicaciones y, al mismo tiempo, aumenta la 
+                                                         seguridad de las aplicaciones.
+
+Azure VPN Gateway                                        Accede a redes de Azure Virtual Network mediante puertas de enlace de VPN de alto rendimiento.
+
+Azure DNS                                                Proporciona respuestas DNS ultrarrápidas y disponibilidad de dominio extremadamente alta.
+
+Azure Content Delivery Network                           Entrega contenido de gran ancho de banda a los clientes globalmente.
+
+Azure DDoS Protection                                    Protege las aplicaciones hospedadas en Azure frente a ataques por denegación de servicio 
+                                                         distribuido (DDoS).
+
+Azure Traffic Manager                                    Distribuye el tráfico de red entre las regiones de Azure en todo el mundo.
+
+Azure ExpressRoute                                       Se conecta a Azure mediante conexiones seguras de gran ancho de banda dedicadas.
+
+Azure Network Watcher                                    Supervisa y diagnostica problemas de red mediante el análisis basado en el escenario.
+
+Azure Firewall                                           Implementa un firewall de alta seguridad y alta disponibilidad con escalabilidad ilimitada.
+
+Azure Virtual WAN                                        Crea una red de área extensa (WAN) unificada que conecta sitios locales y remotos.
+
+
+
+Almacenamiento:
+Servicios de red de Azure:
+
+Nombre del servicio                                                 Función del servicio
+
+Azure Blob Storage                                    Servicio de almacenamiento para objetos muy grandes, como archivos de vídeo o mapas de bits.
+
+Azure File storage                                    Recursos compartidos de archivos que puede administrar como un servidor de archivos y acceder a ellos 
+                                                      del mismo modo.
+
+Azure Queue Storage                                   Almacén de datos para la puesta en cola y la entrega confiable de mensajes entre aplicaciones.
+
+Azure Table storage                                   Table Storage es un servicio que almacena datos estructurados no relacionales (también conocidos como 
+                                                      datos NoSQL estructurados) en la nube, lo que proporciona un almacén de claves y atributos con un diseño sin esquema.
+
+Características:
+
+Durabilidad y alta disponibilidad con redundancia y la replicación.
+Seguridad mediante el cifrado automático y control de acceso basado en rol.
+Escalabilidad con un almacenamiento prácticamente ilimitado.
+Administración y control del mantenimiento y de cualquier problema crítico que pueda surgir.
+Accesibilidad desde cualquier parte del mundo a través de HTTP o HTTPS.
+
+
+
+Móvil:
+Servicios de red de Azure:
+
+Permite Crear servicios de Backend móviles, inlcuyendo para applicaciones windows.
+
+Características de este servicio:
+
+Sincronización de datos sin conexión.
+Conectividad a datos locales.
+Difusión de notificaciones de inserción.
+Escalado automático para satisfacer las necesidades del negocio.
+
+
+Bases de datos:
+Servicios de red de Azure:
+
+Nombre del servicio                                                 Función del servicio
+
+Azure Cosmos DB                                       Base de datos distribuida globalmente que admite opciones NoSQL
+
+Azure SQL Database                                    Base de datos relacional totalmente administrada con escalado automático, inteligencia integral y 
+                                                      seguridad sólida.
+
+Azure Database for MySQL                              Base de datos relacional MySQL totalmente administrada y escalable con alta disponibilidad y 
+                                                      seguridad.
+
+Azure Database for PostgreSQL                         Base de datos relacional PostgreSQL totalmente administrada y escalable con alta disponibilidad y 
+                                                      seguridad.
+
+SQL Server en Azure Virtual Machines                  Servicio que hospeda aplicaciones empresariales de SQL Server en la nube.
+
+Azure Synapse Analytics                               Almacén de datos totalmente administrado con seguridad integral en todos los niveles de escala sin 
+                                                      costo adicional.
+
+Azure Database Migration Service                      Servicio que migra bases de datos a la nube sin cambios en el código de aplicación.
+
+Azure Cache for Redis                                 Servicio totalmente administrado que almacena en caché datos estáticos y usados con frecuencia para 
+                                                      reducir la latencia de datos y aplicaciones.
+
+Azure Database for MariaDB                            Base de datos relacional MariaDB totalmente administrada y escalable con alta disponibilidad y seguridad.
+
+
+
+
+
+Web:
+Servicios de red de Azure:
+
+Nombre del servicio                                                 Función del servicio
+
+Azure App Service                                    Creación rápida de aplicaciones en la nube eficaces basadas en web.
+
+Azure Notification Hubs                              Envíe notificaciones push a cualquier plataforma desde cualquier back-end.
+
+Azure API Management                                 API pública para desarrolladores, asociados y empleados de forma segura y a escala.
+
+Azure Cognitive Search                               Esta búsqueda completamente administrada se implementa como servicio.
+
+Característica Web Apps de Azure App Service         Cree e implemente rápidamente aplicaciones web críticas a escala.
+
+Servicio Azure SignalR                               Agregue funcionalidades web en tiempo real con facilidad.
+
+
+
+
+IoT:
+Servicios de red de Azure:
+
+Nombre del servicio                                                 Función del servicio
+
+IoT Central                                          Solución global de software como servicio (SaaS) de IoT totalmente administrada que facilita la 
+                                                     conexión, la supervisión y la administración de los recursos de IoT a escala.
+
+Azure IoT Hub                                        Centro de mensajería que proporciona comunicaciones y supervisión seguras entre millones de 
+                                                     dispositivos de IoT.
+
+IoT Edge                                             Servicio totalmente administrado que permite insertar los modelos de análisis de datos directamente en 
+                                                     los dispositivos IoT, lo que les permite responder rápidamente a los cambios de estado sin necesidad de consultar modelos de IA basados en la nube.
+
+
+
+Macrodatos:
+Servicios de red de Azure:
+
+Nombre del servicio                                                 Función del servicio
+
+Azure Synapse Analytics                              Ejecute análisis a gran escala mediante un almacenamiento de datos empresarial basado en la nube que 
+                                                     aprovecha las ventajas del procesamiento paralelo masivo para ejecutar rápidamente consultas complejas en petabytes de datos.
+
+HDInsight de Azure                                   Procese grandes cantidades de datos con los clústeres administrados de Hadoop en la 
+                                                     nube.                                 
+
+Azure Databricks                                     Integre este servicio de análisis colaborativo basado en Apache Spark con otros servicios de 
+                                                     macrodatos en Azure.
+
+
+
+
+INTELIGENCIA ARTIFICIAL:
+Servicios de red de Azure:
+
+Nombre del servicio                                                 Función del servicio
+
+Azure Machine Learning Service                      Entorno basado en la nube que puede usar para desarrollar, entrenar, probar, implementar, administrar y 
+                                                    realizar un seguimiento de los modelos de aprendizaje automático. Puede generar y ajustar automáticamente un modelo. Le permite comenzar a entrenar en el equipo local y luego escalar horizontalmente a la nube.
+
+Azure ML Studio                                     Área de trabajo visual colaborativa donde puede compilar, probar e implementar soluciones de 
+                                                    aprendizaje automático mediante algoritmos de aprendizaje automático predefinidos y módulos de control de datos.
+
+
+Cognitive Services es un conjunto de productos estrechamente relacionados. Puede usar estas API precompiladas en las aplicaciones para solucionar problemas complejos.
+
+
+Visión                                              Use algoritmos de procesamiento de imágenes para identificar, subtitular, indexar y moderar imágenes y 
+                                                    vídeos.
+
+Voz                                                Convierta voz en texto, use la voz para la comprobación o agregue reconocimiento del hablante a la 
+                                                   aplicación.
+
+Asignación de conocimiento                         Asigne información y datos complejos para resolver tareas como las de recomendaciones inteligentes y 
+                                                   búsqueda semántica.
+
+Bing Search                                        Agregue las Bing Search API a sus aplicaciones y aproveche la capacidad de combinar miles de millones de 
+                                                   páginas web, imágenes, vídeos y noticias con una sola llamada API.
+
+Procesamiento de lenguaje natural                  Permita que las aplicaciones procesen lenguaje natural con scripts precompilados, evalúen opiniones y 
+                                                   aprendan a reconocer lo que quieren los usuarios.
+
+
+
+DevOps:
+Servicios de red de Azure:
+
+Nombre del servicio                                                 Función del servicio
+
+Azure DevOps                                       Use herramientas de colaboración de desarrollo como canalizaciones de alto rendimiento, repositorios Git 
+                                                   privados gratuitos, paneles Kanban configurables y completas pruebas de carga basadas en la nube y automatizadas. Anteriormente conocido como Visual Studio Team Services.
+
+Azure DevTest Labs                                 Cree rápidamente entornos de Windows y Linux a petición para probar o realizar demostraciones de las 
+                                                   aplicaciones directamente desde canalizaciones de implementación.
+
+
+
+
+Cuentas de Azure:
+
+Para crear y usar los servicios de Azure, necesita una suscripción de Azure.
+Tendrá que crear una cuenta de Azure y se creará una suscripción de forma automática.
+Puede crear suscripciones adicionales.
+Una vez que ha creado una suscripción de Azure, puede empezar a crear recursos de Azure dentro de cada suscripción.
+
+ Cueta de Azure ----> Suscripciones -----> Grupo de recursos ----> Recursos
+
+
+
+¿Qué es la cuenta gratuita de Azure?
+Acceso gratuito a productos populares de Azure durante 12 meses.
+Crédito para gastar durante los primeros 30 días.
+Acceso a más de 25 productos que siempre son gratuitos.
+
+
+¿Qué es la cuenta de estudiante gratuita de Azure?
+Acceso gratuito a determinados servicios de Azure durante 12 meses.
+Un crédito para usar en los primeros 12 meses.
+Acceso gratuito a determinadas herramientas de desarrollo de software.
+
+
+¿Qué es el espacio aislado de Azure?
+Cuando complete un módulo de Learn, puede usar la suscripción personal para finalizar los ejercicios que incluye. Pero el espacio aislado es el método preferido para usar, ya que permite crear y probar recursos de Azure sin costo alguno.
+
+
+
+Caso práctico:
+
+En la actualidad, Tailwind Traders administra un centro de datos local en el que se hospeda el sitio web comercial de la empresa. En el centro de datos también se almacenan todos los datos y vídeos de streaming para sus aplicaciones. Actualmente, el departamento de TI es responsable de todas las tareas de administración de su hardware y software informáticos.
+
+stas responsabilidades de administración generan varios obstáculos a la hora de proporcionar las aplicaciones a los usuarios de manera oportuna. Como profesional de TI, observa que sería ventajoso tener los servidores, el almacenamiento, las bases de datos y los demás servicios disponibles de inmediato al desarrollar e implementar aplicaciones. Quiere iniciar fácilmente un nuevo servidor o agregar servicios a las soluciones.
+
+
+¿Qué son las nubes pública, privada e híbrida?
+Hay tres modelos de implementación para la informática en la nube: nube pública, nube privada y nube híbrida
+
+Nube pública:
+Los servicios se ofrecen a través de la red Internet pública y están disponibles para cualquiera que quiera comprarlos.
+No hay gastos de capital para escalar verticalmente.
+Las aplicaciones pueden aprovisionarse y desaprovisionarse rápidamente.
+Las organizaciones solo pagan por lo que usan.
+
+
+Nube privada:
+Una nube privada consta de recursos informáticos que determinados usuarios de una empresa u organización usan en exclusiva.
+Debe adquirirse hardware para el inicio y el mantenimiento.
+Las organizaciones tienen un control total de los recursos y la seguridad.
+Las organizaciones son responsables del mantenimiento y las actualizaciones del hardware.
+
+
+Nube híbrida:
+Una nube híbrida es un entorno informático que combina una nube pública y una nube privada.
+Proporciona la máxima flexibilidad.
+Las organizaciones determinan dónde se van a ejecutar sus aplicaciones.
+Las organizaciones controlan la seguridad, el cumplimiento o los requisitos legales.
+
+
+¿Cuáles son algunas de las ventajas de la informática en la nube?
+Alta disponibilidad: en función del contrato de nivel de servicio (SLA) que elija, las aplicaciones basadas en la nube pueden proporcionar una experiencia de usuario continua.
+
+Escalabilidad: las aplicaciones en la nube se pueden escalar verticalmente y horizontalmente:
+Escale verticalmente para aumentar la capacidad de proceso mediante la incorporación de RAM o CPU
+El escalado horizontal aumenta la capacidad de proceso mediante la adición de instancias de recursos
+
+Elasticidad: puede configurar aplicaciones basadas en la nube para aprovechar el escalado automático, de forma que las aplicaciones siempre dispondrán de los recursos que necesitan.
+
+Agilidad: implemente y configure rápidamente los recursos basados en la nube a medida que cambian los requisitos de la aplicación.
+
+Distribución geográfica: puede implementar aplicaciones y datos en centros de datos regionales de todo el mundo.
+
+Recuperación ante desastres: al usar los servicios de copia de seguridad basados en la nube, la replicación de datos y la distribución geográfica, podrá implementar las aplicaciones con la seguridad de saber que los datos están protegidos.
+
+
+Gastos
+
+Los gastos de capital (CapEx) hacen referencia a la inversión previa de dinero en infraestructura física, que se podrá deducir a lo largo del tiempo. 
+Los gastos operativos (OpEx) son dinero que se invierte en servicios o productos y se factura al instante. Este gasto se puede deducir el mismo año que se produce. 
+
+
+
