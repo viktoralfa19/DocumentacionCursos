@@ -1,0 +1,90 @@
+OpenID Connect Protocol
+OpenID Connect (o OIDC) es un protocolo de identidad que utiliza los mecanismos de autenticación y autorización de OAuth 2.0
+
+OAuth 2.0 es un protocolo de autorización y OIDC es un protocolo de autenticación y es usado usado para verificar la identidad de un usuario en un 
+servicio tercero (conocido como Relying Party).
+
+Tu aplicación web es ese Relying Party y esta aplicación no debe de tener las credenciales del usuario de Google o Facebook, ya que estamos buscando 
+no exponer esa información y gracias OIDC no es necesario que las manipulemos.
+
+Una gran variedad de clientes pueden usar OpenID Connect para autenticar usuarios. También es usado en Single Sign On en muchas aplicaciones 
+(SSO es muy útil cuando en tu organización tienen una gran variedad de servicios o aplicaciones internas y es necesario usar una misma cuenta).
+
+Diferencias entre OAuth 2.0 y OIDC
+Realmente OIDC es funcionalidad adicional a la que ya existe en OAuth 2.0. Mientras OAuth 2.0 se trata del mecanismo para autorizar el acceso a 
+información, OIDC se centra en la identidad del usuario (su autenticación).
+
+El propósito principal de OIDC es darte un solo lugar donde tengas que iniciar sesión sin importar la cantidad de sitios que tengas.
+
+Cuando tu accedes a tu aplicación que requiere un usuario autenticado, eres mandado a tu servidor de identidad (que utiliza OpenID) y ahí inicias sesión, 
+eres redirigido de vuelta a la aplicación donde empezaste pero ya como un usuario autenticado. Las credenciales y tu información personal la tiene el 
+proveedor de identidad y las aplicaciones de terceros solo necesitan saber si eres quien dices ser.
+
+Sin embargo, OAuth se enfoca en proteger información y restringir el acceso. Por ejemplo: Cuando entras a myapp.com e inicias sesión con Facebook, se utiliza OpenID. 
+Pero cuando en myapp.com te pregunta ¿Quieres importar tus contactos de Facebook a myapp.com? ahí se utilizaría OAuth, ya que Facebook te preguntará 
+¿Permitir a myapp.com que acceda a tu listado de contactos? y ese “consentimiento” es llevado a cabo siguiendo las reglas de OAuth.
+
+
+Flujo correctos de autenticación:
+
+OAuth y OIDC cuentan con varias formas de autenticar usuarios y es importante saber sus diferencias, porque dependiendo de la aplicación cliente, 
+se utilizará un flujo diferente.
+
+
+
+*** Flujos no interactivos: Los flujos no interactivos no requieren que el usuario interactúe con el Authorization Server.
+
+1.- Resource owner password (no recomendado para aplicaciones nuevas): Este flujo es directamente inspirado en el basic autentication (donde las credenciales se 
+mandan en un header codificadas en base 64). En este caso, es el flujo más simple que existe en la especificación OAuth 2.0: La aplicación cliente (el Relying party)
+pregunta el usuario/contraseña, envía una solicitud de autorización al identity provider e inmediatamente regresa un access token si este es autorizado.
+
+Este flujo no se recomienda ya que el usuario y contraseña son directamente expuestos en la aplicación cliente. Por esta razón, este flujo no debe de ser usado 
+cuando aplicaciones de terceros se ven involucrados. Si estas desarrollando aplicaciones internas (tu tienes el control de todo), por simplicidad, puede funcionar.
+
+2- Client credentials grant (recomendado para comunicación machine-2-machine): Este flujo podría decirse que es idéntico al anterior (resource owner password) 
+pero este está diseñado para comunicación machine-2-machine (es decir, un servicio hablando con otro servicio) y ningún usuario se involucra en este flujo.
+
+La aplicación cliente solicita el token enviando las credenciales y si estas son correctas, obtiene su access_token para acceder a los servicios requeridos.
+
+
+
+*** Flujos interactivos: Estos flujos, requieren de interacción del usuario con el servidor de autenticación. 
+De esta forma, las credenciales del usuario solo son usadas en el servidor de autenticación y ningún tercero las tiene que manipular.
+
+
+1.- Authorization code flow (recomendado para aplicaciones nuevas): Este flujo probablemente es el más complicado de todos, ya que involucra redirecciones 
+del navegador y comunicación con el backend. Sin embargo, es el más recomendado para cualquier escenario que involucre usuarios finales.
+Como ventaja de esta complejidad, el access_token jamás pasa por el navegador, ya que el backend hace ese intercambio de información directamente con el 
+servidor de autenticación una vez que el usuario fue verificado.
+
+Básicamente hay 2 pasos importantes en este flujo: La solicitud y respuesta al endpoint authorization y lo mismo con el endpoint token.
+
+2.- Authorization request: En este flujo, la aplicación cliente inicia el proceso de autenticación generando una solicitud de autorización incluyendo siempre 
+el parámetro response_type=code, el client_id, el redirect_uri y opcionalmente, un scope y state.
+
+Si la solicitud es válida, el servidor pedirá al usuario que se autentique y generalmente se pedirá el consentimiento de compartir información con la aplicación cliente.
+Si se inicia sesión y se da permiso, el navegador (user-agent) redirige de vuelta a la aplicación cliente incluyendo como parámetro en el URL un authorization 
+code (este es un pequeño token, único y con una vida muy corta) y este se usa únicamente para intercambiar el código por un access_token y id_token.
+Token request:
+Cuando la aplicación obtiene el authorization code, debe inmediatamente intercambiarlo por el access token y así dar por finalizado el proceso de autenticación.
+
+3.- Implicit flow: mplicit flow es muy similar al authorization code, excepto que no existe ese intercambio entre authorization code y los tokens (en el token request:
+el access token es directamente regresado al cliente como parte del proceso de autorización, es decir, en el redirect que existe desde el servidor de autorización y
+aplicación cliente, los tokens forman parte del URI.
+
+Este flujo típicamente es usado en aplicaciones frontend que no tienen backend que pueda hacer el intercambio del código recibido por el token.
+Este flujo es menos seguro, porque los access token viajan por medio de un fragmento del URI y estos no se encuentran encriptados ni protegidos de ninguna forma.
+Existen formas de prevenir ser vulnerable, pero la mejor opción es usar el flujo anterior utilizando el Proof Key for Code Exchange.
+
+La siguiente tabla nos ayudará mejor a decidir:
+|____________________________________________________________________________________________________________________________________________________________________
+|Type of Application	        |            OAuth 2.0 flow                                                                                                          |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Server-side (AKA Web)	        |            Authorization Code flow                                                                                                 |
+|SPA	                        |            Authorization Code flow with PKCE o Implicit flow (solo si no hay compatibilidad en el navegador para usar Crypto Web)  |
+|Native	                        |            Authorization Code flow with PKCE                                                                                       |
+|Trusted	                    |            Resource Owner Password flow                                                                                            |
+|Service	                    |            Client Credentials                                                                                                      |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+--***** Proyecto IdentityServer
