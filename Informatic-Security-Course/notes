@@ -1,0 +1,242 @@
+Qué es Seguridad Informatica?
+
+Son todos los procesos y/o acciones que implican la protección, acceso y uso no autorizado de datos o assets eletrónicos o digitales.
+
+Prerrequisitos para aprender sobre seguridad informática
+
+1. Redes computacionales --- Protocolos, Modleos Osi Tcp/Ip y Arquitectura de Redes
+
+2. Programación  --- Dominar al menos un lenguaje de programaciín muy bien
+
+3. Sistemas computacionales --- Sistemas Operativos, Aqruitectura de Sistemas
+
+4. Normativa y legislación --- ISO, Cobit etc.
+
+Principios de la seguridad
+
+La integridad, la confidencialidad y disponibilidad de los datos.
+
+
+Seguridad de la información - Gobernanza
+La seguridad de la información es un área de especialidad que se dedica en gran medida a estudiar normas que puedan prevenir la pérdida de datos y la continuidad de un modelo de negocio. 
+--- Normativas: 27001, Datos: DLP(Data loss prevention) Continuidad del negocio: ISO 22301, analisi de impacto y riesgo
+
+
+Código seguro
+Protección de aplicaciones a través de distintas tácticas, que previenen los vacíos en seguridad.
+Si quieres preservar tu código seguro:
+    Asegura autenticaciones
+    Sigue buenas prácticas al programar
+    Desarrolla arquitecturas de seguridad para aplicaciones
+    Cumple lo establecido por la OWASP
+
+Seguridad aplicativa
+Se divide en tres ramas principales que son: web, mobile y redes
+
+Criptografía
+Tiene dos grandes áreas de estudio, que son la estenografía, encargada de ocultar los datos, y la criptografía, que convierte la información en un código distinto para mantener la confidencialidad, es decir, asegura el usuario sea el único con acceso autorizado a esa información
+
+
+Redes
+Las redes existen tanto en hardware como en software, permitiendo la movilización datos de un lugar a otro.
+
+Ingeniería social
+Es el uso de tácticas de engaño y manipulación fraudulenta hacia las personas para que entreguen información o datos confidenciales, ejemplo phishing, vhising
+
+Ciberinteligencia
+Es la recolección y análisis de cierta información para conocer el comportamiento y acciones (crímenes) realizados por un tercero.
+
+Ingeniería forense
+Es el campo de especialidad encargado de buscar las causas de un acontecimiento cibernético, por ejemplo, un hackeo o robo de identidad dentro de un país.
+
+Ética
+Es la rama de la filosofía que se especializa en estudiar el bien y el mal y su relación con la moral y el comportamiento del ser humano. La manera de saber una acción es ética o no, es que las acciones tomadas por alguien en determinada situación no afecten negativamente a un tercero.
+
+Script
+La programación es un campo importante de estudio que está relacionado con la seguridad informática porque tiene que ver con la creación de un sistema que pueda llegar a resistir los ataques y amenazas presentes en Internet.
+
+Malware
+El malware es el código malicioso que se puede encontrar en programas o en la misma red, estos se estudian para prohibir su acceso a los sistemas.
+
+CONCEPTOS:
+
+Ciberseguridad: todo lo que implica proteger el acceso o uso no autorizado de datos electrónicos.
+
+Seguridad de la información: medidas para resguardar y proteger la información buscando mantener la confidencialidad, la disponibilidad e integridad de datos.
+
+Scripting: es un área de especialización que automatiza tareas y herramientas de hacking como exploits, para facilitar las auditorías de ciberseguridad o la búsqueda de vulnerabilidades.
+
+Código seguro: es una área de la ciberseguridad que se dedica a asegurar que el desarrollo de software cumpla con requisitos funcionales de ciberseguridad y normativas según el caso de uso.
+
+
+La seguridad de la información======================================================================================================================================>
+es el conjunto de tácticas y medidas preventivas para resguardar información y datos frente a los peligros de Internet. Existen 3 principios fundamentales de este campo que garantizan un entorno en seguro.
+
+Confidencialidad: la confidencialidad es que solamente las personas autorizadas reciban algún tipo de información.
+
+Disponibilidad: la disponibilidad es que la información se encuentre lista para cuando se deba utilizar.
+
+Integridad: La integridad es asegurar que los datos sean exactos, libres de alteraciones, perdidas o destrucción, por su transporte o almacenamiento.
+
+
+Ciberinteligencia:
+
+¿Qué es Remote Control System?
+Remote Control System o sistema de control remoto es un software espía que se instala en la persona que se quiere monitorear para tomar control de su dispositivo. También envía todo tipo de imágenes y recibe instrucciones del control para ejecutar.
+
+
+Malware:
+El malware es un software malicioso, el cual se puede trabajar en diversas áreas, como por ejemplo el análisis de malware, Ingeniería forense, Ingeniería reversa.
+
+Caso del malware WannaCry
+Marcus Hutchins es el hacker que salvó Internet desde Inglaterra con tan solo 22 años de edad. Él ganó popularidad encontrando la forma de detener WannaCry. Pero lamentablemente, el pasado de Marcus lo persiguió y terminó siendo encontrado por el FBI. Esto nos muestra que en mundo de la ciberseguridad es muy fácil cruzar la línea de la legalidad.
+
+
+Criptografía y esteganografía
+La criptografía juega un papel muy importante en la seguridad debido a que se encuentra presente en todas las áreas, con el fin de mantener los datos confidenciales al cifrarlos. Por medio de un algoritmo matemático, el mensaje que envías se va a convertir en una expresión ilegible a menos de que tengas los permisos para leer dicho mensaje.
+
+De otro modo, existe la estenografía cuya principal labor es esconder los datos en una imagen, audio o archivo. Contando con que el remitente sepa en donde está y pueda encontrarlo. Pero si en el camino alguien lo encuentra, nada impide que pueda leer la información.
+
+Entonces es cuando se crea la combinación entre criptografía y estenografía para tener un sistema mucho más seguro que además de ocultar la información, la cifre. Para que si alguien se la encuentra en el camino por alguna razón, no la pueda leer.
+
+Características de la criptografía:
+Capacidad: bits incrustados
+Robustez: que tanta capacidad tiene nuestro archivo para no romperse
+Transparencia o imperceptibilidad: que tanto afectará la calidad del archivo si se agregan más datos
+Seguridad: que tan seguros son los algoritmos
+
+
+Código seguro:
+El código seguro es una rama de la ciberseguridad que te interesará muchísimo si eres desarrollador de software, porque podrás escribir código con buenas prácticas para que sea mucho más seguro.
+
+Ciclo de vida del desarrollo de software
+En todo el ciclo del desarrollo de software es importante que se tenga en cuenta la ciberseguridad. Porque está a veces se puede encontrar en los pequeños detalles. Como por ejemplo, cuando estás escribiendo una contraseña, esta debe estar oculta predeterminadamente. Entonces veamos las distintas etapas del desarrollo de software:
+
+Requerimientos
+Diseño
+Desarrollo
+Operaciones
+Despliegue
+Pruebas
+
+OWASP
+OWASP es una institución encargada de crear distintos tipos de reglas que se deben seguir a la hora de desarrollar software, con el fin de combatir el código inseguro.
+https://owasp.org/
+
+Pentesting:
+Las pruebas de seguridad o pentesting se refieren a ejecutar ataques informáticos a una plataforma o aplicación, con el fin de encontrar vulnerabilidades en el sistema.
+
+Inyectar código = es cuando una persona introduce nuevas instrucciones a una plataforma o aplicación, por medio de un hueco de seguridad.
+
+Backdoor = es una conexión oculta dentro del sistema, que permite entrar y salir datos. Estas son utilizadas usualmente para modificar el código de una plataforma o app sin necesidad de una actualización.
+
+Vectores de ataque
+Algunos de los elementos más utilizados para los ataques cibernéticos. Entonces echemos un vistazo a los vectores de ataque que son el medio por el cual se realizan ataques. (Medio por el cual se realiza un ataque)
+Inyección de código
+Pérdida de autenticación (Una persona es capaz de pasar los controles de autenticación, como la contraseña y usuario de una aplicación
+Pérdida de controles de acceso (Es cuando una persona es capaz de hacer que un software haga cosas para las que no fue destinado)
+Uso de componentes con vulnerabilidades conocidas (Utilizas las vulnerabilidades de un software que ya fueron publicadas)
+Registros y monitoreos insuficientes (supervisar todas las acciones que pasan en el sistema, pero sin la debida frecuencia)
+Deserialización insegura (Exploits que se inyectan a las aplicaciones)
+
+Seguridad forense
+La ingeniería forense (ITF) es una ciencia de seguridad informática que se utiliza para resolver casos de vulneración y robo de información a un sistema, con el fin de identificar a los culpables de algún suceso cibernético, valiéndose de distintas técnicas para obtener resultados.
+Flexispy = Software destinado a vigilar el comportamiento de niños o adultos en sus respectivos dispositivos.
+
+Seguridad en redes
+La seguridad de redes se refiere a cuidar que solamente las personas adecuadas tengan acceso a los permisos correspondientes entre varios computadores conectados entre sí.
+
+Redes tradicionales
+Lo que se hacía anteriormente era que las redes se separaban en módulos dependiendo de que tanto podíamos confiar en cada una de las partes.
+
+Esto se logró por medio de un firewall o un muro entre estas dos redes, la que no podemos controlar (internet) y la que si podemos controlar (local).
+
+Las divisiones se solían hacer en tres:
+DMZ = servidores y activos de información delicados
+Corp = El lugar de trabajo para todas las personas de la compañía
+Partner = El acceso que se le daba a un socio externo de la compañía
+
+
+Redes de trabajo remoto
+VPN = Es un túnel privado entre los servidores de la empresa y un trabajador, que si llega a ser interceptado no va a ser descifrado.
+
+Redes de cero confianza (Arquitectura de seguridad)
+
+Certificaciones internacionales de ciberseguridad:
+
+Algunas de estas pruebas en ciberseguridad son:
+
+Empresa	                    Fácil	                Intermedio	            Dificultad media	                Dificultad alta
+Comptia	                   Network +	           Security +		
+Offense security	       OSCP			
+EC-Council	               CND	                   CEH	                     ESCA	                             LPT
+ISC2			                                                             ISSC2 CCSP	                         ISSC2  CISSP
+Otras certificaciones	   ITIL	                   ISACA	                 SANS	
+
+
+Especialidades 
+1. Desarrollo web
+Aprender a programar es un superpoder, que no debes dejar pasar y en este rol lo puedes desarrollar. Sin contar con que puedes profundizar en cómo programar para evitar los huecos de seguridad.
+
+2. Bases de datos
+El lugar donde las compañías almacenan todos sus datos, necesita una muy buena seguridad, para mantener la confidencialidad de los mismos. Por lo tanto, podrás aprender muchísimo acerca de la protección para que los datos se encuentren seguros.
+
+3. Administración de sistemas
+La administración de sistemas es uno de los roles que más te va a facilitar la entrada al mundo de la ciberseguridad, porque si estás administrando sistemas significa que los debes proteger de la mejor manera tanto del exterior, como del interior.
+
+4. Ingeniería de redes
+En el rol de ingeniería de redes, *a tienes un buen camino recorrido. Ahora solamente debes enfocarte de manera adecuada a tus intereses. De tal forma que empieza a relacionar todo lo que ya sabes con ciberseguridad.
+
+5. Soporte técnico
+En los trabajos de soporte técnico, aprenderás a como configurar distintos tipos de dispositivos y también a como protegerlos del mundo exterior.
+
+6. Testing o ingeniería de pruebas
+Testing o ingeniería de pruebas, es un gran rol para aprender a buscar vulnerabilidades dentro de los sistemas con el fin de protegerlos y hacerlos más fuertes.
+
+7. Analista de sistemas
+En el rol de analista de sistemas, puedes aprender en gran parte acerca de OWASP, para poder cumplir los requisitos en todos los sistemas y también aprender sobre normativas que los regulen.
+
+8. Ingeniería de software
+Ingeniería de software es una buena base, para que puedas escoger la ruta de ciberseguridad que más prefieras. Ya que en esta aprenderás desde como funciona una computadora, hasta como funciona la industria del software.
+
+9. Campo normativo o legal
+Si ya conoces algo sobre el campo normativo, es muy interesante porque te vas a poder dirigir a varios campos de la ciberseguridad. Todo, debido a que esta industria no está por fuera del margen legal y todas las áreas se deben moldear a esta.
+
+
+ROLES LABORALES:
+Ingeniero en ciberseguridad: nivel técnico de alto nivel para entender y dirigir las decisiones de la organización para que esta sea más segura
+Analista de ciberseguridad: enfocado o enfocada en el ámbito de red, entendiendo el tráfico, para detectar anormalidades
+Arquitecto de redes/ciberseguridad: encargado o encargada de proponer de forma global cómo estructurar la red para evitar exposición y daños causados a datos
+Consultor de ciberseguridad: persona que está muy actualizada acerca de ciberseguridad y tiene habilidad social para interactuar y asegurar el crecimiento de una organización
+Gerente de ciberseguridad: persona encargada de todos los temas y estrategias de ciberseguridad en una organización
+
+ROLES DE SEGURIDAD PRINCIPIANTES
+Pentester Jr: relacionado con hacer pruebas de seguridad
+Analista Jr: monitorear la red para detectar las anormalidades básicas
+Técnico de redes: hacer el trabajo mecánico de las redes, mover los cables de las redes
+Respuesta a incidentes: planear las acciones a realizar, cuando todo vaya mal
+Consultor Jr: persona que ya se encuentra fogueada en ciberseguridad, pero que acaba de empezar el camino como consultor
+
+ROLES DE SEGURIDAD INTERMEDIOS
+Ingeniero de preventa: visión amplia y global de toda la ciberseguridad para sugerir productos a posibles clientes
+Ethical hacker: explorar las vulnerabilidades de algún sistema, con el fin de protegerlo
+Ingeniero forense / análisis forense: este rol tiene un conocimiento muy avanzado tanto en hardware y software, para tener más herramientas a la hora de investigar
+Consultor en seguridad de la información: una persona que sabe sobre normativas y leyes para poder sugerir el mejor camino para que todo en la organización esté al día
+
+ROLES DE SEGURIDAD AVANZADA
+Análisis de malware/Malware reversing: identificación de código malicioso, para entender como funciona
+Ingeniería reversa: Con habilidade de programación, tomar el software producto y volver a su origen
+Líder de Red Team/Blue Team: ataque y protección de la red para encontrar la mejor manera de hacerlo
+Experto en nube: Infraestructura del funcionamiento de la nube
+CISO, CSO, DPO: los roles más altos dentro del mundo de la ciberseguridad, capaces de sugerir estrategias de forma global para empresas e incluso países, para estar los más seguros posibles
+Especialista en incidencias: capaz de identificar los incidentes, mantener la calma en la crisis, como también dirigir un equipo en estas situaciones
+
+Algunas herramientas para practicar lo aprendido sobre seguridad informática y proteger los datos de tu organización o potenciar tus habilidades son las siguientes:
+
+Capturar la bandera
+Recompensas por errores
+Cursos de seguridad informática
+Laboratorios de seguridad informática
+
+https://github.com/apsdehal/awesome-ctf
+

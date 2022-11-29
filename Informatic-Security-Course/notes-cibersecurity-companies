@@ -1,0 +1,499 @@
+Qué es la Ciberseguridad?
+
+Es un conjunto de buenas practicas para desarrollar personas, directrices, procesos de la cultura organizacional y arquitecturas de IT con el motivo de proteger a la empresa u organizacional de ciberataques.
+Todo lo anterior esta basado en los ciber riesgos a los que se puede exponer en plataformas donde se provee información sensible.
+
+La ciberseguridad es la práctica de proteger los sistemas más importantes y la información confidencial ante ataques digitales.
+
+Es un conjunto de buenas prácticas para desarrollar personas, directrices, procesos de la cultura organizacional y arquitecturas de IT con el motivo de proteger a la empresa u organizacional de ciberataques. Todo lo anterior está basado en los ciber riesgos a los que se puede exponer en plataformas donde se provee información sensible.
+
+¿Con qué motivo?
+Para proteger tu empresa u organización, sus sistemas críticos e información sensible de ataques digitales.
+
+
+
+
+
+Importancia de la ciberseguridad:
+
+Hay 2 tipos de dispositivos conectados a internet en 2022: 
+No IOT (Computadores, celulares…) que son alrededor de 10.1 mil millones y IOT (Televisores inteligentes, sensores…) al rededor de 16.4 mil millones. 
+Estos están transmitiendo datos e información susceptible a ataques.
+
+En promedio se envían por minuto 69 millones de mensajes y 197.6 millones de correos y toda esta información es susceptible también a ataques, por lo que se 
+deben implementar estrategias de seguridad.
+El costo promedio de una brecha de seguridad en 2021 fue de 4.24 millones de dólares. Se perdieron al rededor de 6.9 mil millones de dólares en 2021 por 
+cibercrímenes tanto en empresas como personas naturales.
+
+Por todo lo anterior, la ciberseguridad mitiga estos riesgos financieros, reputacionales y regulatorios.
+Algunos actores como los gobiernos (reglas, normas…), inversionistas y los usuarios están en la potestad de exigir mejores protocolos de seguridad por 
+su posicion frente a la empresa.
+
+El cubo de McCumber :
+nos comparte 3 formas de establecer y evaluar la ciberseguridad .
+1.Objetivos de la seguridad de la informacion(AZUL) CONFIABILIDAD, DISPONIBIIDAD E INTEGRIDAD
+2.El estado de la informacion (AMARILLO) TRANSMISION, ALMACENAMIENTO Y PROCESAMIENTO
+3.Medidas de seguridad de la informacion(ROJO) FACTORES HUMANOS, POLITICAS Y PRACTICAS, TECNOLOGIA
+
+
+
+
+
+
+Beneficios de la ciberseguridad
+
+Aumenta el nivel de confianza hacia mi empresa por la gestión segura de la información
+
+Beneficios
+
+    Privacidad
+    Protección
+    Integridad
+    Prevención
+    Productividad
+    Control
+
+Logros
+
+    Compliance en Ciberseguridad: implica ajustarse a una normativa para cumplir con los requisitos legales, contractuales o éticos. De este modo, se genera 
+    una cultura del cumplimiento legal.
+    
+    El Reglamento general de protección de datos (GDPR, por sus siglas en inglés): es una nueva ley que se aplica a cualquier organización que posea y use 
+    datos personales de ciudadanos de la Unión Europea.
+    Proporciona al usuario la visibilidad y protección necesaria de la información que recaban las empresas sobre ellos y disponer de mecanismos para poder 
+    consultarla, controlarla e, incluso, borrarla y sobre todo, de forma totalmente transparente.
+    
+    Availabilty: información a la que podemos acceder cuando la necesitamos a través de los canales adecuados siguiendo los procesos correctos.
+    
+    Evolution: Proporciona ventajas para acceder a nuevas oportunidades, por ejemplo nuevos mercados y maximizar beneficios
+
+
+
+
+
+Retos de la ciberseguridad
+
+Nuevas Tecnologías
+    Tecnologías con amplio poder computacional que permitan descifrar o vulnerar algoritmos de cifrado.
+    Nuevos dispositivos que no implementen cifrado de datos debido a su poder computacional.
+
+Zero Day Attacks:
+    Ataques a hardware o software sobre un fallo no conocido, por lo tanto no existen parches de control.
+
+Proceso de Mejora Continua:
+    Los riesgos siempre serán persistentes , por lo tanto se deberán crear y revisar controles constantemente.
+
+Mayor número de atacantes:
+    Script Kiddies: Personas con poco conocimiento pero motivadas por películas o series.
+    Grupos criminales: Motivados para obtener un beneficio (Tarjetas de crédito, información confidencial de su empresa).
+    Naciones-estado: Países con amplios recursos informáticos que afectaran a tu industria.
+    Hacktivistas: Similar a los grupos criminales pero con una motivación distinta (Crear conciencia sobre cuestiones políticas o sociales, revelación de documentos, etc.)
+    Competencia: Las empresas pueden atacar a otras con el fin de tener una ventaja en el mercado o sobre una nueva tecnología.
+    Personal Interno: Alguien infiltrado desde dentro que buscan afectar a la empresa por diferentes motivos
+
+Proceso de mejora continua:
+
+Planear -- Hacer --- Verificar --- Actuar
+
+Mayor número de atacantes
+Stript Kitties: Personas con poco conocimiento pero muy motivadas. Normalmente tienen poco conocimiento y copian y pegan ataques de blogs.
+Grupos criminales: Suelen tener mas conocimiento y son motivadas por daños economicos.
+Naciones-estado: Paises o gobiernos que tienen recursos virtualmente ilimitados que pueden afectar a mi industria.
+Hacktivistas: Su motivación puede ser una misión “moral” o de creencia.
+Competidores: Las empresas que compiten en la misma area que nosotros pueden intentar atacar y robar información.
+Internos: Alguna persona interna que tiene acceso a mucha información y puede atacar por muchos motivos.
+
+Mayor superficie de ataque hace referencia a todos los puntos donde podemos recibir un ataque. Por ejemplo los dispositivos de los empleados tanto personales 
+como profesionales, servicios cloud, mayor cantidad de empleados, dispositivos IOT,
+Y lo mas complicado es la implementación de la cultura en seguridad en toda la empresa, ya que todo el personal de la empresa debe estar en pro de la seguridad.
+
+Implementar Cultura de seguridad
+
+
+
+
+
+Entiende tus riesgos
+
+Entiende tus riesgos:
+¿Conocemos realmente los riesgos que hay? Toda organización debería realizar un análisis de brechas en todos los procesos en términos de la ciberseguridad, 
+es decir, analizando el flujo de infomación. Debemos preguntarnos:
+
+    Amenazas: ¿Tengo claras las ciber-amenazas que podrían afectar la información de la empresa? (comunicación con artefactos IOT, tipos de ciber ataques, 
+        ciberdelincuentes potenciales…)
+    Alcance: ¿Que activos de información debo proteger de Ciberataques? (Servidores, bases de datos, cloud, recursos humanos…)
+    Transferencia del riesgo: ¿Podría buscar apoyo en el tratamiento de riesgos identificados? (Proveedores de servicios que deban compartir la responsabilidad)
+    Apoyo: ¿Cuento con el respaldo para implementar Ciber-Controles? (Apoyo economico, recurso humano, aliados que me ayuden a reforzar estos controles)
+
+En el Framework de ciberseguridad NIST, en su fase de identificar los riesgos, de evaluarlos y tratarlos. En esta etapa debemos realizar una comprension de 
+la organización con sus manejos y sistemas de información.
+
+https://www.nist.gov/cyberframework
+
+
+
+
+
+Seguridad de la Información:
+
+La triada CID
+
+Confidencialidad: Acceso a la información solo disponible para usuarios que tengan la autorización necesaria.
+
+Integridad: Busca mantener que la información no sufra alguna alteración a su estructura o en dicho caso su eliminación.
+
+Disponibilidad: Tener acceso a la información cada que esta sea solicitada por el usuario y asegurarse de que la información sea accesible en todo momento.
+
+Seguridad de la Información vs La Seguridad de la Informacion.
+
+La seguridad de la informacion contiene la ciberseguridad y esta a la seguriad de la red
+
+
+
+
+
+
+Seguridad de aplicaciones
+
+Rama de la seguridad que se preocupa de proteger las aplicaaciones.
+https://owasp.org/www-project-top-ten/
+https://owasp.org/
+https://cheatsheetseries.owasp.org/
+
+
+Controles de seguridad:
+Entrenamientos Owasp Top 10
+Analisis estatico de codigo
+Analisis dinamico de codigo
+Arquitecturas de codigo
+
+Modelo de madurez de asegurameinto de software(Owasp SAMM)
+
+Estandares de seguridad:
+CERT Secure Coding
+ISO/IEC 27034
+ISO/IEC TR 24772
+NIST 
+OWASP ASVS: Web Applications
+Security Verification Standart
+
+
+
+
+
+
+
+Seguridad en Redes
+
+Rama de la seuridad que estudia la infraestructura de red, su coectividad y seguridad
+Politicas y Soluciones.
+
+Modelo OSI - Seguridad en cada capa
+
+Principales Controles
+Firewalls, Control de acceso, Segmentación de Redes, DLP, IPS, VPN, SIEM, Seguridad Inlambrica, Protecciones de Correo.
+
+
+
+
+
+Seguridad en la Nube:
+
+Rama de la seguridad de la informacion que se sencarga de asegurar los sitemas de computacion en la nube.
+
+Controles de seguridad:
+Perimetro de seguridad fuerte
+IAM
+Replicacion
+Observabilidad
+Gobernanza
+Compliance
+Manejo de datos
+
+
+
+
+Seguridad física
+
+Rama de la Seguridad de la informacion, encargada de la proteccion de los activos fisicos de una organización,
+mediante diferentes mecanismos, y/o acciones de detección prevencion de riesgos.
+Seguridad de los datos en dispositivos fisicos.
+
+Controles de Seguridad:
+Capas de Seguridad Fisicas
+Control de acceso biometrico, camaras, eliminación segura de la información.
+Controles medioambientales.
+
+
+
+
+Cultura en Ciberseguridad
+Representan las idenas, costumbres y comportamientos sociales en una organización que impactan en la seguridad de la información.
+
+Elementos:
+
+Actitudes y comportamietos,
+Concimiento,
+Comunicacion,
+Cumplimiento,
+Normas y Responsabilidades
+
+Por que es importante:
+Porque el factor humano representa el mayor factor de brechas de seguridad.
+En una empresa, el eslabón más débil es el factor humano!!
+
+Pasos para construir una cultura de seguridad fuerte.
+1.-  Craer Objetvos estrategicos claros.
+2.- Medir el estado actual de la cultura
+3.- Diseñar una estrategia de cambio cultural
+4.- Ejecutar la estrategia de cambio cultural
+5.- Revision y mejora contiunua del procesos
+
+Recomendaciones
+Proceso constante para interiozar la cultira de seguridad en los empleados
+Tener un responsable directo de cuidar la cultura.
+Debe involucrar todos los niveles de la empresa.
+Hacerlo parte de la evaluación de la empresa
+Haceer simulacros.
+
+
+
+
+CIBERAMENAZAS 
+Malware
+Analisi de amenazas
+https://www.virustotal.com/gui/home/upload
+https://www.hybrid-analysis.com/
+
+Software malicios para generar daño digital
+Afecta a todo tipo de dispositivos.
+
+Puede hacer:
+
+Crakear contraseñas,
+Intrusión
+Movimiento Lateral: Si se infecta una maquina y se replica
+Afecta la disponibilidad
+Cryptojacking: utiliza procesamiento para mineria de criptomonedas
+Secuestro de datos
+Zombie: Ciberataques dirigidos con Botnets
+
+Tipos de Malware
+
+Virus ---- Ransomware ---- Spyware --- Bots ---- 
+
+
+Ransomware
+Utiliza tecnicas de cifrado muy robustas
+Lucra por la información
+
+Factores de Riesgo:
+
+Direcciones Ip Publicas sin Auditar
+Firewall ausentes o sin tunning
+
+Carencia de Endpoint Protection
+SO sin antivirus
+
+No existen practicas de Hardening
+Servicios de IT para evitar configuraciones por defecto.
+Falta de cultura de seguridad
+
+Ciber-Controles:
+Respaldar la información y proba esos backups.
+No pagar el rescate.
+
+Educación y aseguramiento de activos.
+Herramietas de decifrado
+https://www.nomoreransom.org/es/index.html
+https://www.pcmag.com/picks/the-best-ransomware-protection
+
+
+Ingenieria Social.
+
+Iteracciones y tecnicas utilizadas por ciberdelicuentes para ejecutar delitos.
+Utiliza la manipulación psicologica.
+
+Ciclo de Vida:
+Investigación de la victima
+Hook - Engancho.
+Play - Ejecución.
+Exit - Cierre y borrar las huellas.
+
+Cibercontroles.
+Validacion de origen: Correos - mensajes
+2FA o MF: Fortalece las cuentas
+Cultura en ciberseguridad: Sentido común
+
+
+
+Phishing
+Tecnicas de ingenieria socia, utilizada para el robo de datos personales y financieros.
+Suplantacion de identidad digital de personas o empresas.
+
+Técnicas de Phishing
+Email Scams
+Spear Phishing
+
+Ciber Controles
+
+Educación en seguridad
+2FA o MFA
+Denunciar los enlaces.
+
+
+Denegación de servicios.
+
+Ciberataque que afecta a la disponibilidad de servicios tecnologicos.
+
+Tipos:
+Basados en Volumnen
+Satura el acho de banda, Basados en protocolos UPD/ICMP se mide en Bps.
+
+De protocolo
+Consume recursos del servidor o instanacia (SYN, Ping of Death), medible en Pps (Paquetes por segundo)
+
+De capa de apicacion
+Genera request masivos hacia servicios web hasta lograr crashearlos. medible en Request por segundo (Rps)
+
+Aplicación de DoS
+Redes de dispositivos zombies generan ataques distribuidos a objetivos especificos.
+Es lucrativo.
+
+Ciber controles
+Security as Service
+
+Hardening de servicios, robustes de servicios, 
+Enlaces con ejemplos de DoS
+https://www.spamhaus.com/threat-map/
+https://www.cloudflare.com/es-es/ddos/
+
+
+
+Man in the middle
+
+MiT:
+Es un ciberataque qu permite interceptar la comunicación entre un usuario y una maquina.
+Captura informacion sencible.
+
+Tipos de ataques
+
+IP Spoofing: Su propósito es transformar la dirección IP
+ correcta de la fuente para que el sistema al que se dirige un paquete no pueda detectar correctamente al remitente.
+
+ARP Spoofing: Es una técnica que utilizan los piratas informáticos para lograr entrar en una red para robar los paquetes de datos que pasan por la red local. De esta forma podría controlar el tráfico y también incluso detenerlo.
+
+DNS Spoofing: consiste en modificar las direcciones IP en los servidores DNS de la víctima. De este modo, los delincuentes pueden redirigir el tráfico de la víctima hacia sitios web falsos.
+
+Ciber Controles:
+Alertas en navegadores
+No omitir estas alertas de seguridad
+Logging-out obligatorio
+VPN
+Cifrar comunicaciones, Utilizar TLS 1.3+
+
+Servicio para validar el certificado de sitios web.
+https://www.ssllabs.com/ssltest/
+
+
+
+
+
+Controles en Ciberseguridad:
+Gestion de Accesos
+se refiere al tratamiento que se brinda a credenciales de acceso, tokens o recurso que permita autenticarse en un sistema.
+
+Clasificaciones:
+Locales(offline)
+Permite la administracion de accesos en archivos locales con Master Key(Keepass)
+
+Sericios web(Online)
+Permite sincronia de accesos en diferentes dispositivos a través de internet(1password)
+
+Basado en token
+Permite autenticarse con componentes hardware.
+
+Beneficios
+Uso de contraseña maestra + token File (2FA)
+Promueve el fortalecimiento de claves.
+Son repositorios de claves cifrados
+Algunos implementan passwordless option(mobile)
+Cuentas con generdores de contraseñas.
+Permiten la gestion de accesos en equipos de trabajo.
+
+Soluciones:
+Keepass
+Bitguarden
+
+Enlaces para gestion de credenciales
+https://bitwarden.com/
+https://www.pcmag.com/picks/the-best-password-managers
+
+
+Otra de las recomendaciones de la seguridad informática para cubrir todos los factores de autenticación son :
+1.-Algo que sabes
+2.-Algo que tienes
+3.-Algo que eres
+
+
+
+
+Firewalll
+Es un dispositivo o servicio de seguridad que monitores y controla la entrada y salida de trafico de bajo reglas de seguridad definidas.
+
+APORTA al modelo Zero-Trust
+
+Identities         Infraestructure
+Devices            Data
+Applicatiosn       Network
+
+Implementacione:
+
+Aplicacion en sitio: Hardware instalado
+Cloud Security Mode: Servicio de seguridad
+
+Beneficios:
+Panorama de seguridad: Visualizar eventos en el trafico de Red
+QoS: Calidad de servicio de la red empresarial.
+Controles permanentes: Actualizacio constante
+Canales de red seguros: permite crear VPN
+
+Articulo para poder escoger un firewall:
+https://www.itsasap.com/blog/how-to-choose-a-firewall
+
+
+
+
+IDS/IPS
+Sistemas de Detección/Prevencion de intrusos
+
+IDS:
+Herramienta de seguridad en la red que analiza el trafico interno para detectar actividad maliciosa y alertar amenazas.
+
+IPS:
+Evolución del IDS, Permite ademas de alertar, puede bloquear, capturar o eliminar paquetes maliciosos.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
