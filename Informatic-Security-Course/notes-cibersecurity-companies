@@ -474,6 +474,377 @@ IPS:
 Evolución del IDS, Permite ademas de alertar, puede bloquear, capturar o eliminar paquetes maliciosos.
 
 
+IDS (Sistema de Detección de Intrusos) Sólo Detecta actividades maliciosas.
+IPS (Sistema de Prevención de Intrusos) Ejecuta una acción ante actividades maliciosas y se encuentra In-line para bloquear la conexión.
+
+Identifican amenazas mediante:
+
+Firmas
+
+Anomalías
+
+Políticas
+
+Un Firewall sólo analiza los Headers TCP/IP, mientras que los IPS/IDS analizan todos los paquetes completos.
+
+Existen diferentes tipos:
+NIPS Network Intrusion Prevention System
+Sistema basado en red
+HIPS Host Intrusion Prevention System
+Sistema basado en el Host, recopila host mediante el agente en cada equipo para analizarlos.
+NBA Network Behavior Analysis
+Analiza tráfico inusual (DDoS)
+WIPS Wireless Intrusion Prevention System
+Escanea redes WiFi
+
+Beneficios:
+
+Integración con otras soluciones
+
+Mayor eficiencia en otros controles de seguridad
+
+Ahorro de tiempo
+
+Compliance
+
+Personalizable
+
+Existen como soluciones independientes, en Firewalls de Nueva Generación (NGFW) o en un Gestor Unificado de Amenazas (UTM) y pueden ser Open Source, proveedores de pago o en la nube.
+
+
+
+Correlación y gestión de eventos
+ SIEM: Correlación y Gestión de Eventos (SIEM)
+
+ 
+    Gestión y Análisis de fuentes de información centralizada.
+
+    Gestión de registros
+
+    Correlación de eventos y análisis
+
+    Monitoreo de incidentes y alertas de seguridad
+
+    Gestión de compliance y informes
+
+Capacidades:
+
+    Agregación de Información
+
+    Correlación
+
+    Alerta
+
+    Dashboard
+
+    Compliance
+
+    Retención
+
+    Análisis Forense
+
+¿Porqué es importante?
+
+    Puede ayudar a detectar Zero-Days
+
+    Normalización y categorización de logs
+
+    Visualización de eventos
+
+    Detección de malas configuraciones
+
+    Puede detectar comunicaciones maliciosas y canales encriptados
+
+    jemplo:
+
+Regla:
+
+Fuente de inicio de sesión de ataque repetido
+
+Objetivo:
+
+Alerta temprana para ataques de fuerza bruta
+
+Trigger:
+
+Alerta sobre 3 o más inicios de sesión fallidos en un minuto de un sólo host
+
+Fuentes de información:
+
+Active Directory, Syslog (hosts Unix, conmutadores, enrutadores, VPN) RADIUS, TACACS, aplicaciones monitoreadas
+
+
+Bckups:
+
+Tipos de copias de seguridad
+
+Completa. Se realiza una copia de seguridad de todos los archivos y carpetas seleccionados. Cuando se ejecutan copias posteriores, nuevamente se hace una copia de seguridad de todo el listado de archivos. La restauración de una copia de seguridad completa es rápida. Sin embargo, cada ejecución es lenta y ocupa más espacio con respecto a las otras tipologías.
+Incremental. Primero se realiza una copia de seguridad completa y las siguientes copias incluyen únicamente los cambios realizados desde la última copia de seguridad. Es mucho más rápida que una copia de seguridad completa y requiere menos espacio, pero la restauración es más lenta que con una copia de seguridad completa o diferencial.
+Diferencial. Se realiza una copia de seguridad de todos los cambios realizados desde la última copia de seguridad completa. Es mucho más rápida y requiere menos espacio de almacenamiento que una copia de seguridad completa, pero más que una copia de seguridad incremental. Las restauraciones son más lentas que con una copia de seguridad completa, pero más rápidas que con copias de seguridad incrementales.
+Espejo. Es un reflejo fiel de la fuente que se está respaldando, lo que implica que un archivo eliminado en el origen, también se eliminará en la copia de seguridad. Debido a esto, este tipo de copia de seguridad debe usarse con precaución.
+Sintética completa. Reconstruye la imagen de copia de seguridad completa usando todas las copias incrementales o diferenciales. Puede almacenarse en cintas en localizaciones externas, con la ventaja de que se reduce el tiempo de restauración.
+Backup incremental inverso. Es una copia de seguridad incremental de los cambios realizados entre dos instancias de una copia espejo. Después de la copia completa inicial, cada copia sucesiva aplica los cambios a la anterior completa, creando una nueva copia de seguridad sintética completa cada vez, mientras se mantiene la capacidad de volver a las versiones anteriores
+Protección de datos continua (CDP). Permite una mayor cantidad de puntos de restauración con respecto a los demás tipos de copia de seguridad.
+Responder
+oaguayo
+oaguayo
+
+Hace 24 días
+
+1
+sigo sin entender la diferencia entre incremental y diferencial 😦
+
+Juanjo
+Juanjo
+
+Profe PlatziHace 2 días
+
+2
+En la incremental vas guardando los cambios desde la última copia de seguridad (sin importar su tipo: completa o parcial); en la diferencial, se guardan los cambios desde la última copia de seguridad completa (una que tenga absolutamente todos los archivos, no solo los modificados desde la anterior copia de seguridad)
+
+
+Cifrado
+Es el proceso de codificar información en un formato ilegible mediante el uso de algoritmos y claves, con el fin de que solo pueda ser leída por quien posea la clave de descifrado.
+
+Por ejemplo, si se aplica el cifrado AES-256 y la clave 1234, se obtiene:
+
+Original: Este es un texto confidencial
+Cifrado: L6eZTDA2Xz/l8R0lEc/w5qbuZexqC1d/HeomuMI6dqw=
+
+Cifrar la información es importante para evitar que terceros puedan acceder a ella en caso de que un dispositivo se pierda o sea robado.
+
+Los sistemas operativos modernos cuentan con herramientas como BitLocker en Windows, FileVault en Mac, o LUKS en Linux, que permiten cifrar el disco duro y unidades extraibles.
+
+Tipos de cifrado:
+
+Simétrico: Se utiliza la misma clave para cifrar y descifrar. Un ejemplo es el cifrado de César.
+Asimétrico: Se utilizan dos claves distintas pero relacionadas entre si, una es pública y la otra es privada. Ambas pueden ser utilizadas para cifrar y descifrar, pero si se utiliza la pública para cifrar, solo la privada puede descifrar, y viceversa. Un ejemplo es el cifrado RSA.
+Consideraciones a la hora de elegir un método de cifrado:
+
+Tamaño de la clave: Cuanto más grande sea la clave, más segura estará la información, pero también será más lento el proceso de cifrado y descifrado.
+Algoritmo: Existen algoritmos más seguros que otros, pero al igual al igual que en el punto anterior, cuanto más seguro sea el algoritmo, más lento será el proceso de cifrado y descifrado.
+
+
+VPN
+
+VPN (Virtual Private Network)
+Es una tecnología que permite conectar dos o más redes de forma segura a través de Internet (el cual es un medio público e inseguro), pero que aún se comporte como si estuvieran conectadas de forma directa. Además, toda la información que fluya a través de ella será cifrada.
+
+Beneficios de utilizar una VPN:
+
+Utilizar recursos de la red interna desde cualquier lugar.
+Cifrar la información que fluye a través de Internet.
+Ocultar la identidad (dirección IP) a los sitios web que se visitan.
+Soluciones de VPN:
+
+Servidor empresarial (on-premise): Se instala un servidor VPN en la red de la empresa, y se configura para que los usuarios puedan conectarse a él desde cualquier lugar.
+VPN as a service (Cloud): Similar al anterior, pero se contrata un servicio en la nube.
+VPN comerciales: Orientadas a usuarios finales, se pueden configurar en varios dispositivos y generalmente son usadas para acceder a contenido bloqueados según la ubicación.
+
+
+
+
+
+
+
+Endpoint protection
+
+
+Endpoint Protection
+
+Características:
+
+Clasificación con Machine Learning
+
+Protección avanzada de múltiples dispositivos
+
+Protección de navegación web
+
+DLP
+
+Firewall integrado
+
+¿Cómo funciona? Bajo un paradigma de cliente-servidor, analiza información proporcionada por el compartamiento y logs de cada uno de los dispositivos en los que está instalado el agente para encontrar a gran escala actividades maliciosas mediante una consola centralizada.
+
+
+
+
+
+
+BCP (Plan de Continuidad de Negocio)
+
+RTO(Recovery Time Objective): representa el tiempo máximo que requiere una empresa para la recuperación de sus sistemas después de un incidente o desastre.
+
+RPO(Recovery Point Objective): representa la cantidad de datos e información que una organización puede aceptar como pérdida considerable ante una contingencia
+
+
+
+Gestión de incidentes de ciberseguridad
+
+Gestión de Incidentes de Seguridad
+
+Es un proceso que permite una respuesta efectiva y rápida a ciberataques. Idealmente, existe un plan que documenta una serie de procesos y pasos que se deben realizar en cada fase de la respuesta a un incidente. Se puede utilizar la “Guía de manejo de incidentes de seguridad informática” NIST 800-61r2
+
+Tiene 4 fases:
+
+Preparation
+Detection & Analysis
+Containment, Eradication & Recovery
+Post-Incident Activity
+Estimamos las necesidades y establecemos procedimientos
+
+Identificar los signos inusuales que pueden generar dicho incidente. Así como el tipo de incidente y qué tan grave es
+
+Reportamos, notificamos y registramos el incidente
+
+Debemos determinar el tipo de incidente, clasificarlo y así saber que tanto nos puede afectar
+
+Detenemos el ataque y evitar que se propague así como recuperar los datos.
+
+Lecciones aprendidas. Identificamos las causas del incidente, por qué pasó y cómo podemos hacer para que no vuelva a pasar.
+
+
+
+
+Gestión de incidentes de ciberseguridad
+Es el proceso que permite actuar de forma rápida ante un ataque, definiendo acciones a tomar. A modo de referencia, se puede seguir el estándar NIST 800-61r2.
+
+De forma simplificada, dicha guía define los siguientes fases:
+
+Preparación: Definir roles y responsabilidades, definir procedimientos, entrenar al personal, etc.
+Detección y análisis: Utilizar los sistemas de control para detectar indicios de un incidente de seguridad.
+Identificación del incidente y su gravedad.
+Notificación a los encargados.
+Clasificación y priorización.
+Contención de incidentes: Se detiene el ataque y se intenta retomar la operación normal.
+Actividades post-incidente: Investigar la causa del ataque, aprender de el para evitar que vuelva a ocurrir.
+
+
+BYOD (Bring Your Own Device)
+
+BYOD (Bring Your Own Device)
+Es una política que permite a los empleados usar sus propios dispositivos para trabajar, llevándolos a las oficinas y conectándolos a la red interna. Si bien no se tiene control total sobre estos dispositivos, se deben implementar controles para proteger la red y los datos.
+
+Prevenir software pirata: Los activadores de Windows u Office suelen tener malware. Se debe considerar soluciones open source.
+Mantener el software actualizado: Evita que se exploten vulnerabilidades conocidas.
+Evitar uso de redes públicas: Evita ataques de man-in-the-middle. En caso de ser necesario, se debe usar una VPN.
+Cifrado de disco: En caso de pérdida o robo del dispositivo, se evita que un tercero acceda a los datos.
+**DNS:**Cambiar el DNS predeterminado para evitar redirecciones a sitios maliciosos.
+Endpoint Protection: Protección avanzada contra diferentes tipos de amenaza.
+Contraseñas seguras: Evita que terceros accedan a los datos. Se puede usar un gestor de contraseñas para evitar usar la misma en diferentes sitios.
+
+
+
+ROLES DENTRO DE LA CIBERSEGURIDAD
+
+CEO:  CEO (Chief Executive Officer)
+Es el director ejecutivo de la empresa, por lo tanto es el máximo responsable de la forma en la que se gestiona la seguridad de la información.
+
+Sus responsabilidades son:
+
+Recurso humano para la Ciberseguridad: Es quien aprueba las contrataciones de personal acreditado para la seguridad.
+Garantiza el cumplimiento: Debe garantizar que se realizan los controles necesarios y se cumple con las normativas vigentes.
+Gestión de riesgos: Define la gestión de los riesgos.
+Cultura de ciberseguridad: Debe promover y fomentar la cultura de ciberseguridad en la empresa.
+
+
+CISO (Chief Information Security Officer)
+CISO
+Es la persona responsable de la Seguridad de la Información en la empresa. Alinea la seguridad con la misión del negocio.
+
+Generar políticas de Seguridad
+Establece directrices y reglas al interior de la organización en función de la información.
+
+Garantiza la privacidad de los datos
+Vela por el cumplimiento de normativas en la correcta Gestión de Datos Personales
+
+Auditor Interno en Ciberseguridad
+Revisa que los riesgos a los que se expone la información sean mitigados
+
+Acompaña los procesos de certificación
+Prepara a la empresa para cumplir estándares internacionales en Seguridad
+
+
+CSO (Chief Security Officer)
+CSO
+Encargado de Seguridad Física y tecnológica
+
+Comparte responsabilidad con el CISO
+
+Riesgos
+Detecta los ciber-riesgos a los que se enfrentan los activos de TI
+
+Gestionar proyectos
+Realiza labores de Project Management sobre proyectos de Ciberseguridad aplicada
+
+Conocimiento Legal
+Investiga y tiene claridad sobre Cibersecurity Compliance
+
+BCP & DRP
+Ejecuta planes de Continuidad del negocio y Recuperación ante desastres o incidentes de Ciberseguridad
+
+Canal de comunicación con la Gerencia
+Su ubicación en la jerarquía organizacional permite enlace directo con el CEO
+
+
+
+CIO (Chief Information Officer)
+CIO (Chief Information Officer)
+El director de información es el responsable de la gestión de la información de la empresa y aplica la ciberseguridad en sus desiciones. Sus responsabilidades son:
+
+Mantenerse actualizado sobre las tecnologías de la información y la ciberseguridad.
+Gestionar ciberriesgos al adquirir hardware, software u contratar servicios.
+Promover la ciberseguridad en la empresa (security champion)
+Agregar el requerimiento de seguridad en las inversiones en tecnología.
+
+
+Penetration Testers (Red and Blue Team)
+Penetration Testers (Red and Blue Team)
+Es el encargado de auditar el estado de la ciberseguridad, simulando ataques (dirigidos, organizados y siguiendo metodologías) para probar la efectividad de los controles de seguridad. Puede ser interno o externo a la organización. Sus responsabilidades son:
+
+Reportar vulnerabilidades o fallas detectados, informando su gravedad y riesgos, y sugiere soluciones.
+Proponer soluciones y controles, incluso si se está fuera de la organización.
+Existen diferentes metodologías para realizar la auditoría, pero por lo general se pueden resumir en:
+
+Acuerdo para auditar: solicitar permisos y firmar un NDA.
+Inteligencia: Capturar información para conocer la organización y sus objetivos.
+Modelar la amenaza: Diseñar cómo se va a auditar.
+Analizar las vulnerabilidades: Identificar las tecnologías usadas en los puntos críticos.
+Explotación: Ejecutar el ataque.
+Post-exploitation: Intentar realizar movimientos laterales para acceder a más recursos.
+Reportar: Entregar un reporte ejecutivo y técnico con las vulnerabilidades encontradas.
+También existen diferentes tipos de pentesting:
+
+Blackbox (caja negra): El auditor no posee acceso ni detalles del objetivo, solo conoce URLs o IPs públicas.
+Graybox (caja blanca): El auditor sí tiene acceso a la red interna para una mejor exploración.
+Whitebox (caja gris): El auditor tiene acceso sólo a una parte de la red interna .
+
+
+
+Stakeholders
+Stakeholders
+
+Todas aquellas persona, empresas o aliados que aportan al cumplimiento de controles de Ciberseguridad.
+
+Sector Privado
+Todos aquellos proveedores de tecnología y ciberseguridad como AWS, Google y Microsoft.
+
+Sector Público (Gobiernos)
+Entidades que generan directrices y normativas en ciberseguridad (NSA, Ministerios TIC).
+
+Responsabilidades
+
+Aplican Controles
+Se comprometen con la ejecución de controles de Ciberseguridad definidos por la empresa.
+
+Promueven Compliance
+Adquieren certificaciones en Ciberseguridad y transmiten ciber-tranquilidad.
+
+Ciber-auditores
+Vigilan el cumplimiento de las buenas prácticas
+
+
+
 
 
 
