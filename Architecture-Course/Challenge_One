@@ -1,0 +1,64 @@
+El reto que tienes es tomar un sistema conocido (del trabajo, algún proyecto propio o un sistema que hayas usado del que conozcas su arquitectura).
+
+Describir qué problemas resuelve y cuáles son sus requerimientos no funcionales.
+
+Si tuvieras que hacer de este sistema un “producto reutilizable” en otros escenarios:
+
+¿Cómo cambiaría su arquitectura?
+¿En qué otro escenario debería repensarse completamente?
+¿En qué otros escenarios se mantendría?
+
+compártenos en el sistema de discusiones.
+
+Sistema: Sistema de administración de Mantenimientos del Sistema Eléctrico Nacional.
+Problemas que resuelve (Resumen):
+
+    - Planificación de mantenimientos sobre los elementos de centrales eléctricas, subestaciones eléctricas y líneas de transmisión de electricidad.
+    - Planificación semanal y mensual del funcionamiento de centrales térmicas en función de las unidades de generación que quedarán indisponibles
+    - Gestión del proceso de ingreso de información, planificación semanal, aprobaciones de mantenimientos, autorizaciones de mantenimientos.
+    - Gestión de maniobras que se ejecutan durante la ejecución de los mantenimientos.
+    - Integración con la Bitácora de Eventos y Maniobras.
+    - Gestión de la Generación afectada y potencia disponible de las unidades de generación.
+    - Gestión de la carga desconectada y transferida.
+    - Gestión de la energía no suministrada por tipo de mantenimientos.
+    - Produce el input para el análisis de datos de potencia, energía, energía no suministrada de manteamientos preventivos y correctivos.
+
+Principales requerimientos no funcionales que cumple:
+    - Disponibilidad del sistema.
+    - Integración con sistemas internos.
+    - Resiliencia
+    - Usabilidad
+
+Principales requerimientos no funcionales que se cumple a medias:
+    - Seguridad
+    - Mantenibilidad
+
+Principales requerimientos no funcionales que no se cumplen:
+    - Portabilidad
+    - Escalabilidad
+    - Eficiencia
+
+Actualmente la aplicación es una aplicación web monolítica, diseñada en capas, diseñada con C#, .Net Framework y SQL Server.
+Mantener el lenguaje C# implementando la última versión estable del lenguaje, desarrollar sobre el actual framework .Net a la fecha, que es multiplataforma para implementar Portabilidad
+Implementar una arquitectura limpia, por ejemplo arquitectura hexagonal, para generar módulos o servicios independientes, con alta cohesión y bajo acoplamiento, para implementar Escalabilidad y mejorar la Mantenibilidad.
+Más del 80% de la lógica de negocio se encuentra en la base de datos dentro de procedimientos almacenados. Toda esta lógica de negocio se debe migrar a la aplicación, a través de la implementación de código limpio.
+
+Como su nicho de mercado o de aplicación es muy específico no existen escenarios que los que debería repensarse todo excepto si el negocio es diferente y no abarca mantenimientos de elementos del sector eléctrico sino hídrico o petrolero por ejemplo.
+
+Cada país tiene su propia legislación para ejecutar estos mantenimientos, pero esencialmente los conceptos que maneja el sector eléctrico son los mismos, por lo que tener un core bastante genérico podría ayudar a que pueda ser implementado en cualquier parte del mundo sin muchos inconvenientes.
+
+
+
+
+
+
+Esta vez el reto es que tomes un sistema conocido y haz lo siguiente:
+
+Describe sus atributos de calidad percibidos.
+¿Estás de acuerdo con las decisiones tomadas?
+Propón el énfasis en algún atributo de calidad.
+Describe qué se vería favorecido
+¿Qué se vería afectado negativamente?
+
+
+

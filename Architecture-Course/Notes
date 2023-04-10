@@ -1,0 +1,510 @@
+El proceso de desarrollo tradicional tiene etapas muy marcadas, que tienen entradas, procesos y salidas que funcionan como entradas de la siguiente etapa.
+
+Análisis de requerimientos: Todo nace de un disparador que nos crea la necesidad de crear un artefacto o un sistema. Necesitamos entender cuál es el problema que queremos resolver. Hay requerimientos de negocio, requerimientos funcionales, requerimientos no funcionales.
+
+Diseño de la solución: Análisis profundo de los problemas para trabajar en conjunto y plantear posibles soluciones. El resultado de esto debe ser el detalle de la solución, a través de requerimientos, modelado, etc.
+
+Desarrollo y evolución: Implementación de la solución, para garantizar que lo que se esta construyendo es lo que se espera. Al finalizar esta etapa tendremos un artefacto de software.
+
+Despliegue: Aquí vamos a necesitar de infraestructura y de roles de operación para poder poner el artefacto a disponibilidad.
+
+Mantenimiento y evolución: Desarrollo + despliegue + mantenimiento, en esta etapa estamos atentos a posible mejoras que se hacen al sistema. En esta etapa el software se mantiene hasta que el software ya deja de ser necesario.
+
+
+
+Etapas clásicas de la arquitectura de software
+Análisis
+Entender que se construirá, cubrir los requerimientos de negocios, de usuarios, funcionales y no funcionales, dando como resultado una compresión muy clara a resolver.
+
+Diseño de la solución
+Propuesta a nivel diseño de solución, se puede trabajar en conjunto con un analista para plantear una posible solución, en modelo, documentación, la finalidad es un detalle de solución.
+
+Desarrollo
+La etapa en la que desarrollador se construye el Software, se debe contar con el set de requerimientos necesarios.
+
+Despligue
+La fase de operaciones, se requiere la infraestructura, roles de operación quienes se asegurarán de llevar el producto a producción(a disponibilidad para el usuario final)
+
+Mantenimiento
+Dependen nuevamente de regresar a las fases de desarrollo y despliegue, en esta etapa se está atento a la detención de errores o mejoras simples, hasta llegar al producto final.
+
+
+Problemas en el desarrollo tenemos dos:
+•** Esenciales** que tienen que ver con el problema que vamos a solucionar diseño y comprobación del concepto. Los dividimis en 4 partes:
+      • Complejidad
+      • conformidad
+      • tolerancia al cambio
+      • invisibilidad
+•** Accidentales**: detalles de implementacion y produccion, lengiajes, integraciones, servers, frameworks etc. Los dividimos en tres partes:
+      • Lenguaje de alto nivel
+      • Multi-procesamiento
+      • entornos de programacion
+
+Los problemas accidentales nos traen ganancias cuando los resolvemos, incluso algunos son solucionables con al alguna libreria, api, etc. Lo verdaderamente importante es resolver los problemas esenciales.
+
+Como solucionar dificultades esenciales:
+Lo complejo de un desarrollo es lo esencial y no lo accidental. No hay ninguna bala de plata que solucione el problema esencial del desarrollo de software. Para ello nos dan 4 formas de resolver las dificultades esenciales:
+
+• No desarrollar: siempre que podamos primero ver si el problema se puede solucionar con un software ya existente, con algo de open source, servicios, integraciones y soluciones pequeñas que solucionen parte del probela etc.
+• Proptotypado rapido: son la evolución de las metodologías agiles, la idea es obtener e fedback lo mas rapido posible de si estamos resolviendo el problema correcto. Para eso hay que ir evolucionando en pasos muy pequeños y siempre obteniendo feedback. EL FEEBACK ES LA HERRAMIENTA DE DESARROLLO MAS IMPORTANTE DENTRO DEL DESARROLLO DE SOFTWARE MODERNO.
+• Desarrollo evolutivo: esta relacionado al tipiado rapido, consta de ir desarrollando en pasos pequeños e ir evolucionando en ese sentido.
+• Grandes diseñadores: personas que tengan la capacidad de diseñar una solucion simple y que resuleva el problema de la mejor forma y con la mejor calidad.
+
+
+En la etapa de diseño y desarrollo estamos concentrados en encontrar cuáles son los problemas que queremos resolver. Estos problemas los podemos dividir en dos grandes tipos de problemas.
+
+Esenciales: Los podemos dividir en 4.
+
+La complejidad, cuándo lo que tenemos que resolver es complejo en si mismo, por ejemplo calcular la mejor ruta entre ciudades.
+La conformidad.
+Tolerancia al cambio.
+Invisibilidad.
+**Accidentales:**Está relacionado con la plataforma que vamos a implementar, tecnología, lenguajes, frameworks, integraciones, etc.
+
+
+
+Es importante que diferenciemos el ROL del puesto de trabajo, hay roles que pueden ser desarrollados por la misma persona.
+
+Experto del dominio: En una metodología tradicional, es la persona a la que acudimos para entender las necesidades del negocio. En metodologías Ágiles --> stakeholders.
+
+Analista: funcional/de negocio, la persona responsable de definir los requerimientos que van a llevar al software a u buen puerto. En el caso de Ágiles el dueño del producto es quien arma las historias y que nos acompaña en el proceso de construcción del software.
+
+Administrador de sistemas / DevOps: Es el rol de operaciones y desarrollo, son las personas responsables de la infraestructura que alojara nuestra aplicación.
+
+Equipo de desarrollo: QA / Testing se encargan de la evaluación de nuestro software, comprobar que lo que se está haciendo es lo que se espera que se haga. Desarrolladores involucrados en la construcción del software. Arquitecto, diseña la solución y análisis de los requerimientos, es un papel más estratégico. La arquitectura emerja del trabajo de un equipo bien gestionado.
+
+Gestor del proyecto / facilitador: Llevan al equipo a través del proceso iterativo e incremental, entender lo que pasa con el equipo y motivar el avance en el desarrollo del producto.
+
+
+Arquitectura de software:
+"La estructura del sistema, compuesta por elementos de software, sus propiedades visibles y sus relaciones"
+Según: Software Architecture in practice (Bass, Clements & Kazman, 2003)
+
+"Conjunto de decisiones principales de diseño tomadas para el sistema"
+Según: Software Architecture: Foundations, Theory and Practice (Taylor, 2010)
+
+"(…) la arquitectura se reduce a las cosas importantes, cualesquiera que sean"
+Según: Patterns of Enterprise Application Architecture (Fowler, 2002)
+
+La arquitectura, más que un modelo es algo estructural. El concepto de arquitectura de software se refiere a la estructuración del sistema que, idealmente, se crea en etapas tempranas del desarrollo. Esta estructuración representa un diseño de alto nivel del sistema que tiene dos propósitos
+
+satisfacer los atributos de calidad (desempeño, seguridad, modificabilidad)
+servir como guía en el desarrollo.
+El no crear este diseño desde etapas tempranas del desarrollo puede limitar severamente el que el producto final satisfaga las necesidades de los clientes. Además, el costo de las correcciones relacionadas con problemas en la arquitectura es muy elevado. Es así que la arquitectura de software juega un papel fundamental dentro del desarrollo.
+
+
+
+Encontré este ejemplo / definición que me parece muy claro:
+
+" Consideremos que el gobierno contrata a la empresa X para construir un sistema grande S. Digamos que la empresa X tiene 3 equipos de trabajo (Equipo 1, Equipo 2, Equipo 3) que participan en el proyecto. La Ley de Conway sugiere que es probable que el sistema resultante consiste de 3 subsistemas principales (Software 1, Software 2, Software 3), cada uno construido por un equipo de trabajo.
+
+Más importante, las interfaces resultantes entre los sistemas (Software 1-Software 2, Software 1-Software 3, Software 2-Software 3, etc) van a reflejar la calidad y naturaleza de las comunicaciones interpersonales reales entre los equipos de trabajo (Equipo 1-Equipo 2, Equipo 1-Equipo 3, Equipo 2-Equipo 3, etc). Es decir, que los equipos que logren una buena comunicación en el mundo real tendrán más probabilidades de crear interfaces de software de mejor calidad entre sus subsistemas. "
+
+
+
+Objetivos del arquitecto.
+El arquitecto tiene varias partes interesadas “stakeholders” el cual tiene que conectar esto requerimientos de cada stakeholders con la implementación del sistema.
+
+Stakeholders involucrados con diferentes requerimientos:
+• Cliente: Entrega a tiempo y que no rebase el presupuesto.
+• Manager: Comunicación clara entre los equipos que participan en el desarrollo del sistema
+• Dev: Que el desarrollo llevado acabo sea fácil de implementar y mantener
+• Usuario: Disponibilidad del producto.
+• QA: Fácil de probar.
+
+El arquitecto de software debe gestionar los siguientes puntos para cada Stakeholder:
+• Encontrar los riegos más altas que afecten en el desarrollo del sistema (Cliente)
+• Modularización y flexibilidad del sistema que se está desarrollando (Manager)
+• Modularidad, mantenibilidad y capacidad de cambio del software (Dev)
+• Desisdir estrategias para la disponibilidad del sistema (Usuario)
+• Que el sistema pueda ser modularizado y cada una destas partes pueda ser probado de forma fácil (QA).
+
+La unión de estos requerimientos (funcionales / no funcionales) va a llevar al arquitecto a tomar decisiones que impactan directamente en el desarrollo del software.
+
+
+El arquitecto de metodologías tradicionales tiene como objetivo encontrar los problemas y diseñar una solución a gran escala que ataque dichos problemas esenciales del desarrollo.
+`
+El arquitecto de metodologías ágiles trabaja con un equipo autogestionado y por ende ven al diseño como un proceso evolutivo y que se va dando sprint a sprint.
+
+Etapa del diseño:
+
+Definición del problema
+Restricciones
+Requerimientos
+Riesgos
+(El arquitecto no tiene noción de lo que el sistema ya hace.)
+Metodologías ágiles: El arquitecto recibe feedback a través de métricas por cada sprint.
+
+
+Entender el problema
+La parte más importante de entender el problema es: separar la comprensión del problema de la propuesta de solución, si no se entiende la diferencia entre estos dos puntos se tiende a solucionar problemas inexistentes y a hacer sobreingeniería.
+.
+
+Problema:
+.
+Detalla ¿que es lo que se va a resolver? (y qué no se va a resolver) sin entrar en detalles del “cómo”. -> (analisis del problema)
+.
+El espacio del problema nos ayuda a entender que es lo que vamos a resolver y exactamente como imaginamos como esto va agregar un valor a nuestros usuarios sin entrar en detalle de cómo lo va a resolver el sistema.
+.
+
+Idea: ¿Qué queremos resolver?
+Criterios de éxito: ¿Cómo identificamos si estamos resolviendo el problema?
+Historias de usuario: Supuestos de historias de lo que va a ganar el usuario al utilizar la solución usando las características del problema a resolver.
+.
+Solución:
+.
+Brinda el detalle del ¿“cómo” se va a resolver?, reflejando los detalles del problema detectado y evitando resolver problemas que no se quiere o necesita resolver. --> (detalles técnicos)
+.
+Se refleja en el espacio del problema y trata de resolverlo teniendo en cuenta todos los detalles técnicos necesarios.
+.
+Consta de:
+
+Diseño: todo lo referente a la planificacion del software, desde diseño UI, UX hasta diseño de sistemas
+Desarrollo: escribir el codigo, configuraciones y contrataciones de servicios
+Evaluación: medir la eficiencia y eficacia del software frente al problema
+Criterios de aceptación: medir el impacto del software, no importa lo bueno que sea el problema si los usuarios no lo usan o no le ven uso
+Despliegue (deploy): lanzar el software en ambientes productivos (mercado) y empezar a mejorar las caracteristicas con un feedback loop (crear, medir, aprender)
+
+
+Requerimientos Parte 1
+
+Los dividimos en 2 grandes grupos:** requerimientos del producto** (los que vienen fijados por las partes interesadas) y los requeremientos de proyecto (fechas de entregas, planes, disponibilidad de recursos humanos, etc).
+
+R. Productos:
+
+Los separamos en tres capas: negocio, **usuario **y funcional
+
+Negocio: reglas de negocios alimentadas por los requerimientos del mismo. Ejemplo si quiero conectar a personas que venden con personas que compran en un proyecto de market_place, el sistema deberia tener la posibilidad de que los usuarios puedan subir artículos.
+
+Usuario tiene que ver con las funcionalidades que va a requerir el usuario del sistema. Siguiendo con el ejemplo del Market-place
+sería que el usuario tuviera un panel de control y pueda autogestionarse la cuenta.
+
+Funcional
+¿qué cosas tienen que pasar operativamente? Ejempo que el sistema pueda cobrar a una tarjeta de credito luego de concretar una venta.
+
+
+Requerimientos Parte 2
+
+Los requerimientos de producto se pueden separar en funcionales y no funcionales .
+
+Los funcionales detallana especificamente como el sistema se va a corportar. Los requisitos funcionales establecen los comportamientos del software.
+
+Los No funcionales representan características generales y restricciones de la aplicación o sistema que se esté desarrollando.
+Ejemplos de No funcionales :
+
+El sistema debe ser capaz de procesar N transacciones por segundo. Esto se medirá por medio de la herramienta SoapUI aplicada al Software Testing de servicios web.
+Toda funcionalidad del sistema y transacción de negocio debe responder al usuario en menos de 5 segundos.
+El sistema debe ser capaz de operar adecuadamente con hasta 100.000 usuarios con sesiones concurrentes.
+Los datos modificados en la base de datos deben ser actualizados para todos los usuarios que acceden en menos de 2 segundos.
+
+
+
+Una vez que entendemos el espacio del problema y el espacio de la solución, vamos a entrar a analizar los requerimientos de nuestro sistema.
+
+Requerimientos de producto: Los podemos dividir en 3.
+
+Capa de requerimientos de negocio, son reglas del negocio que alimentan los requerimientos del negocio.
+Capa de usuario, tienen que ver en cómo el usuario se desenvuelve usando el sistema, qué atributos del sistema se deben poner por encima de otros.
+Capa Funcional, se ven alimentados por requerimientos del sistema, ¿qué cosas tienen que pasar operativamente?
+Esta capa se ve afectada por las restricciones que pueden afectar operativamente a lo funcional.
+Requerimientos de proyecto: Tienen que ver más con el rol de gestor de proyectos, se usan para dar prioridad a los requerimientos del producto.
+
+Estos dos mundos de requerimientos hablan de las prioridades del equipo de trabajo del proyecto.
+
+Requerimientos de producto:
+
+Requerimientos funcionales: Tienen que ver con las historias de usuarios, que hablan sobre específicamente lo que hace el sistema, por ejemplo que usuario ingrese al sistema.
+
+Requerimientos no funcionales: son aquellos que agregan cualidades al sistema, por ejemplo que el ingreso de ese usuario sea de manera segura.
+
+
+Los riesgos son importantes para priorizarlos y atacarlos en orden y asegurar que las soluciones arquitectónicas que propongamos resuelvan los problemas más importantes.
+
+Intenta tratar los riesgos con posibles escenarios de fracaso y que pasaría en caso de que ese riesgo se haga real.
+
+Veamos como identificar los riesgos:
+
+En la toma de requerimientos --> dificultad / complejidad
+En los atributos de calidad --> incertidumbre, cuanto mas incertidumbra hay, mas alto es el riesgo.
+Conocimiento del dominio --> Riesgo prototípico, son aquellos que podemos atacar de forma estándar.
+
+Una vez que tenemos los riesgos identificados, debemos priorizarlos, recuerda que no es necesario mitigarlos todos, debemos siempre tener en cuenta y dar prioridad a aquellos riesgos que ponen en peligro la solución que se esta construyendo.
+
+Apuntes:
+
+Riesgos
+
+Describir el riesgo
+Usar escenarios de fracaso que sean medibles y accionables.
+
+“En situaciones de carga pico, los clientes experimentan latencias mayores a cinco segundos.”
+
+“Un atacante podría obtener información confidencial a través de un Ataque de intermediario (Man in the Middle).”
+
+¿Cómo identificamos riesgos?
+Requerimientos (Dificultad / Complejidad)
+Es importante conocer si el requerimiento es complejo, es decir si la dificultad de resolver este requerimiento es muy alta.
+Atributos de calidad (Incertidumbre)
+Es importante entender si sabemos o no sabemos cómo mejorar un atributo específico. Cuanta más incertidumbre hay en algo que detectamos que es importante, más alto es el riesgo de esa situación.
+Conocimiento del dominio (Riesgo prototípico)
+Es importante saber si lo que hemos implementado ya ha sido implementado o no, porque los dominios conocidos suelen tener riesgos prototípicos.
+
+Priorizar riesgos
+Es importante porque generalmente no podemos resolver todos, entonces si nos concentramos en resolver riesgos que no eran importantes, entonces estaremos invirtiendo mucho tiempo en algo que no era tan relevante. Debemos siempre tener en cuenta qué riesgos ponen en peligro el éxito o fracaso de la solución. Priorizamos nuestros riesgos y entendemos tanto nosotros como nuestros stakeholders que algunos riesgos no vamos a poder cubrirlos en el primer momento, sino que vamos a postergar el ataque o la mitigación de dichos riesgos para cuándo podamos invertir tiempo en ellos. Así los riesgos y los requerimientos van a ser priorizados y van a poder ser parte de nuestro plan organizado en dónde entendemos qué es lo más importante arquitectónicamente para resolver.
+
+
+Las restricciones en el contexto de un proceso de desarrollo de software se refiere a las restricciones que limitan las opciones de diseño o implementaciones disponibles al desarrollar.
+
+Los SH nos pueden poner limitaciones relacionadas con su contexto de negocio, limitaciones legales.
+
+También hay limitaciones técnicas relacionadas con integraciones con otros sistemas.
+
+El ciclo de vida del producto va a agregar limitaciones al producto, por ejemplo a medida que avanza el proceso de implementación el modelo de datos va a ser más difícil de modificar.
+
+El arquitecto debe balancear entre los requerimiento y las restricciones.
+
+
+Apuntes:
+
+Restricciones
+
+“Una restricción limita las opciones de diseño o de implementación disponibles al desarrollador.”
+Software Requirements: 3rd Edition (Wiegers, Betty 2003)
+
+Partes interesadas (Stakeholders)
+Limitaciones quizás que tengan que ver con su ecosistema o contexto de negocio, limitaciones de tipo de regulaciones o cuestiones legales.
+Integraciones con otros sistemas
+Si vamos a comunicarnos con un sistema por HTTP necesitamos tener internet, eso nos va a limitar en el ciclo de despliegue, como ejemplo.
+Ciclo de vida del producto
+Un ejemplo común es que a medida que evoluciona la aplicación el modelo de datos es más difícil de cambiar
+
+
+
+¿Qué es lo que está pasando arquitectónicamente en el software?
+Hay muchas librerías, muchos frameworks y conocimiento arquitectónico implícito en las comunidades. Por ejemplo, si hablamos de palabras como MVC o FLUX (con React) estamos hablando de arquitectura, sin embargo, esta implícito dentro del uso de una tecnología específica, y de repente si hablamos de FLUX estando en Java o C# no tiene ningún sentido, ya que no es una arquitectura que se suele encontrar en esa tecnología, sin embargo arquitectónicamente tiene el mismo valor y podría ser implementado en otra tecnología. Asi también, hay decisiones arquitectónicas tales como si empezar un proyecto con un monolito o iniciarlo con una estructura de microservicio, que se dan por sentado que cualquier cosa seria de mucho mas valor iniciarlo como un microservicio ¿Por qué? Puede ser porque es la tendencia, porque es lo que se da más fácil para el equipo de desarrollo o porque las herramientas mas modernas de hoy están orientados a microservicios, sin embargo, falta un análisis más profundo de que es lo que define ese estilo o patrón de arquitectura y cuáles son los payloads o sacrificios que estamos pagando por usarlos y cuáles son los beneficios que esperamos que traigan.
+Ningún patrón tiene solo beneficios, cuando hablábamos de que no hay balas de plata, recordemos que ninguno de estos patrones ni estilos nos va a solucionar todos los softwares, siempre hay beneficios y consecuencias de las decisiones de diseño que tomamos.
+
+¿Qué es un estilo de arquitectura de software?
+Al hablar de un estilo de arquitectura hablamos de algo genérico. Por ejemplo, podríamos entrar en detalles sobre diferentes páginas de internet: facebook, twitter, wordpress, Wikipedia, etc. todas esas paginas de internet implementan diferentes arquitecturas. Sin embargo, todas esas paginas son una pagina web, por lo tanto tienen una arquitectura cliente-servidor donde hay un navegador web que a través de un sistema de DNS y TCP/IP logra conseguir un documento en formato HTML que se lo muestra a través de un navegador al cliente. Esa estructura genérica define el estilo de una arquitectura, en donde, el estilo no nos va a hablar en detalles que problema esta resolviendo del dominio del problema, sino de que problema esta resolviendo arquitectónicamente a nivel de los conectores entre diferentes aplicaciones. Como dijimos recién podrían ser por ejemplo un navegador web y servidor, o podría ser una red de peer-to-peer, dos sistemas que están intentando intercomunicarse, o también una aplicación móvil que trata de comunicarse a una IP a través también de TCP/IP y HTTPS. Todo esto define algo genérico que si nos permite reutilizarlo a través de diferentes softwares, nos va a ayudar a poder reutilizar este conocimiento y aprender de soluciones anteriores que tuvieron éxito implementando esas comunicaciones o esos componentes con esos conectores. Si tuviéramos que bajarlo a una definición podemos decir que un estilo de arquitectura es una colección de decisiones arquitectónicas o decisiones de diseño que dado un contexto nos permite ya restringir las decisiones arquitectónicas, es decir, nos da un set de decisiones ya tomadas y nos restringe el resto de las decisiones arquitectónicas para un beneficio ya estimado, podemos usar estas decisiones ya tomadas en el pasado y que tuvieron éxito y aplicarlas en nuestro sistema que comparte un sistema general similar y esperar tener un éxito parecido al que tuvo quien lo implemento anteriormente.
+
+
+Estilos: Llamado y retorno
+Cada uno de los componentes hacen invocaciones a los componentes externos y estos retornan información.
+
+Cada componente hace un llamado y espera una respuesta
+
+Programa y subrutinas --> Instrucciones secuenciales que el programa ejecutaba una por una. Luego se hacían instrucciones de salto, de aquí surgieron las funciones que son bloques de código que podemos invocar en cualquier momento.
+
+Orientado a objetos --> la abstracción es mayor en comparación con el paradigma anterior, se usa para aplicaciones que ya sabemos que vamos a usar durante mucho tiempo. La abstracción ya no es la subrutina, ahora tenemos objetos que se hacen llamados entre si y esperan respuestas.
+
+
+RESUMEN:
+
+En este módulo se explica el estilo de arquitectura de llamada y retorno, consiste en que una parte A quiere comunicarse con una parte B, a veces con la necesidad de que b devuelva algo o no. Existen diferentes abstracciones de este suceso:
+
+1. Programa y subrutinas.
+
+Programa es el conjunto de instrucciones, sub rutina tiene la cualidad de ser fragmentos de código que utilizaremos muy a menudo, al que necesitamos hacer un llamado.
+
+2. Orientado a objetos.
+
+Objetos tienen diferentes propiedades y métodos que se comunican entre sí. Objetos pertenecen a una clase que instancia objetos que se llaman y otros responden.
+
+3. Cliente Servidor
+
+Una aplicación le habla a un servidor mediante una petición y servidor responde. Si ahondamos en este modelo el nivel de detalle aumenta. Aplicación le pregunta a REST/API y luego a server, y server devuelve.
+
+
+Estilos: Flujo de datos
+No estamos preocupados por la secuencia de ejecución sino por como los datos van a ir de un lugar a otro.
+
+Estilo: Flujo de Datos.
+
+Este estilo se utiliza cuando tenemos un proceso que tiene que tener una salida clara; pero esa misma salida puede segmentarse en partes. Partes que ya se sabe que hay que hacer.
+Lote Secuencial:
+
+Se trata de la ejecución de una pieza de código, Ya procesa y asegurase de que esta pase a otra etapa o proceso.
+Tubos y Filtros:
+
+Es un String o un flujo de datos continuo, en donde cada aplicación recibe esos datos. los procesa. y los envía como salida a otra aplicación o quizás. ya hasta al final de la ejecución.
+
+
+Estilos: Centradas en datos
+Pizarrón:
+
+El pizarrón es el núcleo de la arquitectura. Donde componentes externos a el se encargarán de procesar un dato y escribirlo en el pizarrón(Este funciona como centralizador). Cuando el pizarrón ya tiene todos los datos necesarios; el mismo podría generar una salida,Ejemplo: Sistema Fiscales
+Centrado en base de datos:
+
+Es un estilo común; Se trata de que una cantidad de componentes comparte una misma base de datos. de Ejemplo: aplicaciones que poseen comunicación por Internet.
+Sistema experto Basado en reglas:
+
+Este sistema no se ve muy seguido en aplicaciones modernas; un componente A (Tipo Cliente) consulta a uno B, donde este se encargará de tratar de entender si la petición del cliente es una consulta o regla. Para que el componente B logre resolver la petición se va a comunicar con un tercer componente © este trabajara como KDB: Knowledge DataBase.
+
+
+Estilos: Componentes independientes
+Estilos de componentes independientes
+Existen dos grandes familias que tienen que ver con la forma en que se comunican los componentes. (la invocación implicaita y explícita)
+
+Invocación implícita:
+Se tienen varios componentes y se cuenta con un BUS de eventos en el cual los componentes van a escribir algunos eventos y luego el BUS los comunica a los componentes que les conciernan dichos eventos. Existen varios tipos de BUS.
+Tipos de BUS:
+Publicar/suscribir: en donde el componente inicial es el que publica un evento y los componentes que estan suscritos reciben la notificación de dicha publicación.
+Orientado a servicios (Enterprise Service BUS): en este caso el BUS es un componente inteligente, en el que los componentes notifican al BUS a través de eventos y el BUS decide a quien notificar dichos eventos.
+
+Invocación explícita:
+Se tienen componentes desarrollados individualmente pero que todos se conocen entre sí, dichos componentes tiene que publicar que via de comunicación existirá para comunicarse entre ellos y a que se dedica cada uno.
+
+
+
+Comparando estilos: ¿Cómo elijo?
+
+Comparando estilos: ¿Cómo elijo?
+Estilos monolíticos.
+
+Estilos donde se despliegan un artefacto de software
+
+**Eficiencia: **Al tener un solo artefacto se puede ser optimizado de manera más personalizada. // En estilos distribuido, es un problema debido a los canales de comunicación, red, intenet que comunican los componentes.
+
+Curva de aprendizaje: El monolitico contiene toda la información allí. Un monolitico bien diseñado permite tener todas las piezas en el mismo lugar, por lo que se facilita la lectura y entendimiento. // El el caso distribuido hay que entender cada componente.Nota: Un componente interno en un distribuido puede ser visto como un monolítico. Es la base de los microservicios.
+
+**Capacidad de prueba: **Son más fáciles de probar una funcionalidad de principio a fin. // En distribuidos necesito tener todos lso componentes disponibles, incluyendo los BUS de eventos.
+
+Capacidad de modificación: Un cambio que se despliega todo junto garantiza menos estaddos intermedios. Las versiones nunca coexisten // En distribuidos diferentes compoentes tienen diferentes versiones, por lo que requiere de compatibilidad entre versiones. Una modificación en un distribuido es más difícile hacer llegar.
+
+Estilos distribuidos.
+
+Componentes que luego de ser desplegados se conectan de alguna forma.
+
+Modularidad: Es separar componentes que prestan servicios
+
+**Disponibilidad:**Es mayor que en monolítica, podemos tener multiples copias de un componente, que esté disponible significa que sea más barato, tener una copia entera de un monolitco es mucho más caro que copiar el componente distribuido que necesitamos que escale. Microservicios aprovecha recursos.
+
+Uso de recursos: Es m{as f{acil gestionar los recursos del sistema
+
+Adaptabilidad: Al ser distribuido se puede detewctar mucho más fácil qué componente necesita ser adaptado del sistema y es más fácile realizar esa actualización // en monolítos puede ser mucho más complicado, como lanzar una app en un sistema operativo diferente.
+
+¿Como elijo qué necesito?
+
+Tener en cuenta los requisitos, los objetivos de negocio / arquitectura de software, atributos de calida/ Estrategias de arquitectura, Escenarios/ Desiciones arquitectonicas. Con el fin de analizar que sacrificios, riesgos y no riesgos cuento y como impacta en mi proyecto
+
+
+
+
+
+Desarrollo del proyecto: PlatziServicios Fase Startup
+Situación/problema que se nos presenta: Estamos en la ducha y de repente se rompe nuestra cañería!
+
+Disparador: Cómo encuentro un plomero de confianza? A partir de allí, empezamos a trabajar en una idea de software
+
+**Primero **comenzamos con los requerimientos del sistema:
+Criterios de éxito:
+-(Para el cliente) Conectar rápidamente a un cliente con un profesional de confianza.
+-(Para el profesional) Garantizar el aumento del volúmen de trabajo al profesional.
+
+Idea: Definición de una forma ideal de como se satisface una necesidad.
+Ejemplo: Tener una forma mucho más sencilla de solicitar un servicio de plomería que llegue a mi casa con un plomero que se conozca.
+
+**A partir de los criterios de éxito, vamos a intentar encontrar las Historias de usuario: **
+-Como cliente necesito contactar un profesional en el momento para reparar un problema en mi hogar.
+-Como cliente necesito conocer la experencia del profesional para decidir a cuál contacto.
+-Como profesional necesito cobrar mi trabajo realizado para continuar prestando el servicio.
+-Como profesional necesito ampliar mi cartera de clientes para tener más flujo de trabajo.
+
+Requerimientos (más técnicos):
+Ciclo de prestación de servicio:
+-Solicitar, aceptar y finalizar una prestación de servicio de forma segura.
+
+Comunicación:
+-Capacidad de búsqueda y comunicación rápida entre clientes y profesionales disponibles.
+
+Evaluación:
+-Capacidad de evaluar profesionales y clientes para referencia futura.
+
+Riesgos: Son referentes a historias de los usuarios.
+Ejemplos:
+-El cliente utiliza un servicio y no completa el pago en un tiempo determinado
+-Un profesional llegó a la puerta de mi casa y no puedo confirmar que sea quien dice que es
+-El proyecto no está terminado para la feria de profesionales independientes de Mayo 2019.
+
+**Restricciones: **Limites que tiene nuestro proyecto de acuerdo a variables.
+
+Ejemplo:
+-Recursos disponibles para el desarrollo: Programadores, equipos, energía, lugar de trabajo, etc.
+-Registro de impuestos del profesional.
+-Garantía de profesionales sin antecedentes penales.
+
+Teniendo en cuenta todas las restricciones y requerimientos que existe, tratar de entender qué estilo arquitectonico vamos a utilizar. Tratamos de encontrar la forma más simple de empezar a trabajar: Una arquitectura cliente-servidor montada en la web en donde podamos aprovechar toda la infraestructura de la internet.
+
+
+Desarrollo del proyecto: PlatziServicios Fase Producto en crecimiento
+Nuestro sistema está creciendo, con eso llegan nuevos requerimientos, riesgos, stakeholders y una visión más amplia de lo que podemos solucionar.
+
+Primero: Reevaluamos nuestros criterios de éxito
+-Brindar a las empresas cliente estabilidad y control de costos de las prestaciones de servicios que necesiten
+-Brindar a las empresas prestadoras una visión de crecimiento de sus servicios.
+
+Luego, las historias de Usuario que salen de esta nueva visión:
+-Como empresa cliente, necesito reportes de gastos en servicios para controlar y entender mis finanzas.
+-Como empresa cliente, necesito generar listas de profesionales preferidos para nunca perder la disponibilidad del servicio
+-Como empresa prestadora necesito medir el rendimiento de mis profesionales para comprender mi propio crecimiento.
+-Como empresa prestadora necesito posicionarme como la mejor empresa del mercado para obtener más clientes.
+
+Requerimientos:
+Reportes
+-De gastos por período y por tipo de servicio contratado
+-De ingresos y horas trabajadas por profesional por periodo y tipo de servicio prestado
+
+Autorización
+-Gestión de Usuarios, roles y permisos asociados a acciones del sistema.
+
+Posicionamiento y comunicación
+-Ranking de prestadores por evaluación
+-Lista priorizada de prestadores por tipo de prestación
+
+Riesgos:
+-Las empresas cliente no pueden extraer la información del sistema para integrar a sus aplicaciones existentes (normalmente ya existe un ecosistema de aplicaciones)
+-Los indicadores de la empresa prestadora no son indicativos del trabajo realizado
+-El proyecto podría recibir juicios de fraude por cobros injustificados.
+
+Restricciones:
+-Conformar estándares de auditoria profesional
+-Garantizar la privacidad de los datos de consumo
+
+**Estilo arquitectónico: **
+El requisito más fuerte arquitectónico que debemos tener en cuenta pasa por los reportes.
+Ahora nuestra base de datos se separa. Por un lado, dejamos lo transaccional en una base de datos y en otra, la que que se utilizará para los reportes, a fin de evitar el costo de la lectura de los reportes sobre una misma base de datos (y poner en el peligro toda la estructura de servicios que tenemos en este momento)
+
+
+
+Desarrollo del proyecto: PlatziServicios Fase Escala global
+Ahora somos una empresa a gran escala y por ende vamos a necesitar de nuevos requerimientos.
+
+Análisis de requerimientos
+
+Criterios de exito:
+-Conectar a empresas locales y globales con los mejores prestadores de servicios
+-Facilitar el crecimiento y la globalización de las empresas prestadoras.
+
+Historias de usuario:
+-Como cliente necesito entender el sistema en mi idioma para poder garantizar el buen uso del mismo
+-Como cliente necesito acceder a servicios locales y globales para estandarizar los prestadores en mis diferentes localidades.
+-Como usuario necesito acceder a los servicios en cualquier momento para no tener problemas dependientes del uso horario
+-Como empresa prestadora necesito brindar mis servicios de forma global para ampliar mi alcance al mercado internacional.
+
+Requerimientos:
+-Internacionalización:
+Traducciones de contenido
+Registro de prestadores globales y su capacidad de busqueda local o global.
+-Disponibilidad de datos:
+Cálculo de reportes en tiempo real
+
+Riesgos:
+-El crecimiento de la compañía hace difícil la transmisión de conocimiento y la productividad de nuestros equipos de desarrollo.
+-Pérdida parcial o total de datos por fallas no previstas
+-Un mercado específico no es accesible por diferencias de idioma.
+
+Restricciones:
+-Evitar procesos acoplados a un huso horario específico
+-Empresas que no permiten que sus datos salgan del país de origen.
+
+
